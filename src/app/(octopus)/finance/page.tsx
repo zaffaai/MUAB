@@ -32,6 +32,40 @@ export default function FinancePage() {
   const [activeTab, setActiveTab] = useState<'overview' | 'payouts' | 'methods'>('overview');
   const [showAddMethodModal, setShowAddMethodModal] = useState(false);
   const [filterStatus, setFilterStatus] = useState<PayoutStatus | 'all'>('all');
+  const [showPayoutRequestModal, setShowPayoutRequestModal] = useState(false);
+
+  const handleRequestPayout = () => {
+    setShowPayoutRequestModal(true);
+  };
+
+  const handleConfirmPayout = () => {
+    // Send message to MUAB admin
+    alert('Payout request sent to MUAB admin! You will be notified once processed.');
+    setShowPayoutRequestModal(false);
+    console.log('Payout request submitted to MUAB admin');
+  };
+
+  const handleDownloadReport = () => {
+    // Trigger download of financial report
+    const reportData = {
+      reportDate: new Date().toISOString(),
+      totalEarnings: 12450,
+      platformFees: 455,
+      payouts: payouts,
+      period: 'All Time'
+    };
+    
+    const dataStr = JSON.stringify(reportData, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `muab-financial-report-${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
 
   const payoutMethods: PayoutMethod[] = [
     {
@@ -250,7 +284,10 @@ export default function FinancePage() {
             <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
               <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Quick Actions</h2>
               <div className="space-y-3">
-                <button className="w-full p-4 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-between">
+                <button 
+                  onClick={handleRequestPayout}
+                  className="w-full p-4 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-between"
+                >
                   <div className="flex items-center gap-3">
                     <i className="fas fa-money-bill-wave text-2xl"></i>
                     <div className="text-left">
@@ -275,7 +312,10 @@ export default function FinancePage() {
                   <i className="fas fa-arrow-right"></i>
                 </button>
 
-                <button className="w-full p-4 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all flex items-center justify-between">
+                <button 
+                  onClick={handleDownloadReport}
+                  className="w-full p-4 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all flex items-center justify-between"
+                >
                   <div className="flex items-center gap-3">
                     <i className="fas fa-file-invoice text-2xl"></i>
                     <div className="text-left">
@@ -480,6 +520,71 @@ export default function FinancePage() {
                   <i className="fab fa-stripe text-3xl text-gray-400 mb-2"></i>
                   <p className="font-semibold text-gray-900 dark:text-white">Stripe</p>
                   <p className="text-xs text-gray-600 dark:text-gray-400">Stripe Connect payout</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Payout Request Modal */}
+        {showPayoutRequestModal && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl max-w-md w-full">
+              <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Request Payout</h2>
+                  <button
+                    onClick={() => setShowPayoutRequestModal(false)}
+                    className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                  >
+                    <i className="fas fa-times text-gray-600 dark:text-gray-300"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div className="p-6 space-y-6">
+                <div className="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-4 border border-purple-200 dark:border-purple-800">
+                  <p className="text-sm text-purple-700 dark:text-purple-300 mb-2">Available Balance</p>
+                  <p className="text-3xl font-bold text-purple-900 dark:text-purple-100">$3,200</p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                    Payout Method
+                  </label>
+                  <select className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all">
+                    {payoutMethods.map(method => (
+                      <option key={method.id} value={method.id}>
+                        {method.name} - {method.details}
+                        {method.isDefault ? ' (Default)' : ''}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-4 border border-yellow-200 dark:border-yellow-800">
+                  <div className="flex items-start gap-3">
+                    <i className="fas fa-info-circle text-yellow-600 dark:text-yellow-400 mt-0.5"></i>
+                    <div className="text-sm text-yellow-800 dark:text-yellow-200">
+                      <p className="font-semibold mb-1">Processing Information</p>
+                      <p>Your payout request will be sent to the MUAB admin team for review. You'll receive a notification once it's processed (typically within 3-5 business days).</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => setShowPayoutRequestModal(false)}
+                    className="flex-1 px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleConfirmPayout}
+                    className="flex-1 px-6 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+                  >
+                    Confirm Request
+                  </button>
                 </div>
               </div>
             </div>

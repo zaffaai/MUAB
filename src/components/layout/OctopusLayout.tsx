@@ -6,6 +6,17 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useAuthStore, type AccountType } from '@/store/authStore';
 import { useCartStore } from '@/store/cartStore';
 
+interface Notification {
+  id: string;
+  type: 'sale' | 'comment' | 'follower' | 'system';
+  title: string;
+  message: string;
+  time: string;
+  read: boolean;
+  icon: string;
+  color: string;
+}
+
 interface OctopusLayoutProps {
   children: React.ReactNode;
   accountType?: AccountType;
@@ -18,6 +29,51 @@ export default function OctopusLayout({ children, accountType = 'professional' }
   const { getItemCount } = useCartStore();
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [notifications, setNotifications] = useState<Notification[]>([
+    {
+      id: '1',
+      type: 'sale',
+      title: 'New Sale',
+      message: 'Someone purchased "Premium Design Course"',
+      time: '5 min ago',
+      read: false,
+      icon: 'fa-shopping-cart',
+      color: 'text-green-600'
+    },
+    {
+      id: '2',
+      type: 'follower',
+      title: 'New Followers',
+      message: '3 new people followed you',
+      time: '12 min ago',
+      read: false,
+      icon: 'fa-user-plus',
+      color: 'text-blue-600'
+    },
+    {
+      id: '3',
+      type: 'comment',
+      title: 'New Comment',
+      message: 'Sarah commented on your JavaScript Course',
+      time: '1 hour ago',
+      read: true,
+      icon: 'fa-comment',
+      color: 'text-purple-600'
+    }
+  ]);
+
+  const unreadCount = notifications.filter(n => !n.read).length;
+
+  const markAsRead = (id: string) => {
+    setNotifications(notifications.map(n => 
+      n.id === id ? { ...n, read: true } : n
+    ));
+  };
+
+  const markAllAsRead = () => {
+    setNotifications(notifications.map(n => ({ ...n, read: true })));
+  };
 
   // Use user's account type from auth store if available
   const currentAccountType = user?.accountType || accountType;
@@ -170,12 +226,81 @@ export default function OctopusLayout({ children, accountType = 'professional' }
               </Link>
 
               {/* Notifications */}
-              <button className="relative w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-all">
-                <i className="fas fa-bell text-gray-600 dark:text-gray-300"></i>
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
-                  3
-                </span>
-              </button>
+              <div className="relative">
+                <button
+                  onClick={() => setShowNotifications(!showNotifications)}
+                  className="relative w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                >
+                  <i className="fas fa-bell text-gray-600 dark:text-gray-300"></i>
+                  {unreadCount > 0 && (
+                    <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                      {unreadCount > 9 ? '9+' : unreadCount}
+                    </span>
+                  )}
+                </button>
+
+                {/* Notifications Dropdown */}
+                {showNotifications && (
+                  <div className="absolute top-full right-0 mt-2 w-96 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 z-50 max-h-[500px] overflow-hidden flex flex-col">
+                    <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+                      <h3 className="font-bold text-gray-900 dark:text-white">Notifications</h3>
+                      {unreadCount > 0 && (
+                        <button
+                          onClick={markAllAsRead}
+                          className="text-xs text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300"
+                        >
+                          Mark all as read
+                        </button>
+                      )}
+                    </div>
+                    <div className="overflow-y-auto max-h-[400px]">
+                      {notifications.length > 0 ? (
+                        notifications.map((notif) => (
+                          <div
+                            key={notif.id}
+                            onClick={() => markAsRead(notif.id)}
+                            className={`p-4 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-all ${
+                              !notif.read ? 'bg-purple-50 dark:bg-purple-900/10' : ''
+                            }`}
+                          >
+                            <div className="flex items-start gap-3">
+                              <div className={`w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center ${notif.color}`}>
+                                <i className={`fas ${notif.icon}`}></i>
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center justify-between mb-1">
+                                  <p className="font-semibold text-sm text-gray-900 dark:text-white">
+                                    {notif.title}
+                                  </p>
+                                  {!notif.read && (
+                                    <span className="w-2 h-2 bg-purple-600 rounded-full"></span>
+                                  )}
+                                </div>
+                                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                                  {notif.message}
+                                </p>
+                                <p className="text-xs text-gray-500 dark:text-gray-500">
+                                  {notif.time}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        <div className="p-8 text-center">
+                          <i className="fas fa-bell-slash text-4xl text-gray-300 dark:text-gray-600 mb-3"></i>
+                          <p className="text-gray-600 dark:text-gray-400">No notifications</p>
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-3 border-t border-gray-200 dark:border-gray-700">
+                      <button className="w-full text-center text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold">
+                        View all notifications
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
 
               {/* Profile */}
               <div className="relative flex items-center gap-3 pl-3 border-l border-gray-200 dark:border-gray-700">

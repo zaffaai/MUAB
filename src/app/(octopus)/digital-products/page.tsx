@@ -389,13 +389,13 @@ export default function DigitalProductsPage() {
                       <p className="text-2xl font-bold text-gray-900 dark:text-white">${product.price}</p>
                     </div>
                     <div className="flex-1 text-sm text-gray-600 dark:text-gray-400">
-                      <div className="flex items-center gap-1">
-                        <i className="fas fa-shopping-cart"></i>
-                        <span>{product.sales} sales</span>
+                      <div className="flex items-center gap-1 mb-1">
+                        <i className="fas fa-users text-purple-600 dark:text-purple-400"></i>
+                        <span className="font-semibold text-gray-900 dark:text-white">{product.sales} {product.sales === 1 ? 'purchase' : 'purchases'}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <i className="fas fa-dollar-sign"></i>
-                        <span>${product.revenue.toLocaleString()}</span>
+                        <i className="fas fa-dollar-sign text-green-600 dark:text-green-400"></i>
+                        <span>${product.revenue.toLocaleString()} earned</span>
                       </div>
                     </div>
                   </div>

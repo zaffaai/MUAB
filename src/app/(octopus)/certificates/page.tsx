@@ -282,13 +282,9 @@ export default function CertificatesPage() {
                           href={`/certificates/${cert.id}`}
                           className="flex-1 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg font-semibold hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all text-center"
                         >
-                          <i className="fas fa-edit mr-1"></i>
-                          Edit
-                        </Link>
-                        <button className="flex-1 px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all">
                           <i className="fas fa-eye mr-1"></i>
                           Preview
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>

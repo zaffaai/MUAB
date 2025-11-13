@@ -148,11 +148,11 @@ export default function PostManagementPage() {
 
         {/* Filters */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
-          <div className="flex gap-4">
+          <div className="flex gap-4 items-center">
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value as 'all' | PostStatus)}
-              className="px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="px-4 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
             >
               <option value="all">All Status</option>
               <option value="pending">Pending</option>
@@ -162,7 +162,7 @@ export default function PostManagementPage() {
             <select
               value={filterCategory}
               onChange={(e) => setFilterCategory(e.target.value)}
-              className="px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="px-4 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
             >
               {categories.map((cat) => (
                 <option key={cat} value={cat === 'All Categories' ? 'all' : cat}>
