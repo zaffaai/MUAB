@@ -1,14 +1,36 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import OctopusLayout from '@/components/layout/OctopusLayout';
 
 type ProductType = 'course' | 'ebook' | 'template' | 'video' | 'webinar' | 'coaching' | 'membership';
 
+interface ChatMessage {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+  timestamp: Date;
+}
+
 export default function CreateProductPage() {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
+  const chatEndRef = useRef<HTMLDivElement>(null);
+
+  // AI Assistant State
+  const [showAIAssistant, setShowAIAssistant] = useState(false);
+  const [aiExpanded, setAiExpanded] = useState(false);
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
+    {
+      id: '1',
+      role: 'assistant',
+      content: "Hi! I'm your AI assistant. I can help you create an amazing digital product. What type of product would you like to create today?",
+      timestamp: new Date()
+    }
+  ]);
+  const [userMessage, setUserMessage] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
 
   // Step 1: Basic Info
   const [productType, setProductType] = useState<ProductType | ''>('');
@@ -88,6 +110,64 @@ export default function CreateProductPage() {
       color: 'pink'
     }
   ];
+
+  // AI Assistant Functions
+  useEffect(() => {
+    if (chatEndRef.current) {
+      chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [chatMessages]);
+
+  const handleSendMessage = () => {
+    if (!userMessage.trim()) return;
+
+    const newUserMessage: ChatMessage = {
+      id: Date.now().toString(),
+      role: 'user',
+      content: userMessage,
+      timestamp: new Date()
+    };
+
+    setChatMessages([...chatMessages, newUserMessage]);
+    setUserMessage('');
+    setIsTyping(true);
+
+    // Simulate AI response
+    setTimeout(() => {
+      const aiResponse = generateAIResponse(userMessage, currentStep);
+      const newAIMessage: ChatMessage = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: aiResponse,
+        timestamp: new Date()
+      };
+      setChatMessages(prev => [...prev, newAIMessage]);
+      setIsTyping(false);
+    }, 1500);
+  };
+
+  const generateAIResponse = (message: string, step: number): string => {
+    const lowerMessage = message.toLowerCase();
+    
+    if (lowerMessage.includes('course') || lowerMessage.includes('online class')) {
+      return "Great choice! For an online course, I recommend:\n\n1. Start with a compelling title that highlights the main benefit\n2. Price it between $49-$199 for beginner courses\n3. Include 5-10 video lessons (10-20 mins each)\n4. Add downloadable resources and quizzes\n5. Enable certificates to increase value\n\nWould you like help with course structure?";
+    } else if (lowerMessage.includes('ebook') || lowerMessage.includes('book')) {
+      return "E-books are perfect for sharing expertise! Here's my advice:\n\n1. Aim for 30-100 pages\n2. Price between $9-$49\n3. Include actionable tips and examples\n4. Add a preview (first chapter)\n5. Provide PDF + EPUB formats\n\nWhat topic will your e-book cover?";
+    } else if (lowerMessage.includes('price') || lowerMessage.includes('cost')) {
+      return "Pricing depends on your product type and target audience:\n\n• Courses: $49-$299\n• E-books: $9-$49\n• Templates: $19-$99\n• Coaching: $97-$497/session\n• Memberships: $29-$199/month\n\nConsider offering early-bird discounts! What's your target price point?";
+    } else if (lowerMessage.includes('help') || lowerMessage.includes('start')) {
+      return `You're currently on Step ${step}/4. ${
+        step === 1 ? "Let's nail down your product type and basic info first. What kind of product excites you the most?" :
+        step === 2 ? "Now we're setting up pricing. Would you like to do one-time payment or subscription?" :
+        step === 3 ? "Time to add your content! Do you have videos, documents, or other files ready?" :
+        "Almost done! Just a few settings left. Do you want to enable certificates for your product?"
+      }`;
+    } else if (lowerMessage.includes('thank')) {
+      return "You're welcome! I'm here to help you create an amazing product. Feel free to ask anything! 🚀";
+    } else {
+      return "That's a great question! Based on what you're creating, I suggest focusing on:\n\n✓ Clear value proposition\n✓ Professional presentation\n✓ Competitive pricing\n✓ Quality content delivery\n\nWhat specific aspect would you like more help with?";
+    }
+  };
 
   const handleStep1Next = () => {
     if (!productType || !title || !description) {
@@ -754,6 +834,123 @@ export default function CreateProductPage() {
                 <i className="fas fa-check"></i>
                 <span>{publishNow ? 'Publish Product' : 'Save as Draft'}</span>
               </button>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* AI Assistant */}
+      <div className="fixed bottom-6 right-6 z-50">
+        {!aiExpanded ? (
+          <button
+            onClick={() => setAiExpanded(true)}
+            className="w-14 h-14 rounded-full bg-linear-to-br from-purple-600 to-cyan-600 text-white shadow-lg hover:shadow-xl transition-all flex items-center justify-center relative group"
+          >
+            <i className="fas fa-robot text-xl"></i>
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></span>
+            <div className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              AI Assistant
+            </div>
+          </button>
+        ) : (
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 w-96 flex flex-col" style={{ height: '500px' }}>
+            {/* Header */}
+            <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between bg-linear-to-r from-purple-600 to-cyan-600 rounded-t-2xl">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
+                  <i className="fas fa-robot text-white"></i>
+                </div>
+                <div>
+                  <h3 className="font-bold text-white">AI Assistant</h3>
+                  <p className="text-xs text-white/80">Here to help you create</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setAiExpanded(false)}
+                className="w-8 h-8 rounded-lg bg-white/20 backdrop-blur hover:bg-white/30 transition-all flex items-center justify-center"
+              >
+                <i className="fas fa-chevron-down text-white"></i>
+              </button>
+            </div>
+
+            {/* Chat Messages */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              {chatMessages.map((msg) => (
+                <div
+                  key={msg.id}
+                  className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div className={`max-w-[80%] ${
+                    msg.role === 'user'
+                      ? 'bg-purple-600 text-white'
+                      : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
+                  } rounded-2xl px-4 py-3`}>
+                    <p className="text-sm whitespace-pre-line">{msg.content}</p>
+                    <p className={`text-xs mt-1 ${
+                      msg.role === 'user' ? 'text-purple-200' : 'text-gray-500 dark:text-gray-400'
+                    }`}>
+                      {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </p>
+                  </div>
+                </div>
+              ))}
+              {isTyping && (
+                <div className="flex justify-start">
+                  <div className="bg-gray-100 dark:bg-gray-700 rounded-2xl px-4 py-3">
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div ref={chatEndRef} />
+            </div>
+
+            {/* Quick Actions */}
+            <div className="px-4 py-2 border-t border-gray-200 dark:border-gray-700">
+              <div className="flex gap-2 overflow-x-auto pb-2">
+                <button
+                  onClick={() => setUserMessage("Help me price my product")}
+                  className="px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg text-xs font-semibold whitespace-nowrap hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all"
+                >
+                  💰 Pricing help
+                </button>
+                <button
+                  onClick={() => setUserMessage("What should I include in my course?")}
+                  className="px-3 py-1.5 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-lg text-xs font-semibold whitespace-nowrap hover:bg-cyan-200 dark:hover:bg-cyan-900/50 transition-all"
+                >
+                  📚 Course tips
+                </button>
+                <button
+                  onClick={() => setUserMessage("How do I create a great title?")}
+                  className="px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg text-xs font-semibold whitespace-nowrap hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-all"
+                >
+                  ✨ Title ideas
+                </button>
+              </div>
+            </div>
+
+            {/* Input */}
+            <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={userMessage}
+                  onChange={(e) => setUserMessage(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                  placeholder="Ask me anything..."
+                  className="flex-1 px-4 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                />
+                <button
+                  onClick={handleSendMessage}
+                  disabled={!userMessage.trim()}
+                  className="px-4 py-2.5 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <i className="fas fa-paper-plane"></i>
+                </button>
+              </div>
             </div>
           </div>
         )}

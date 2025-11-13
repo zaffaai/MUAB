@@ -11,7 +11,6 @@ interface MemberRequest {
   userAvatar: string;
   accountType: 'personal' | 'professional';
   requestDate: string;
-  message: string;
   status: 'pending' | 'approved' | 'rejected';
 }
 
@@ -31,6 +30,8 @@ interface TeamMember {
 export default function MembersPage() {
   const [activeTab, setActiveTab] = useState<'requests' | 'team'>('requests');
   const [selectedRole, setSelectedRole] = useState<string>('all');
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   const requests: MemberRequest[] = [
     {
@@ -41,7 +42,6 @@ export default function MembersPage() {
       userAvatar: 'https://ui-avatars.io/api/?name=Sarah+Johnson',
       accountType: 'professional',
       requestDate: '2024-11-10',
-      message: 'I would like to join your team as a content creator. I have 5 years of experience in digital marketing.',
       status: 'pending'
     },
     {
@@ -52,7 +52,6 @@ export default function MembersPage() {
       userAvatar: 'https://ui-avatars.io/api/?name=Michael+Chen',
       accountType: 'professional',
       requestDate: '2024-11-12',
-      message: 'Interested in collaborating on course creation and live events.',
       status: 'pending'
     },
     {
@@ -63,7 +62,6 @@ export default function MembersPage() {
       userAvatar: 'https://ui-avatars.io/api/?name=Emma+Davis',
       accountType: 'personal',
       requestDate: '2024-11-13',
-      message: 'I\'m a data analyst and would love to help with analytics and reporting.',
       status: 'pending'
     }
   ];
@@ -147,10 +145,15 @@ export default function MembersPage() {
   };
 
   const handleRemoveMember = (memberId: string) => {
-    if (confirm('Are you sure you want to remove this member?')) {
-      console.log('Remove member:', memberId);
+    if (confirm('Are you sure you want to revoke this member\'s verification?')) {
+      console.log('Revoke member:', memberId);
       // In real app, make API call to remove
     }
+  };
+
+  const handleViewProfile = (member: TeamMember) => {
+    setSelectedMember(member);
+    setShowProfileModal(true);
   };
 
   const getRoleBadge = (role: string) => {
@@ -300,33 +303,24 @@ export default function MembersPage() {
                             </span>
                           </div>
 
-                          <div className="mb-4">
-                            <p className="text-sm text-gray-700 dark:text-gray-300 mb-1">
-                              <span className="font-semibold">Message:</span>
-                            </p>
-                            <p className="text-sm text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
-                              {request.message}
-                            </p>
-                          </div>
-
-                          <div className="flex items-center justify-between">
+                          <div className="flex items-center justify-between pt-3 border-t border-gray-200 dark:border-gray-700">
                             <span className="text-xs text-gray-500">
                               Requested {new Date(request.requestDate).toLocaleDateString()}
                             </span>
                             <div className="flex gap-2">
                               <button
                                 onClick={() => handleReject(request.id)}
-                                className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                                className="px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-lg font-semibold hover:bg-red-200 dark:hover:bg-red-900/50 transition-all"
                               >
                                 <i className="fas fa-times mr-1"></i>
-                                Reject
+                                Decline
                               </button>
                               <button
                                 onClick={() => handleApprove(request.id)}
                                 className="px-4 py-2 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all"
                               >
                                 <i className="fas fa-check mr-1"></i>
-                                Approve & Assign Role
+                                Approve
                               </button>
                             </div>
                           </div>
@@ -439,12 +433,20 @@ export default function MembersPage() {
                               {member.status}
                             </span>
                           </td>
-                          <td className="px-6 py-4 text-right">
+                          <td className="px-6 py-4 text-right space-x-2">
+                            <button
+                              onClick={() => handleViewProfile(member)}
+                              className="text-purple-600 hover:text-purple-700 dark:text-purple-400"
+                              title="View Profile"
+                            >
+                              <i className="fas fa-eye"></i>
+                            </button>
                             <button
                               onClick={() => handleRemoveMember(member.id)}
                               className="text-red-600 hover:text-red-700 dark:text-red-400"
+                              title="Revoke Verification"
                             >
-                              <i className="fas fa-user-times"></i>
+                              <i className="fas fa-ban"></i>
                             </button>
                           </td>
                         </tr>
@@ -456,6 +458,117 @@ export default function MembersPage() {
             )}
           </div>
         </div>
+
+        {/* Profile Modal */}
+        {showProfileModal && selectedMember && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+              <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    Member Profile
+                  </h2>
+                  <button
+                    onClick={() => setShowProfileModal(false)}
+                    className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                  >
+                    <i className="fas fa-times text-gray-600 dark:text-gray-300"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div className="p-6 space-y-6">
+                {/* Profile Header */}
+                <div className="flex items-start gap-6">
+                  <img
+                    src={selectedMember.userAvatar}
+                    alt={selectedMember.userName}
+                    className="w-24 h-24 rounded-full"
+                  />
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                      {selectedMember.userName}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 mb-2">{selectedMember.userHandle}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{selectedMember.userEmail}</p>
+                    <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-semibold ${getRoleBadge(selectedMember.role)}`}>
+                      {selectedMember.role}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Stats */}
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-4 text-center">
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                      {selectedMember.productsCreated}
+                    </p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Products Created</p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-4 text-center">
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                      ${selectedMember.revenue.toLocaleString()}
+                    </p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Revenue Generated</p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-4 text-center">
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                      {Math.floor((new Date().getTime() - new Date(selectedMember.joinedDate).getTime()) / (1000 * 60 * 60 * 24))} days
+                    </p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Member Since</p>
+                  </div>
+                </div>
+
+                {/* Details */}
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between py-3 border-b border-gray-200 dark:border-gray-700">
+                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Joined Date</span>
+                    <span className="text-sm text-gray-900 dark:text-white">
+                      {new Date(selectedMember.joinedDate).toLocaleDateString()}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between py-3 border-b border-gray-200 dark:border-gray-700">
+                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Status</span>
+                    <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold ${
+                      selectedMember.status === 'active'
+                        ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
+                        : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                    }`}>
+                      <i className={`fas fa-circle text-xs ${selectedMember.status === 'active' ? 'text-green-500' : 'text-gray-400'}`}></i>
+                      {selectedMember.status}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between py-3">
+                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Member ID</span>
+                    <span className="text-sm text-gray-900 dark:text-white font-mono">
+                      {selectedMember.id}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Actions */}
+                <div className="flex gap-3 pt-4">
+                  <button
+                    onClick={() => setShowProfileModal(false)}
+                    className="flex-1 px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                  >
+                    Close
+                  </button>
+                  <button
+                    onClick={() => {
+                      handleRemoveMember(selectedMember.id);
+                      setShowProfileModal(false);
+                    }}
+                    className="flex-1 px-6 py-3 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition-all"
+                  >
+                    <i className="fas fa-ban mr-2"></i>
+                    Revoke Verification
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </OctopusLayout>
   );

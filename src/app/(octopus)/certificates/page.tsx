@@ -33,7 +33,6 @@ interface Recipient {
 
 export default function CertificatesPage() {
   const [activeTab, setActiveTab] = useState<'templates' | 'recipients'>('templates');
-  const [showCreateModal, setShowCreateModal] = useState(false);
 
   const certificates: Certificate[] = [
     {
@@ -162,13 +161,13 @@ export default function CertificatesPage() {
               Manage certificate templates and view recipients
             </p>
           </div>
-          <button
-            onClick={() => setShowCreateModal(true)}
+          <Link
+            href="/certificates/create"
             className="px-6 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all flex items-center gap-2"
           >
             <i className="fas fa-plus"></i>
             <span>Create Certificate</span>
-          </button>
+          </Link>
         </div>
 
         {/* Stats Cards */}
@@ -215,7 +214,7 @@ export default function CertificatesPage() {
           <div className="flex border-b border-gray-200 dark:border-gray-700">
             <button
               onClick={() => setActiveTab('templates')}
-              className={`flex-1 px-6 py-3 font-semibold transition-all ${
+              className={`flex-1 px-6 py-2 font-semibold transition-all ${
                 activeTab === 'templates'
                   ? 'bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 border-b-2 border-purple-600'
                   : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
@@ -226,7 +225,7 @@ export default function CertificatesPage() {
             </button>
             <button
               onClick={() => setActiveTab('recipients')}
-              className={`flex-1 px-6 py-3 font-semibold transition-all ${
+              className={`flex-1 px-6 py-2 font-semibold transition-all ${
                 activeTab === 'recipients'
                   ? 'bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 border-b-2 border-purple-600'
                   : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
@@ -401,123 +400,6 @@ export default function CertificatesPage() {
             )}
           </div>
         </div>
-
-        {/* Create Certificate Modal */}
-        {showCreateModal && (
-          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-              <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                    Create Certificate Template
-                  </h2>
-                  <button
-                    onClick={() => setShowCreateModal(false)}
-                    className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
-                  >
-                    <i className="fas fa-times text-gray-600 dark:text-gray-300"></i>
-                  </button>
-                </div>
-              </div>
-
-              <form className="p-6 space-y-6">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                    Certificate Name *
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g., Course Completion Certificate"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                    Description
-                  </label>
-                  <textarea
-                    rows={3}
-                    placeholder="Describe when this certificate is awarded"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
-                  ></textarea>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                    Link to Digital Product *
-                  </label>
-                  <select className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all">
-                    <option value="">Select a product</option>
-                    <option value="dp-001">Digital Marketing Masterclass</option>
-                    <option value="dp-002">Leadership Training Program</option>
-                    <option value="dp-003">AI & Machine Learning Workshop</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                    Template Style
-                  </label>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                    {['modern', 'classic', 'elegant', 'minimal'].map((template) => (
-                      <button
-                        key={template}
-                        type="button"
-                        className="p-4 rounded-xl border-2 border-gray-300 dark:border-gray-600 hover:border-purple-500 dark:hover:border-purple-400 transition-all"
-                      >
-                        <div className={`h-20 ${getTemplatePreview(template)} rounded-lg mb-2 flex items-center justify-center`}>
-                          <i className="fas fa-certificate text-2xl text-gray-400"></i>
-                        </div>
-                        <p className="text-sm font-semibold text-gray-900 dark:text-white capitalize">
-                          {template}
-                        </p>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      className="w-5 h-5 rounded border-gray-300 text-purple-600 focus:ring-purple-500"
-                    />
-                    <span className="text-sm font-medium text-gray-900 dark:text-white">
-                      Include Company Logo
-                    </span>
-                  </label>
-
-                  <label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      className="w-5 h-5 rounded border-gray-300 text-purple-600 focus:ring-purple-500"
-                    />
-                    <span className="text-sm font-medium text-gray-900 dark:text-white">
-                      Include Signature
-                    </span>
-                  </label>
-                </div>
-
-                <div className="flex gap-3 pt-4">
-                  <button
-                    type="button"
-                    onClick={() => setShowCreateModal(false)}
-                    className="flex-1 px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="flex-1 px-6 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
-                  >
-                    Create Certificate
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        )}
       </div>
     </OctopusLayout>
   );

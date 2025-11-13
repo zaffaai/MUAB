@@ -82,19 +82,35 @@ export default function OctopusLayout({ children, accountType = 'professional' }
         bgColor: 'bg-pink-100 dark:bg-pink-900/30'
       }
     ] : []),
+    ...(currentAccountType === 'enterprise' ? [
+      {
+        name: 'Roles & Permissions',
+        icon: 'fa-shield-alt',
+        href: '/enterprise/roles-permissions',
+        color: 'text-purple-600 dark:text-purple-400',
+        bgColor: 'bg-purple-100 dark:bg-purple-900/30'
+      },
+      {
+        name: 'User Management',
+        icon: 'fa-user-cog',
+        href: '/enterprise/users',
+        color: 'text-cyan-600 dark:text-cyan-400',
+        bgColor: 'bg-cyan-100 dark:bg-cyan-900/30'
+      },
+      {
+        name: 'Post Management',
+        icon: 'fa-comments',
+        href: '/enterprise/posts',
+        color: 'text-orange-600 dark:text-orange-400',
+        bgColor: 'bg-orange-100 dark:bg-orange-900/30'
+      }
+    ] : []),
     {
       name: 'Marketplace',
       icon: 'fa-store',
       href: '/marketplace',
       color: 'text-indigo-600 dark:text-indigo-400',
       bgColor: 'bg-indigo-100 dark:bg-indigo-900/30'
-    },
-    {
-      name: 'Settings',
-      icon: 'fa-cog',
-      href: '/settings',
-      color: 'text-gray-600 dark:text-gray-400',
-      bgColor: 'bg-gray-100 dark:bg-gray-700'
     }
   ];
 
