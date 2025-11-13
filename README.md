@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎨 MUAB Platform - Next.js + Express
 
-## Getting Started
+> Professional digital creator platform built with Next.js 16, TypeScript, Express.js, and Tailwind CSS 4
 
-First, run the development server:
+## 🚀 Quick Start
 
-```bash
+\`\`\`bash
+# Install dependencies
+npm install
+
+# Configure environment
+cp .env.example .env.local
+# Edit .env.local with your MongoDB URI and secrets
+
+# Run development servers (Next.js + Express)
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+\`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:5000/api
+- **Health Check**: http://localhost:5000/api/health
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠 Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Frontend**: Next.js 16 • React 19 • TypeScript • Tailwind CSS 4  
+**Backend**: Express.js • MongoDB • Mongoose • JWT • Bcrypt  
+**Tools**: ESLint • Nodemon • Concurrently • ts-node
 
-## Learn More
+## ✨ What's Been Built
 
-To learn more about Next.js, take a look at the following resources:
+### Implemented ✅
+- Dark/light theme with persistence
+- Responsive sidebar navigation + header
+- Dashboard with stats cards
+- Express API with RESTful routes
+- MUAB design system integrated
+- TypeScript full-stack
+- AI Assistant UI panel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### In Progress 🚧
+- Product management pages
+- Authentication flow
+- Database models
+- Charts and analytics
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔌 API Routes
 
-## Deploy on Vercel
+- \`POST /api/auth/register\` - Register user
+- \`POST /api/auth/login\` - Login  
+- \`GET /api/products\` - List products
+- \`POST /api/products\` - Create product
+- \`GET /api/events\` - List events
+- \`GET /api/finance/earnings\` - Get earnings
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 💻 Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+\`\`\`bash
+npm run dev              # Run both Next.js + Express
+npm run dev:next         # Next.js only (port 3000)
+npm run dev:server       # Express only (port 5000)
+npm run build            # Build for production
+\`\`\`
+
+## 🎨 Design System
+
+\`\`\`css
+--color-primary: #6B46C1;    /* Purple */
+--color-accent: #00B8D4;     /* Cyan */
+\`\`\`
+
+## 📊 Migration Progress
+
+- ✅ Phase 1: Foundation complete
+- 🚧 Phase 2: Core pages in progress  
+- 📋 Phase 3: Features planned
+- 📋 Phase 4: Polish planned
+
+**Built with ❤️ for MUAB**
