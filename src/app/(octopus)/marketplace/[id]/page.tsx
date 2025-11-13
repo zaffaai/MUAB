@@ -29,6 +29,9 @@ interface Product {
     items: { name: string; duration: string; size: string }[];
   }[];
   tags: string[];
+  hasLiveSessions?: boolean;
+  hasCertificate?: boolean;
+  isCompanyProduct?: boolean;
 }
 
 export default function ProductDetailPage() {
@@ -48,12 +51,15 @@ export default function ProductDetailPage() {
     thumbnail: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800',
     creatorName: 'Template Center',
     creatorHandle: 'Template Center',
-    creatorAvatar: 'https://ui-avatars.io/api/?name=Template+Center',
+    creatorAvatar: 'https://ui-avatars.com/api/?name=Template+Center&background=random&size=128',
     type: 'video',
     students: 6,
     duration: '1h 14m',
     lessons: 0,
     downloads: 0,
+    hasLiveSessions: true,
+    hasCertificate: true,
+    isCompanyProduct: true,
     description: 'في هذا البودكاست، نأخذك في رحلة ملهمة نحو بناء عادات قوية ومستدامة تغير حياتك إلى الأبد! من خلال قصص واقعية ونصائح عملية، تعلّم كيف تحوّل النوايا إلى أفعال، وكيف تستمر في العادات الإيجابية بسهولة',
     keyBenefits: [
       'نظام متطور يعتمد على علوم الأعصاب لتعزيز التعلّم',
@@ -178,6 +184,24 @@ export default function ProductDetailPage() {
                 className="w-full h-full object-cover"
               />
             </div>
+
+            {/* Feature Badges */}
+            {(product.hasLiveSessions || (product.hasCertificate && product.isCompanyProduct)) && (
+              <div className="flex gap-2">
+                {product.hasLiveSessions && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-medium rounded-lg">
+                    <i className="fas fa-video"></i>
+                    Live Sessions
+                  </span>
+                )}
+                {product.hasCertificate && product.isCompanyProduct && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm font-medium rounded-lg">
+                    <i className="fas fa-certificate"></i>
+                    Certificate
+                  </span>
+                )}
+              </div>
+            )}
 
             {/* Creator Info */}
             <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">

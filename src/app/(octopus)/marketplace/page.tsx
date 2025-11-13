@@ -23,6 +23,9 @@ interface Product {
   downloads?: number;
   students?: number;
   createdAt: string;
+  hasLiveSessions?: boolean;
+  hasCertificate?: boolean;
+  isCompanyProduct?: boolean;
 }
 
 export default function MarketplacePage() {
@@ -54,10 +57,12 @@ export default function MarketplacePage() {
       favorites: 4,
       thumbnail: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400',
       creatorName: 'Dr. Moahmmed Alsunaidi',
-      creatorAvatar: 'https://ui-avatars.io/api/?name=Dr+Moahmmed',
+      creatorAvatar: 'https://ui-avatars.com/api/?name=Dr+Moahmmed&background=random&size=128',
       type: 'ebook',
       students: 1,
-      createdAt: '2024-05-13'
+      createdAt: '2024-05-13',
+      hasCertificate: true,
+      isCompanyProduct: true
     },
     {
       id: '2',
@@ -68,7 +73,7 @@ export default function MarketplacePage() {
       favorites: 3,
       thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400',
       creatorName: 'Template Center',
-      creatorAvatar: 'https://ui-avatars.io/api/?name=Template+Center',
+      creatorAvatar: 'https://ui-avatars.com/api/?name=Template+Center&background=random&size=128',
       type: 'template',
       lessons: 2,
       downloads: 1,
@@ -85,11 +90,12 @@ export default function MarketplacePage() {
       favorites: 2,
       thumbnail: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=400',
       creatorName: 'Template Center',
-      creatorAvatar: 'https://ui-avatars.io/api/?name=Template+Center',
+      creatorAvatar: 'https://ui-avatars.com/api/?name=Template+Center&background=random&size=128',
       type: 'video',
       students: 6,
       duration: '1h 14m',
-      createdAt: '2024-05-13'
+      createdAt: '2024-05-13',
+      hasLiveSessions: true
     },
     {
       id: '4',
@@ -100,7 +106,7 @@ export default function MarketplacePage() {
       favorites: 2,
       thumbnail: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400',
       creatorName: 'Template Center',
-      creatorAvatar: 'https://ui-avatars.io/api/?name=Template+Center',
+      creatorAvatar: 'https://ui-avatars.com/api/?name=Template+Center&background=random&size=128',
       type: 'ebook',
       students: 2,
       createdAt: '2024-05-13'
@@ -114,12 +120,15 @@ export default function MarketplacePage() {
       favorites: 1,
       thumbnail: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=400',
       creatorName: 'Template Center',
-      creatorAvatar: 'https://ui-avatars.io/api/?name=Template+Center',
+      creatorAvatar: 'https://ui-avatars.com/api/?name=Template+Center&background=random&size=128',
       type: 'course',
       lessons: 3,
       students: 7,
       duration: '0:09',
-      createdAt: '2024-05-13'
+      createdAt: '2024-05-13',
+      hasLiveSessions: true,
+      hasCertificate: true,
+      isCompanyProduct: true
     },
     {
       id: '6',
@@ -383,6 +392,24 @@ export default function MarketplacePage() {
                 <h3 className="font-bold text-gray-900 dark:text-white line-clamp-2 min-h-12">
                   {product.title}
                 </h3>
+
+                {/* Feature Badges */}
+                {(product.hasLiveSessions || product.hasCertificate) && (
+                  <div className="flex gap-2">
+                    {product.hasLiveSessions && (
+                      <span className="inline-flex items-center gap-1 px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-md text-xs font-semibold">
+                        <i className="fas fa-video"></i>
+                        Live
+                      </span>
+                    )}
+                    {product.hasCertificate && product.isCompanyProduct && (
+                      <span className="inline-flex items-center gap-1 px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-md text-xs font-semibold">
+                        <i className="fas fa-certificate"></i>
+                        Cert
+                      </span>
+                    )}
+                  </div>
+                )}
 
                 {/* Meta */}
                 <div className="flex items-center gap-3 text-xs text-gray-600 dark:text-gray-400">

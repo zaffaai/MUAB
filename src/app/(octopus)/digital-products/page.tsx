@@ -17,6 +17,8 @@ interface Product {
   status: 'active' | 'draft' | 'archived';
   thumbnail: string;
   createdAt: string;
+  hasLiveSessions?: boolean;
+  hasCertificate?: boolean;
 }
 
 export default function DigitalProductsPage() {
@@ -37,7 +39,9 @@ export default function DigitalProductsPage() {
       revenue: 11697.66,
       status: 'active',
       thumbnail: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop',
-      createdAt: '2025-11-01'
+      createdAt: '2025-11-01',
+      hasLiveSessions: true,
+      hasCertificate: true
     },
     {
       id: 2,
@@ -48,7 +52,8 @@ export default function DigitalProductsPage() {
       revenue: 4678.44,
       status: 'active',
       thumbnail: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop',
-      createdAt: '2025-10-28'
+      createdAt: '2025-10-28',
+      hasCertificate: true
     },
     {
       id: 3,
@@ -70,7 +75,9 @@ export default function DigitalProductsPage() {
       revenue: 5359.33,
       status: 'active',
       thumbnail: 'https://images.unsplash.com/photo-1606244864456-8bee63fce472?w=400&h=300&fit=crop',
-      createdAt: '2025-10-10'
+      createdAt: '2025-10-10',
+      hasLiveSessions: true,
+      hasCertificate: true
     },
     {
       id: 5,
@@ -270,7 +277,7 @@ export default function DigitalProductsPage() {
             <select
               value={filterType}
               onChange={(e) => setFilterType(e.target.value as ProductType)}
-              className="px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+              className="px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all cursor-pointer"
             >
               <option value="all">All Types</option>
               <option value="course">Courses</option>
@@ -286,7 +293,7 @@ export default function DigitalProductsPage() {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value as ProductStatus)}
-              className="px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+              className="px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all cursor-pointer"
             >
               <option value="all">All Status</option>
               <option value="active">Active</option>
@@ -298,7 +305,7 @@ export default function DigitalProductsPage() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+              className="px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all cursor-pointer"
             >
               <option value="newest">Newest First</option>
               <option value="oldest">Oldest First</option>
@@ -382,6 +389,24 @@ export default function DigitalProductsPage() {
                   <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                     {product.title}
                   </h3>
+
+                  {/* Feature Badges */}
+                  {(product.hasLiveSessions || product.hasCertificate) && (
+                    <div className="flex gap-2 mb-3">
+                      {product.hasLiveSessions && (
+                        <span className="inline-flex items-center gap-1 px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-md text-xs font-semibold">
+                          <i className="fas fa-video"></i>
+                          Live Sessions
+                        </span>
+                      )}
+                      {product.hasCertificate && (
+                        <span className="inline-flex items-center gap-1 px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-md text-xs font-semibold">
+                          <i className="fas fa-certificate"></i>
+                          Certificate
+                        </span>
+                      )}
+                    </div>
+                  )}
 
                   {/* Stats */}
                   <div className="flex items-center gap-4 mb-4">
