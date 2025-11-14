@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuthStore, type AccountType } from '@/store/authStore';
 import { useCartStore } from '@/store/cartStore';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface Notification {
   id: string;
@@ -27,6 +28,7 @@ export default function OctopusLayout({ children, accountType = 'professional' }
   const router = useRouter();
   const { user, logout } = useAuthStore();
   const { getItemCount } = useCartStore();
+  const { theme, toggleTheme } = useTheme();
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
@@ -171,7 +173,7 @@ export default function OctopusLayout({ children, accountType = 'professional' }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
       {/* Top Header */}
       <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40 shadow-sm">
         <div className="px-4 sm:px-6 lg:px-8">
@@ -212,6 +214,20 @@ export default function OctopusLayout({ children, accountType = 'professional' }
 
             {/* Right: Actions */}
             <div className="flex items-center gap-3">
+              {/* Theme Toggle */}
+              <button
+                onClick={toggleTheme}
+                className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                aria-label="Toggle theme"
+                title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {theme === 'dark' ? (
+                  <i className="fas fa-sun text-yellow-400"></i>
+                ) : (
+                  <i className="fas fa-moon text-gray-600"></i>
+                )}
+              </button>
+
               {/* Cart */}
               <Link
                 href="/cart"
@@ -241,7 +257,7 @@ export default function OctopusLayout({ children, accountType = 'professional' }
 
                 {/* Notifications Dropdown */}
                 {showNotifications && (
-                  <div className="absolute top-full right-0 mt-2 w-96 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 z-50 max-h-[500px] overflow-hidden flex flex-col">
+                  <div className="absolute top-full right-0 mt-2 w-96 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 max-h-[500px] overflow-hidden flex flex-col">
                     <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
                       <h3 className="font-bold text-gray-900 dark:text-white">Notifications</h3>
                       {unreadCount > 0 && (
@@ -317,7 +333,7 @@ export default function OctopusLayout({ children, accountType = 'professional' }
 
                 {/* Profile Dropdown */}
                 {showProfileMenu && (
-                  <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50">
+                  <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50">
                     <Link
                       href="/settings"
                       className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
