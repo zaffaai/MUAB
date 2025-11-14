@@ -24,14 +24,14 @@ export default function CartPage() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Shopping Cart</h1>
-            <p className="text-gray-600 dark:text-gray-400">
+            <h1 className="text-xl font-semibold tracking-tight text-gray-900">Shopping Cart</h1>
+            <p className="text-gray-600">
               {itemCount} {itemCount === 1 ? 'item' : 'items'} in your cart
             </p>
           </div>
           <Link
             href="/marketplace"
-            className="px-3.5 py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+            className="px-3.5 py-2 bg-gray-100 text-gray-900 rounded-md font-semibold hover:bg-gray-200:bg-gray-600 transition-all"
           >
             <i className="fas fa-arrow-left mr-2"></i>
             Continue Shopping
@@ -45,7 +45,7 @@ export default function CartPage() {
               {items.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700"
+                  className="bg-white rounded-md p-5 border border-gray-200"
                 >
                   <div className="flex gap-4">
                     {/* Thumbnail */}
@@ -61,9 +61,9 @@ export default function CartPage() {
                     <div className="flex-1 min-w-0">
                       <Link
                         href={`/marketplace/${item.id}`}
-                        className="block hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                        className="block hover:text-purple-600:text-purple-400 transition-colors"
                       >
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
                           {item.title}
                         </h3>
                       </Link>
@@ -74,24 +74,24 @@ export default function CartPage() {
                           alt={item.creatorName}
                           className="w-6 h-6 rounded-full"
                         />
-                        <span className="text-sm text-gray-600 dark:text-gray-400">
+                        <span className="text-sm text-gray-600">
                           {item.creatorName}
                         </span>
                       </div>
 
                       <div className="flex items-center gap-2 mb-4">
-                        <span className="px-3 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg text-sm font-medium capitalize">
+                        <span className="px-3 py-1 bg-purple-50 text-purple-700 rounded-lg text-sm font-medium capitalize">
                           {item.type}
                         </span>
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <div className="text-base font-semibold text-gray-900 dark:text-white">
+                        <div className="text-base font-semibold text-gray-900">
                           ${item.price.toFixed(2)}
                         </div>
                         <button
                           onClick={() => removeItem(item.id)}
-                          className="px-4 py-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all flex items-center gap-2"
+                          className="px-4 py-2 text-red-600 hover:bg-red-50:bg-red-900/20 rounded-lg transition-all flex items-center gap-2"
                         >
                           <i className="fas fa-trash"></i>
                           <span>Remove</span>
@@ -105,21 +105,21 @@ export default function CartPage() {
 
             {/* Order Summary */}
             <div className="lg:col-span-1">
-              <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700 sticky top-5 space-y-4">
-                <h2 className="text-base font-semibold text-gray-900 dark:text-white">Order Summary</h2>
+              <div className="bg-white rounded-md p-5 border border-gray-200 sticky top-5 space-y-4">
+                <h2 className="text-base font-semibold text-gray-900">Order Summary</h2>
 
-                <div className="space-y-3 py-4 border-y border-gray-200 dark:border-gray-700">
-                  <div className="flex items-center justify-between text-gray-600 dark:text-gray-400">
+                <div className="space-y-3 py-4 border-y border-gray-200">
+                  <div className="flex items-center justify-between text-gray-600">
                     <span>Subtotal ({itemCount} items)</span>
                     <span className="font-semibold">${totalPrice.toFixed(2)}</span>
                   </div>
-                  <div className="flex items-center justify-between text-gray-600 dark:text-gray-400">
+                  <div className="flex items-center justify-between text-gray-600">
                     <span>Tax</span>
                     <span className="font-semibold">$0.00</span>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between text-base font-semibold text-gray-900 dark:text-white">
+                <div className="flex items-center justify-between text-base font-semibold text-gray-900">
                   <span>Total</span>
                   <span>${totalPrice.toFixed(2)}</span>
                 </div>
@@ -131,7 +131,7 @@ export default function CartPage() {
                   Proceed to Checkout
                 </button>
 
-                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                <div className="space-y-2 text-sm text-gray-600">
                   <div className="flex items-center gap-2">
                     <i className="fas fa-shield-alt text-green-500"></i>
                     <span>Secure checkout powered by Stripe</span>
@@ -150,12 +150,12 @@ export default function CartPage() {
           </div>
         ) : (
           // Empty Cart
-          <div className="bg-white dark:bg-gray-800 rounded-md p-12 border border-gray-200 dark:border-gray-700 text-center">
-            <div className="w-24 h-24 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mx-auto mb-6">
+          <div className="bg-white rounded-md p-12 border border-gray-200 text-center">
+            <div className="w-24 h-24 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-6">
               <i className="fas fa-shopping-cart text-4xl text-gray-400"></i>
             </div>
-            <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-3">Your cart is empty</h2>
-            <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto">
+            <h2 className="text-base font-semibold text-gray-900 mb-3">Your cart is empty</h2>
+            <p className="text-gray-600 mb-8 max-w-md mx-auto">
               Looks like you haven't added any products to your cart yet. Browse our marketplace to find amazing digital products!
             </p>
             <Link

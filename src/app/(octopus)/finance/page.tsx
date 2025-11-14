@@ -167,13 +167,13 @@ export default function FinancePage() {
   const getStatusColor = (status: PayoutStatus) => {
     switch (status) {
       case 'pending':
-        return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400';
+        return 'bg-yellow-100 text-yellow-700';
       case 'processing':
-        return 'bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400';
+        return 'bg-blue-50 text-blue-700';
       case 'completed':
-        return 'bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400';
+        return 'bg-green-50 text-green-700';
       case 'failed':
-        return 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400';
+        return 'bg-red-100 text-red-700';
     }
   };
 
@@ -197,8 +197,8 @@ export default function FinancePage() {
       <div className="space-y-4">
         {/* Header */}
         <div>
-          <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Finance</h1>
-          <p className="text-gray-600 dark:text-gray-400">Manage your earnings and payout methods</p>
+          <h1 className="text-xl font-semibold tracking-tight text-gray-900">Finance</h1>
+          <p className="text-gray-600">Manage your earnings and payout methods</p>
         </div>
 
         {/* Stats */}
@@ -206,28 +206,28 @@ export default function FinancePage() {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700"
+              className="bg-white rounded-md p-5 border border-gray-200"
             >
               <div className="flex items-start justify-between mb-4">
-                <div className={`w-12 h-12 rounded-md bg-${stat.color}-100 dark:bg-${stat.color}-900/30 flex items-center justify-center`}>
-                  <i className={`fas ${stat.icon} text-xl text-${stat.color}-600 dark:text-${stat.color}-400`}></i>
+                <div className={`w-12 h-12 rounded-md bg-${stat.color}-100${stat.color}-900/30 flex items-center justify-center`}>
+                  <i className={`fas ${stat.icon} text-xl text-${stat.color}-600${stat.color}-400`}></i>
                 </div>
               </div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{stat.label}</p>
-              <p className="text-base font-semibold text-gray-900 dark:text-white mb-1">{stat.value}</p>
+              <p className="text-sm text-gray-600 mb-1">{stat.label}</p>
+              <p className="text-base font-semibold text-gray-900 mb-1">{stat.value}</p>
               <p className="text-xs text-gray-500">{stat.change}</p>
             </div>
           ))}
         </div>
 
         {/* Tabs */}
-        <div className="flex items-center gap-2 bg-white dark:bg-gray-800 rounded-md p-1 border border-gray-200 dark:border-gray-700 w-fit">
+        <div className="flex items-center gap-2 bg-white rounded-md p-1 border border-gray-200 w-fit">
           <button
             onClick={() => setActiveTab('overview')}
             className={`px-6 py-2 rounded-lg font-medium transition-all ${
               activeTab === 'overview'
-                ? 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
-                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                ? 'bg-purple-50 text-purple-700'
+                : 'text-gray-600 hover:text-gray-900:text-white'
             }`}
           >
             Overview
@@ -236,8 +236,8 @@ export default function FinancePage() {
             onClick={() => setActiveTab('payouts')}
             className={`px-6 py-2 rounded-lg font-medium transition-all ${
               activeTab === 'payouts'
-                ? 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
-                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                ? 'bg-purple-50 text-purple-700'
+                : 'text-gray-600 hover:text-gray-900:text-white'
             }`}
           >
             Payouts History
@@ -246,8 +246,8 @@ export default function FinancePage() {
             onClick={() => setActiveTab('methods')}
             className={`px-6 py-2 rounded-lg font-medium transition-all ${
               activeTab === 'methods'
-                ? 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
-                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                ? 'bg-purple-50 text-purple-700'
+                : 'text-gray-600 hover:text-gray-900:text-white'
             }`}
           >
             Payout Methods
@@ -258,8 +258,8 @@ export default function FinancePage() {
         {activeTab === 'overview' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {/* Earnings Chart */}
-            <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
-              <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-4">Monthly Earnings</h2>
+            <div className="bg-white rounded-md p-5 border border-gray-200">
+              <h2 className="text-base font-semibold text-gray-900 mb-4">Monthly Earnings</h2>
               <div className="h-64 flex items-end justify-around gap-2">
                 {[
                   { month: 'Jul', amount: 1200 },
@@ -273,16 +273,16 @@ export default function FinancePage() {
                       className="w-full bg-purple-600 rounded-t-lg transition-all hover:opacity-80"
                       style={{ height: `${(data.amount / 3200) * 100}%` }}
                     ></div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">{data.month}</p>
-                    <p className="text-xs font-semibold text-gray-900 dark:text-white">${data.amount}</p>
+                    <p className="text-sm text-gray-600 mt-2">{data.month}</p>
+                    <p className="text-xs font-semibold text-gray-900">${data.amount}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Quick Actions */}
-            <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
-              <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-4">Quick Actions</h2>
+            <div className="bg-white rounded-md p-5 border border-gray-200">
+              <h2 className="text-base font-semibold text-gray-900 mb-4">Quick Actions</h2>
               <div className="space-y-3">
                 <button 
                   onClick={handleRequestPayout}
@@ -300,7 +300,7 @@ export default function FinancePage() {
 
                 <button 
                   onClick={() => setActiveTab('methods')}
-                  className="w-full p-4 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all flex items-center justify-between"
+                  className="w-full p-4 bg-gray-100 text-gray-900 rounded-md font-semibold hover:bg-gray-200:bg-gray-600 transition-all flex items-center justify-between"
                 >
                   <div className="flex items-center gap-3">
                     <i className="fas fa-credit-card text-2xl"></i>
@@ -314,7 +314,7 @@ export default function FinancePage() {
 
                 <button 
                   onClick={handleDownloadReport}
-                  className="w-full p-4 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all flex items-center justify-between"
+                  className="w-full p-4 bg-gray-100 text-gray-900 rounded-md font-semibold hover:bg-gray-200:bg-gray-600 transition-all flex items-center justify-between"
                 >
                   <div className="flex items-center gap-3">
                     <i className="fas fa-file-invoice text-2xl"></i>
@@ -328,12 +328,12 @@ export default function FinancePage() {
               </div>
 
               {/* Platform Fee Info */}
-              <div className="mt-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-md p-4">
+              <div className="mt-6 bg-blue-50 border border-blue-200 rounded-md p-4">
                 <div className="flex gap-3">
-                  <i className="fas fa-info-circle text-blue-600 dark:text-blue-400 mt-1"></i>
+                  <i className="fas fa-info-circle text-blue-600 mt-1"></i>
                   <div className="flex-1">
-                    <p className="font-semibold text-blue-900 dark:text-blue-100 mb-1">Platform Fee</p>
-                    <p className="text-sm text-blue-700 dark:text-blue-300">
+                    <p className="font-semibold text-blue-900 mb-1">Platform Fee</p>
+                    <p className="text-sm text-blue-700">
                       MUAB charges a 5% platform fee on all sales. Payouts are processed monthly on the 5th.
                     </p>
                   </div>
@@ -345,15 +345,15 @@ export default function FinancePage() {
 
         {/* Payouts History Tab */}
         {activeTab === 'payouts' && (
-          <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700">
+          <div className="bg-white rounded-md border border-gray-200">
             {/* Filters */}
-            <div className="p-5 border-b border-gray-200 dark:border-gray-700">
+            <div className="p-5 border-b border-gray-200">
               <div className="flex items-center justify-between">
-                <h2 className="text-base font-semibold text-gray-900 dark:text-white">Payout History</h2>
+                <h2 className="text-base font-semibold text-gray-900">Payout History</h2>
                 <select
                   value={filterStatus}
                   onChange={(e) => setFilterStatus(e.target.value as PayoutStatus | 'all')}
-                  className="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                  className="px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all"
                 >
                   <option value="all">All Status</option>
                   <option value="pending">Pending</option>
@@ -368,40 +368,40 @@ export default function FinancePage() {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-gray-200 dark:border-gray-700">
-                    <th className="text-left p-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Date</th>
-                    <th className="text-left p-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Transaction ID</th>
-                    <th className="text-left p-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Gross Amount</th>
-                    <th className="text-left p-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Platform Fee</th>
-                    <th className="text-left p-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Net Amount</th>
-                    <th className="text-left p-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Method</th>
-                    <th className="text-left p-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Status</th>
-                    <th className="text-left p-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Payout Date</th>
+                  <tr className="border-b border-gray-200">
+                    <th className="text-left p-4 text-sm font-semibold text-gray-600">Date</th>
+                    <th className="text-left p-4 text-sm font-semibold text-gray-600">Transaction ID</th>
+                    <th className="text-left p-4 text-sm font-semibold text-gray-600">Gross Amount</th>
+                    <th className="text-left p-4 text-sm font-semibold text-gray-600">Platform Fee</th>
+                    <th className="text-left p-4 text-sm font-semibold text-gray-600">Net Amount</th>
+                    <th className="text-left p-4 text-sm font-semibold text-gray-600">Method</th>
+                    <th className="text-left p-4 text-sm font-semibold text-gray-600">Status</th>
+                    <th className="text-left p-4 text-sm font-semibold text-gray-600">Payout Date</th>
                   </tr>
                 </thead>
                 <tbody>
                   {filteredPayouts.map((payout) => (
                     <tr
                       key={payout.id}
-                      className="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all"
+                      className="border-b border-gray-200 hover:bg-gray-50:bg-gray-700/50 transition-all"
                     >
-                      <td className="p-4 text-sm text-gray-900 dark:text-white">
+                      <td className="p-4 text-sm text-gray-900">
                         {new Date(payout.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                       </td>
-                      <td className="p-4 text-sm text-gray-600 dark:text-gray-400 font-mono">
+                      <td className="p-4 text-sm text-gray-600 font-mono">
                         {payout.transactionId || '—'}
                       </td>
-                      <td className="p-4 text-sm font-semibold text-gray-900 dark:text-white">
+                      <td className="p-4 text-sm font-semibold text-gray-900">
                         {payout.currency} {payout.amount.toFixed(2)}
                       </td>
-                      <td className="p-4 text-sm text-red-600 dark:text-red-400">
+                      <td className="p-4 text-sm text-red-600">
                         -{payout.currency} {payout.platformFee.toFixed(2)}
                       </td>
-                      <td className="p-4 text-sm font-semibold text-green-600 dark:text-green-400">
+                      <td className="p-4 text-sm font-semibold text-green-600">
                         {payout.currency} {payout.netAmount.toFixed(2)}
                       </td>
                       <td className="p-4">
-                        <div className="flex items-center gap-2 text-sm text-gray-900 dark:text-white">
+                        <div className="flex items-center gap-2 text-sm text-gray-900">
                           <i className={`fas ${getMethodIcon(payout.method)}`}></i>
                           <span className="capitalize">{payout.method}</span>
                         </div>
@@ -411,7 +411,7 @@ export default function FinancePage() {
                           {payout.status}
                         </span>
                       </td>
-                      <td className="p-4 text-sm text-gray-600 dark:text-gray-400">
+                      <td className="p-4 text-sm text-gray-600">
                         {payout.payoutDate 
                           ? new Date(payout.payoutDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
                           : '—'
@@ -425,10 +425,10 @@ export default function FinancePage() {
 
             {filteredPayouts.length === 0 && (
               <div className="p-12 text-center">
-                <div className="w-16 h-16 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
                   <i className="fas fa-receipt text-2xl text-gray-400"></i>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">No payouts found</p>
+                <p className="text-gray-600">No payouts found</p>
               </div>
             )}
           </div>
@@ -438,7 +438,7 @@ export default function FinancePage() {
         {activeTab === 'methods' && (
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-base font-semibold text-gray-900 dark:text-white">Payout Methods</h2>
+              <h2 className="text-base font-semibold text-gray-900">Payout Methods</h2>
               <button
                 onClick={() => setShowAddMethodModal(true)}
                 className="px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all flex items-center gap-2"
@@ -452,20 +452,20 @@ export default function FinancePage() {
               {payoutMethods.map((method) => (
                 <div
                   key={method.id}
-                  className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700 hover:shadow-sm transition-all"
+                  className="bg-white rounded-md p-5 border border-gray-200 hover:shadow-sm transition-all"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-md bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center">
-                        <i className={`fas ${getMethodIcon(method.type)} text-xl text-purple-600 dark:text-purple-400`}></i>
+                      <div className="w-12 h-12 rounded-md bg-purple-50 flex items-center justify-center">
+                        <i className={`fas ${getMethodIcon(method.type)} text-xl text-purple-600`}></i>
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-900 dark:text-white">{method.name}</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">{method.details}</p>
+                        <h3 className="font-semibold text-gray-900">{method.name}</h3>
+                        <p className="text-sm text-gray-600">{method.details}</p>
                       </div>
                     </div>
                     {method.isDefault && (
-                      <span className="px-2 py-1 bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-full text-xs font-semibold">
+                      <span className="px-2 py-1 bg-green-50 text-green-700 rounded-full text-xs font-semibold">
                         Default
                       </span>
                     )}
@@ -473,12 +473,12 @@ export default function FinancePage() {
 
                   <div className="flex items-center gap-2 mb-4">
                     {method.isVerified ? (
-                      <div className="flex items-center gap-1 text-green-600 dark:text-green-400 text-sm">
+                      <div className="flex items-center gap-1 text-green-600 text-sm">
                         <i className="fas fa-check-circle"></i>
                         <span>Verified</span>
                       </div>
                     ) : (
-                      <div className="flex items-center gap-1 text-yellow-600 dark:text-yellow-400 text-sm">
+                      <div className="flex items-center gap-1 text-yellow-600 text-sm">
                         <i className="fas fa-exclamation-circle"></i>
                         <span>Pending Verification</span>
                       </div>
@@ -487,14 +487,14 @@ export default function FinancePage() {
 
                   <div className="flex gap-2">
                     {!method.isDefault && (
-                      <button className="flex-1 px-4 py-2 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg font-medium hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all">
+                      <button className="flex-1 px-4 py-2 bg-purple-50 text-purple-700 rounded-lg font-medium hover:bg-purple-200:bg-purple-900/50 transition-all">
                         Set as Default
                       </button>
                     )}
-                    <button className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-all">
+                    <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium hover:bg-gray-200:bg-gray-600 transition-all">
                       <i className="fas fa-edit"></i>
                     </button>
-                    <button className="px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-lg font-medium hover:bg-red-200 dark:hover:bg-red-900/50 transition-all">
+                    <button className="px-4 py-2 bg-red-100 text-red-700 rounded-lg font-medium hover:bg-red-200:bg-red-900/50 transition-all">
                       <i className="fas fa-trash"></i>
                     </button>
                   </div>
@@ -503,23 +503,23 @@ export default function FinancePage() {
             </div>
 
             {/* Add Method Options */}
-            <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-4">Available Payout Methods</h3>
+            <div className="bg-white rounded-md p-5 border border-gray-200">
+              <h3 className="font-semibold text-gray-900 mb-4">Available Payout Methods</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="p-4 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-md text-center hover:border-purple-500 transition-all cursor-pointer">
+                <div className="p-4 border-2 border-dashed border-gray-300 rounded-md text-center hover:border-purple-500 transition-all cursor-pointer">
                   <i className="fas fa-university text-3xl text-gray-400 mb-2"></i>
-                  <p className="font-semibold text-gray-900 dark:text-white">Bank Transfer</p>
-                  <p className="text-xs text-gray-600 dark:text-gray-400">Direct deposit to bank</p>
+                  <p className="font-semibold text-gray-900">Bank Transfer</p>
+                  <p className="text-xs text-gray-600">Direct deposit to bank</p>
                 </div>
-                <div className="p-4 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-md text-center hover:border-purple-500 transition-all cursor-pointer">
+                <div className="p-4 border-2 border-dashed border-gray-300 rounded-md text-center hover:border-purple-500 transition-all cursor-pointer">
                   <i className="fab fa-paypal text-3xl text-gray-400 mb-2"></i>
-                  <p className="font-semibold text-gray-900 dark:text-white">PayPal</p>
-                  <p className="text-xs text-gray-600 dark:text-gray-400">Fast PayPal transfer</p>
+                  <p className="font-semibold text-gray-900">PayPal</p>
+                  <p className="text-xs text-gray-600">Fast PayPal transfer</p>
                 </div>
-                <div className="p-4 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-md text-center hover:border-purple-500 transition-all cursor-pointer">
+                <div className="p-4 border-2 border-dashed border-gray-300 rounded-md text-center hover:border-purple-500 transition-all cursor-pointer">
                   <i className="fab fa-stripe text-3xl text-gray-400 mb-2"></i>
-                  <p className="font-semibold text-gray-900 dark:text-white">Stripe</p>
-                  <p className="text-xs text-gray-600 dark:text-gray-400">Stripe Connect payout</p>
+                  <p className="font-semibold text-gray-900">Stripe</p>
+                  <p className="text-xs text-gray-600">Stripe Connect payout</p>
                 </div>
               </div>
             </div>
@@ -529,30 +529,30 @@ export default function FinancePage() {
         {/* Payout Request Modal */}
         {showPayoutRequestModal && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white dark:bg-gray-800 rounded-md max-w-md w-full">
-              <div className="p-5 border-b border-gray-200 dark:border-gray-700">
+            <div className="bg-white rounded-md max-w-md w-full">
+              <div className="p-5 border-b border-gray-200">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-base font-semibold text-gray-900 dark:text-white">Request Payout</h2>
+                  <h2 className="text-base font-semibold text-gray-900">Request Payout</h2>
                   <button
                     onClick={() => setShowPayoutRequestModal(false)}
-                    className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center hover:bg-gray-200:bg-gray-600 transition-all"
                   >
-                    <i className="fas fa-times text-gray-600 dark:text-gray-300"></i>
+                    <i className="fas fa-times text-gray-600"></i>
                   </button>
                 </div>
               </div>
 
               <div className="p-5 space-y-4">
-                <div className="bg-purple-50 dark:bg-purple-900/20 rounded-md p-4 border border-purple-200 dark:border-purple-800">
-                  <p className="text-sm text-purple-700 dark:text-purple-300 mb-2">Available Balance</p>
-                  <p className="text-xl font-semibold tracking-tight text-purple-900 dark:text-purple-100">$3,200</p>
+                <div className="bg-purple-50 rounded-md p-4 border border-purple-200">
+                  <p className="text-sm text-purple-700 mb-2">Available Balance</p>
+                  <p className="text-xl font-semibold tracking-tight text-purple-900">$3,200</p>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">
                     Payout Method
                   </label>
-                  <select className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all">
+                  <select className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all">
                     {payoutMethods.map(method => (
                       <option key={method.id} value={method.id}>
                         {method.name} - {method.details}
@@ -562,10 +562,10 @@ export default function FinancePage() {
                   </select>
                 </div>
 
-                <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-md p-4 border border-yellow-200 dark:border-yellow-800">
+                <div className="bg-yellow-50 rounded-md p-4 border border-yellow-200">
                   <div className="flex items-start gap-3">
-                    <i className="fas fa-info-circle text-yellow-600 dark:text-yellow-400 mt-0.5"></i>
-                    <div className="text-sm text-yellow-800 dark:text-yellow-200">
+                    <i className="fas fa-info-circle text-yellow-600 mt-0.5"></i>
+                    <div className="text-sm text-yellow-800">
                       <p className="font-semibold mb-1">Processing Information</p>
                       <p>Your payout request will be sent to the MUAB admin team for review. You'll receive a notification once it's processed (typically within 3-5 business days).</p>
                     </div>
@@ -575,7 +575,7 @@ export default function FinancePage() {
                 <div className="flex gap-3">
                   <button
                     onClick={() => setShowPayoutRequestModal(false)}
-                    className="flex-1 px-3.5 py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                    className="flex-1 px-3.5 py-2 bg-gray-100 text-gray-900 rounded-md font-semibold hover:bg-gray-200:bg-gray-600 transition-all"
                   >
                     Cancel
                   </button>

@@ -174,17 +174,17 @@ export default function OctopusDashboard() {
                 <div className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform">
                   <i className="fas fa-wallet"></i>
                 </div>
-                <p className="font-semibold text-gray-900 dark:text-white text-sm">View Payouts</p>
+                <p className="font-semibold text-gray-900 text-sm">View Payouts</p>
               </Link>
 
               <Link
                 href="/marketplace"
-                className="p-4 rounded-md bg-cyan-50 dark:bg-cyan-900/20 border border-cyan-200 dark:border-cyan-800 hover:bg-cyan-50 dark:hover:bg-cyan-900/30 transition-all group"
+                className="p-4 rounded-md bg-cyan-50 border border-cyan-200 hover:bg-cyan-50:bg-cyan-900/30 transition-all group"
               >
                 <div className="w-10 h-10 bg-cyan-500 rounded-lg flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform">
                   <i className="fas fa-store"></i>
                 </div>
-                <p className="font-semibold text-gray-900 dark:text-white text-sm">Marketplace</p>
+                <p className="font-semibold text-gray-900 text-sm">Marketplace</p>
               </Link>
             </div>
           </div>

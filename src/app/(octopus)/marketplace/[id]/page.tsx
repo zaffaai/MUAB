@@ -159,12 +159,12 @@ export default function ProductDetailPage() {
     <OctopusLayout>
       <div className="space-y-8">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-          <Link href="/marketplace" className="hover:text-purple-600 dark:hover:text-purple-400">
+        <div className="flex items-center gap-2 text-sm text-gray-600">
+          <Link href="/marketplace" className="hover:text-purple-600:text-purple-400">
             Marketplace
           </Link>
           <i className="fas fa-chevron-right text-xs"></i>
-          <span className="text-gray-900 dark:text-white">{product.title}</span>
+          <span className="text-gray-900">{product.title}</span>
         </div>
 
         {/* Main Product Section */}
@@ -172,7 +172,7 @@ export default function ProductDetailPage() {
           {/* Left: Main Content */}
           <div className="lg:col-span-2 space-y-4">
             {/* Hero Image */}
-            <div className="relative h-96 bg-gray-200 dark:bg-gray-700 rounded-md overflow-hidden">
+            <div className="relative h-96 bg-gray-200 rounded-md overflow-hidden">
               {product.duration && (
                 <span className="absolute top-4 left-4 px-3 py-1.5 bg-black/70 text-white text-sm rounded-lg">
                   {product.duration}
@@ -189,13 +189,13 @@ export default function ProductDetailPage() {
             {(product.hasLiveSessions || (product.hasCertificate && product.isCompanyProduct)) && (
               <div className="flex gap-2">
                 {product.hasLiveSessions && (
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-medium rounded-lg">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 text-purple-700 text-sm font-medium rounded-lg">
                     <i className="fas fa-video"></i>
                     Live Sessions
                   </span>
                 )}
                 {product.hasCertificate && product.isCompanyProduct && (
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm font-medium rounded-lg">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 text-sm font-medium rounded-lg">
                     <i className="fas fa-certificate"></i>
                     Certificate
                   </span>
@@ -204,7 +204,7 @@ export default function ProductDetailPage() {
             )}
 
             {/* Creator Info */}
-            <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
+            <div className="bg-white rounded-md p-5 border border-gray-200">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-4">
                   <img
@@ -213,9 +213,9 @@ export default function ProductDetailPage() {
                     className="w-16 h-16 rounded-full"
                   />
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white">Created by:</h3>
-                    <p className="text-gray-600 dark:text-gray-400">{product.creatorName}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-500">{product.creatorHandle}</p>
+                    <h3 className="font-semibold text-gray-900">Created by:</h3>
+                    <p className="text-gray-600">{product.creatorName}</p>
+                    <p className="text-sm text-gray-500">{product.creatorHandle}</p>
                   </div>
                 </div>
                 <button className="px-6 py-2.5 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-all">
@@ -226,17 +226,17 @@ export default function ProductDetailPage() {
 
             {/* Title & Stats */}
             <div>
-              <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">{product.title}</h1>
+              <h1 className="text-xl font-semibold tracking-tight text-gray-900 mb-4">{product.title}</h1>
               <div className="flex items-center gap-4 text-sm">
                 <div className="flex items-center gap-1">
                   <i className="fas fa-star text-yellow-500"></i>
-                  <span className="font-semibold text-gray-900 dark:text-white">{product.rating}/3</span>
-                  <span className="text-gray-600 dark:text-gray-400">
+                  <span className="font-semibold text-gray-900">{product.rating}/3</span>
+                  <span className="text-gray-600">
                     Based on {product.reviewCount} reviews
                   </span>
                 </div>
                 {product.students && (
-                  <span className="text-gray-600 dark:text-gray-400">
+                  <span className="text-gray-600">
                     <i className="fas fa-users"></i> {product.students} students
                   </span>
                 )}
@@ -244,14 +244,14 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Tabs */}
-            <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden">
-              <div className="flex border-b border-gray-200 dark:border-gray-700">
+            <div className="bg-white rounded-md border border-gray-200 overflow-hidden">
+              <div className="flex border-b border-gray-200">
                 <button
                   onClick={() => setActiveTab('overview')}
                   className={`flex-1 px-3.5 py-2 font-semibold transition-all ${
                     activeTab === 'overview'
-                      ? 'bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 border-b-2 border-purple-600'
-                      : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                      ? 'bg-purple-50 text-purple-700 border-b-2 border-purple-600'
+                      : 'text-gray-600 hover:bg-gray-50:bg-gray-700'
                   }`}
                 >
                   Overview
@@ -260,8 +260,8 @@ export default function ProductDetailPage() {
                   onClick={() => setActiveTab('reviews')}
                   className={`flex-1 px-3.5 py-2 font-semibold transition-all ${
                     activeTab === 'reviews'
-                      ? 'bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 border-b-2 border-purple-600'
-                      : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                      ? 'bg-purple-50 text-purple-700 border-b-2 border-purple-600'
+                      : 'text-gray-600 hover:bg-gray-50:bg-gray-700'
                   }`}
                 >
                   Reviews
@@ -273,18 +273,18 @@ export default function ProductDetailPage() {
                   <div className="space-y-8">
                     {/* Description */}
                     <div>
-                      <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-3">Description</h3>
-                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                      <h3 className="text-base font-semibold text-gray-900 mb-3">Description</h3>
+                      <p className="text-gray-600 leading-relaxed">
                         {product.description}
                       </p>
                     </div>
 
                     {/* Key Benefits */}
                     <div>
-                      <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-3">Key Benefits:</h3>
+                      <h3 className="text-base font-semibold text-gray-900 mb-3">Key Benefits:</h3>
                       <ul className="space-y-2">
                         {product.keyBenefits.map((benefit, index) => (
-                          <li key={index} className="flex items-start gap-3 text-gray-600 dark:text-gray-400">
+                          <li key={index} className="flex items-start gap-3 text-gray-600">
                             <i className="fas fa-check-circle text-green-500 mt-1"></i>
                             <span>{benefit}</span>
                           </li>
@@ -294,22 +294,22 @@ export default function ProductDetailPage() {
 
                     {/* What's Included */}
                     <div>
-                      <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-4">
+                      <h3 className="text-base font-semibold text-gray-900 mb-4">
                         What's Included ({product.whatsIncluded.length})
                       </h3>
                       <div className="space-y-4">
                         {product.whatsIncluded.map((section, index) => (
-                          <div key={index} className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
+                          <div key={index} className="bg-gray-50 rounded-lg p-4">
                             <div className="flex items-center gap-3 mb-3">
-                              <div className="w-10 h-10 rounded-full bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center">
+                              <div className="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center">
                                 <i className="fas fa-file-audio text-purple-600"></i>
                               </div>
-                              <h4 className="font-semibold text-gray-900 dark:text-white">{section.title}</h4>
+                              <h4 className="font-semibold text-gray-900">{section.title}</h4>
                             </div>
                             <div className="space-y-2 ml-13">
                               {section.items.map((item, itemIndex) => (
                                 <div key={itemIndex} className="flex items-center justify-between text-sm">
-                                  <span className="text-gray-600 dark:text-gray-400">{item.name}</span>
+                                  <span className="text-gray-600">{item.name}</span>
                                   <div className="flex items-center gap-4 text-gray-500">
                                     <span>{item.duration}</span>
                                     <span>•</span>
@@ -325,12 +325,12 @@ export default function ProductDetailPage() {
 
                     {/* Tags */}
                     <div>
-                      <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-3">Tags</h3>
+                      <h3 className="text-base font-semibold text-gray-900 mb-3">Tags</h3>
                       <div className="flex flex-wrap gap-2">
                         {product.tags.map((tag, index) => (
                           <span
                             key={index}
-                            className="px-4 py-2 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg text-sm font-medium"
+                            className="px-4 py-2 bg-purple-50 text-purple-700 rounded-lg text-sm font-medium"
                           >
                             {tag}
                           </span>
@@ -340,13 +340,13 @@ export default function ProductDetailPage() {
                   </div>
                 ) : (
                   <div className="text-center py-12">
-                    <div className="w-20 h-20 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mx-auto mb-4">
+                    <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
                       <i className="fas fa-star text-3xl text-gray-400"></i>
                     </div>
-                    <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2">
+                    <h3 className="text-base font-semibold text-gray-900 mb-2">
                       {product.rating}/5
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-4">
+                    <p className="text-gray-600 mb-4">
                       Based on {product.reviewCount} reviews
                     </p>
                     <button className="px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:bg-purple-700 transition-all">
@@ -360,12 +360,12 @@ export default function ProductDetailPage() {
 
           {/* Right: Purchase Card */}
           <div className="lg:col-span-1">
-            <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700 sticky top-5 space-y-4">
+            <div className="bg-white rounded-md p-5 border border-gray-200 sticky top-5 space-y-4">
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                <p className="text-sm text-gray-600 mb-2">
                   To unlock this content, please purchase
                 </p>
-                <div className="text-4xl font-semibold text-gray-900 dark:text-white">
+                <div className="text-4xl font-semibold text-gray-900">
                   ${product.price.toFixed(2)}
                 </div>
               </div>
@@ -376,14 +376,14 @@ export default function ProductDetailPage() {
                 </button>
                 <button
                   onClick={handleAddToCart}
-                  className="w-full px-3.5 py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                  className="w-full px-3.5 py-2 bg-gray-100 text-gray-900 rounded-md font-semibold hover:bg-gray-200:bg-gray-600 transition-all"
                 >
                   <i className="fas fa-shopping-cart mr-2"></i>
                   Add to Cart
                 </button>
               </div>
 
-              <div className="pt-6 border-t border-gray-200 dark:border-gray-700 space-y-3 text-sm text-gray-600 dark:text-gray-400">
+              <div className="pt-6 border-t border-gray-200 space-y-3 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
                   <i className="fas fa-check-circle text-green-500"></i>
                   <span>Instant access after purchase</span>
@@ -402,12 +402,12 @@ export default function ProductDetailPage() {
         </div>
 
         {/* Related Products */}
-        <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
+        <div className="bg-white rounded-md p-5 border border-gray-200">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-base font-semibold text-gray-900 dark:text-white">Related products</h2>
+            <h2 className="text-base font-semibold text-gray-900">Related products</h2>
             <Link
               href="/marketplace"
-              className="text-purple-600 hover:text-purple-700 dark:text-purple-400 font-medium"
+              className="text-purple-600 hover:text-purple-700 font-medium"
             >
               View all
             </Link>
@@ -418,7 +418,7 @@ export default function ProductDetailPage() {
               <Link
                 key={related.id}
                 href={`/marketplace/${related.id}`}
-                className="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all group"
+                className="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-50:bg-gray-700 transition-all group"
               >
                 <img
                   src={related.thumbnail}
@@ -426,10 +426,10 @@ export default function ProductDetailPage() {
                   className="w-20 h-20 rounded-lg object-cover"
                 />
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-1 line-clamp-1 group-hover:text-purple-600">
+                  <h3 className="font-semibold text-gray-900 mb-1 line-clamp-1 group-hover:text-purple-600">
                     {related.title}
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                  <p className="text-sm text-gray-600 mb-2">
                     By: {related.creatorName}
                   </p>
                   <div className="flex items-center gap-2 text-xs text-gray-500">
@@ -438,7 +438,7 @@ export default function ProductDetailPage() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-base font-semibold text-gray-900 dark:text-white">
+                  <div className="text-base font-semibold text-gray-900">
                     USD {related.price.toFixed(2)}
                   </div>
                 </div>

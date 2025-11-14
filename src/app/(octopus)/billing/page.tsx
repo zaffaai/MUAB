@@ -154,8 +154,8 @@ export default function BillingPage() {
       <div className="space-y-4">
         {/* Header */}
         <div>
-          <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Billing & Plans</h1>
-          <p className="text-gray-600 dark:text-gray-400">Manage your subscription and explore upgrade options</p>
+          <h1 className="text-xl font-semibold tracking-tight text-gray-900">Billing & Plans</h1>
+          <p className="text-gray-600">Manage your subscription and explore upgrade options</p>
         </div>
 
         {/* Current Plan Card */}
@@ -229,8 +229,8 @@ export default function BillingPage() {
             onClick={() => setBillingCycle('monthly')}
             className={`px-3.5 py-2 rounded-md font-semibold transition-all ${
               billingCycle === 'monthly'
-                ? 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
-                : 'text-gray-600 dark:text-gray-400'
+                ? 'bg-purple-50 text-purple-700'
+                : 'text-gray-600'
             }`}
           >
             Monthly
@@ -239,8 +239,8 @@ export default function BillingPage() {
             onClick={() => setBillingCycle('yearly')}
             className={`px-3.5 py-2 rounded-md font-semibold transition-all flex items-center gap-2 ${
               billingCycle === 'yearly'
-                ? 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
-                : 'text-gray-600 dark:text-gray-400'
+                ? 'bg-purple-50 text-purple-700'
+                : 'text-gray-600'
             }`}
           >
             Yearly
@@ -257,12 +257,12 @@ export default function BillingPage() {
             return (
               <div
                 key={plan.id}
-                className={`bg-white dark:bg-gray-800 rounded-md p-5 border-2 transition-all relative ${
+                className={`bg-white rounded-md p-5 border-2 transition-all relative ${
                   plan.recommended
                     ? 'border-purple-500 shadow-sm shadow-purple-500/20 scale-105'
                     : isCurrentPlan
                     ? 'border-green-500'
-                    : 'border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-700'
+                    : 'border-gray-200 hover:border-purple-300:border-purple-700'
                 }`}
               >
                 {/* Recommended Badge */}
@@ -286,7 +286,7 @@ export default function BillingPage() {
                 {/* Plan Badge */}
                 {plan.badge && (
                   <div className="mb-4">
-                    <span className={`px-3 py-1 bg-${plan.badgeColor}-100 text-${plan.badgeColor}-700 dark:bg-${plan.badgeColor}-900/30 dark:text-${plan.badgeColor}-400 text-xs font-bold rounded-full`}>
+                    <span className={`px-3 py-1 bg-${plan.badgeColor}-100 text-${plan.badgeColor}-700${plan.badgeColor}-900/30${plan.badgeColor}-400 text-xs font-bold rounded-full`}>
                       {plan.badge}
                     </span>
                   </div>
@@ -298,53 +298,53 @@ export default function BillingPage() {
                 </div>
 
                 {/* Plan Info */}
-                <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2">{plan.name}</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{plan.tagline}</p>
+                <h3 className="text-base font-semibold text-gray-900 mb-2">{plan.name}</h3>
+                <p className="text-sm text-gray-600 mb-4">{plan.tagline}</p>
 
                 {/* Price */}
                 <div className="mb-4">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-semibold text-gray-900 dark:text-white">
+                    <span className="text-4xl font-semibold text-gray-900">
                       {getPlanPrice(plan)}
                     </span>
                     {plan.price.monthly > 0 && (
-                      <span className="text-gray-600 dark:text-gray-400">
+                      <span className="text-gray-600">
                         /{billingCycle === 'monthly' ? 'mo' : 'yr'}
                       </span>
                     )}
                   </div>
                   {billingCycle === 'yearly' && savings && savings > 0 && (
-                    <p className="text-sm text-green-600 dark:text-green-400 mt-1">
+                    <p className="text-sm text-green-600 mt-1">
                       Save ${savings}/year (≈ 2 months free)
                     </p>
                   )}
                 </div>
 
                 {/* Key Metrics */}
-                <div className="space-y-2 mb-6 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <div className="space-y-2 mb-6 pb-6 border-b border-gray-200">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600 dark:text-gray-400">Commission</span>
-                    <span className="font-semibold text-gray-900 dark:text-white">{plan.commission}</span>
+                    <span className="text-gray-600">Commission</span>
+                    <span className="font-semibold text-gray-900">{plan.commission}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600 dark:text-gray-400">AI Credits</span>
-                    <span className="font-semibold text-gray-900 dark:text-white">{plan.aiCredits}</span>
+                    <span className="text-gray-600">AI Credits</span>
+                    <span className="font-semibold text-gray-900">{plan.aiCredits}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600 dark:text-gray-400">Live Sessions</span>
-                    <span className="font-semibold text-gray-900 dark:text-white">{plan.liveSessions}</span>
+                    <span className="text-gray-600">Live Sessions</span>
+                    <span className="font-semibold text-gray-900">{plan.liveSessions}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600 dark:text-gray-400">Chats</span>
-                    <span className="font-semibold text-gray-900 dark:text-white">{plan.chats}</span>
+                    <span className="text-gray-600">Chats</span>
+                    <span className="font-semibold text-gray-900">{plan.chats}</span>
                   </div>
                 </div>
 
                 {/* Features */}
                 <ul className="space-y-2 mb-6">
                   {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
-                      <i className="fas fa-check text-green-600 dark:text-green-400 mt-0.5 shrink-0"></i>
+                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
+                      <i className="fas fa-check text-green-600 mt-0.5 shrink-0"></i>
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -362,10 +362,10 @@ export default function BillingPage() {
                   disabled={isCurrentPlan}
                   className={`w-full py-3 rounded-md font-semibold transition-all ${
                     isCurrentPlan
-                      ? 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed'
+                      ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
                       : plan.recommended
                       ? 'bg-purple-600 text-white hover:shadow-sm'
-                      : 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 hover:bg-purple-200 dark:hover:bg-purple-900/50'
+                      : 'bg-purple-50 text-purple-700 hover:bg-purple-200:bg-purple-900/50'
                   }`}
                 >
                   {isCurrentPlan ? 'Current Plan' : plan.cta}
@@ -376,21 +376,21 @@ export default function BillingPage() {
         </div>
 
         {/* Feature Comparison Table */}
-        <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden">
-          <div className="p-5 border-b border-gray-200 dark:border-gray-700">
-            <h2 className="text-base font-semibold text-gray-900 dark:text-white">Detailed Feature Comparison</h2>
-            <p className="text-gray-600 dark:text-gray-400">Compare all features across plans</p>
+        <div className="bg-white rounded-md border border-gray-200 overflow-hidden">
+          <div className="p-5 border-b border-gray-200">
+            <h2 className="text-base font-semibold text-gray-900">Detailed Feature Comparison</h2>
+            <p className="text-gray-600">Compare all features across plans</p>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-gray-200 dark:border-gray-700">
-                  <th className="text-left p-4 text-sm font-semibold text-gray-900 dark:text-white">Feature</th>
-                  <th className="text-center p-4 text-sm font-semibold text-gray-900 dark:text-white">Explore</th>
-                  <th className="text-center p-4 text-sm font-semibold text-gray-900 dark:text-white">Launch</th>
-                  <th className="text-center p-4 text-sm font-semibold text-gray-900 dark:text-white">Grow</th>
-                  <th className="text-center p-4 text-sm font-semibold text-gray-900 dark:text-white">Enterprise</th>
+                <tr className="border-b border-gray-200">
+                  <th className="text-left p-4 text-sm font-semibold text-gray-900">Feature</th>
+                  <th className="text-center p-4 text-sm font-semibold text-gray-900">Explore</th>
+                  <th className="text-center p-4 text-sm font-semibold text-gray-900">Launch</th>
+                  <th className="text-center p-4 text-sm font-semibold text-gray-900">Grow</th>
+                  <th className="text-center p-4 text-sm font-semibold text-gray-900">Enterprise</th>
                 </tr>
               </thead>
               <tbody>
@@ -408,12 +408,12 @@ export default function BillingPage() {
                   { name: 'Dedicated Manager', values: ['—', '—', '—', '✓'] },
                   { name: 'Support', values: ['Standard', 'Priority', 'Priority', 'Dedicated'] }
                 ].map((row, idx) => (
-                  <tr key={idx} className="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
-                    <td className="p-4 text-sm text-gray-900 dark:text-white font-medium">{row.name}</td>
+                  <tr key={idx} className="border-b border-gray-200 hover:bg-gray-50:bg-gray-700/50">
+                    <td className="p-4 text-sm text-gray-900 font-medium">{row.name}</td>
                     {row.values.map((value, vIdx) => (
-                      <td key={vIdx} className="p-4 text-center text-sm text-gray-600 dark:text-gray-400">
+                      <td key={vIdx} className="p-4 text-center text-sm text-gray-600">
                         {value === '✓' ? (
-                          <i className="fas fa-check text-green-600 dark:text-green-400"></i>
+                          <i className="fas fa-check text-green-600"></i>
                         ) : value === '—' ? (
                           <span className="text-gray-400">—</span>
                         ) : (
@@ -429,24 +429,24 @@ export default function BillingPage() {
         </div>
 
         {/* FAQ */}
-        <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
-          <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-6">Frequently Asked Questions</h2>
+        <div className="bg-white rounded-md p-5 border border-gray-200">
+          <h2 className="text-base font-semibold text-gray-900 mb-6">Frequently Asked Questions</h2>
           <div className="space-y-4">
             <div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Can I change my plan anytime?</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <h3 className="font-semibold text-gray-900 mb-2">Can I change my plan anytime?</h3>
+              <p className="text-sm text-gray-600">
                 Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any charges.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">What's the commission rate?</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <h3 className="font-semibold text-gray-900 mb-2">What's the commission rate?</h3>
+              <p className="text-sm text-gray-600">
                 Launch: 30%, Grow: 15%, Enterprise: 10%. This is the fee MUAB takes from your sales.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">How does the yearly billing work?</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <h3 className="font-semibold text-gray-900 mb-2">How does the yearly billing work?</h3>
+              <p className="text-sm text-gray-600">
                 Yearly plans save you approximately 2 months of cost. You pay upfront for the year and get all the benefits immediately.
               </p>
             </div>
@@ -456,47 +456,47 @@ export default function BillingPage() {
         {/* Enterprise Modal */}
         {showEnterpriseModal && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white dark:bg-gray-800 rounded-md max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-              <div className="p-5 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
-                <h2 className="text-base font-semibold text-gray-900 dark:text-white">Talk to Sales</h2>
+            <div className="bg-white rounded-md max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+              <div className="p-5 border-b border-gray-200 flex items-center justify-between">
+                <h2 className="text-base font-semibold text-gray-900">Talk to Sales</h2>
                 <button
                   onClick={() => setShowEnterpriseModal(false)}
-                  className="w-8 h-8 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center"
+                  className="w-8 h-8 rounded-lg hover:bg-gray-100:bg-gray-700 flex items-center justify-center"
                 >
-                  <i className="fas fa-times text-gray-600 dark:text-gray-400"></i>
+                  <i className="fas fa-times text-gray-600"></i>
                 </button>
               </div>
               <div className="p-5 space-y-4">
                 <input
                   type="text"
                   placeholder="Full Name *"
-                  className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                  className="w-full px-4 py-3 rounded-md border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all"
                 />
                 <input
                   type="email"
                   placeholder="Work Email *"
-                  className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                  className="w-full px-4 py-3 rounded-md border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all"
                 />
                 <input
                   type="text"
                   placeholder="Company / Institution *"
-                  className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                  className="w-full px-4 py-3 rounded-md border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all"
                 />
-                <select className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all">
+                <select className="w-full px-4 py-3 rounded-md border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all">
                   <option>Role *</option>
                   <option>Founder</option>
                   <option>Instructor</option>
                   <option>Manager</option>
                   <option>Other</option>
                 </select>
-                <select className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all">
+                <select className="w-full px-4 py-3 rounded-md border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all">
                   <option>Audience Size *</option>
                   <option>&lt;500</option>
                   <option>500–5k</option>
                   <option>5k–20k</option>
                   <option>20k+</option>
                 </select>
-                <select className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all">
+                <select className="w-full px-4 py-3 rounded-md border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all">
                   <option>Main Goal *</option>
                   <option>Sell & monetise digital products</option>
                   <option>Scale training & education programs</option>
@@ -506,9 +506,9 @@ export default function BillingPage() {
                 <input
                   type="text"
                   placeholder="Features You Need Most (e.g., Certificates, Advanced payouts)"
-                  className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                  className="w-full px-4 py-3 rounded-md border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all"
                 />
-                <select className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all">
+                <select className="w-full px-4 py-3 rounded-md border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all">
                   <option>When Do You Plan to Start? *</option>
                   <option>Now</option>
                   <option>1–3 months</option>

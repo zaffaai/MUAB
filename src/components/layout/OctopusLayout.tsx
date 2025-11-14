@@ -103,44 +103,44 @@ export default function OctopusLayout({ children, accountType = 'professional' }
       name: 'Digital Products',
       icon: 'fa-box',
       href: '/digital-products',
-      color: 'text-cyan-600 dark:text-cyan-400',
-      bgColor: 'bg-cyan-50 dark:bg-cyan-900/30'
+      color: 'text-cyan-600',
+      bgColor: 'bg-cyan-50'
     },
     {
       name: 'Live Events',
       icon: 'fa-video',
       href: '/live-events',
-      color: 'text-red-600 dark:text-red-400',
-      bgColor: 'bg-red-100 dark:bg-red-900/30'
+      color: 'text-red-600',
+      bgColor: 'bg-red-100'
     },
     {
       name: 'Finance',
       icon: 'fa-wallet',
       href: '/finance',
-      color: 'text-green-600 dark:text-green-400',
-      bgColor: 'bg-green-50 dark:bg-green-900/30'
+      color: 'text-green-600',
+      bgColor: 'bg-green-50'
     },
     {
       name: 'Billing',
       icon: 'fa-credit-card',
       href: '/billing',
-      color: 'text-blue-600 dark:text-blue-400',
-      bgColor: 'bg-blue-50 dark:bg-blue-900/30'
+      color: 'text-blue-600',
+      bgColor: 'bg-blue-50'
     },
     ...(currentAccountType === 'company' || currentAccountType === 'enterprise' ? [
       {
         name: 'Certificates',
         icon: 'fa-certificate',
         href: '/certificates',
-        color: 'text-yellow-600 dark:text-yellow-400',
-        bgColor: 'bg-yellow-100 dark:bg-yellow-900/30'
+        color: 'text-yellow-600',
+        bgColor: 'bg-yellow-100'
       },
       {
         name: 'Members',
         icon: 'fa-users',
         href: '/members',
-        color: 'text-pink-600 dark:text-pink-400',
-        bgColor: 'bg-pink-100 dark:bg-pink-900/30'
+        color: 'text-pink-600',
+        bgColor: 'bg-pink-100'
       }
     ] : []),
     ...(currentAccountType === 'enterprise' ? [
@@ -155,23 +155,23 @@ export default function OctopusLayout({ children, accountType = 'professional' }
         name: 'User Management',
         icon: 'fa-user-cog',
         href: '/enterprise/users',
-        color: 'text-cyan-600 dark:text-cyan-400',
-        bgColor: 'bg-cyan-50 dark:bg-cyan-900/30'
+        color: 'text-cyan-600',
+        bgColor: 'bg-cyan-50'
       },
       {
         name: 'Post Management',
         icon: 'fa-comments',
         href: '/enterprise/posts',
-        color: 'text-orange-600 dark:text-orange-400',
-        bgColor: 'bg-orange-100 dark:bg-orange-900/30'
+        color: 'text-orange-600',
+        bgColor: 'bg-orange-100'
       }
     ] : []),
     {
       name: 'Marketplace',
       icon: 'fa-store',
       href: '/marketplace',
-      color: 'text-indigo-600 dark:text-indigo-400',
-      bgColor: 'bg-indigo-100 dark:bg-indigo-900/30'
+      color: 'text-indigo-600',
+      bgColor: 'bg-indigo-100'
     }
   ];
 
@@ -342,7 +342,7 @@ export default function OctopusLayout({ children, accountType = 'professional' }
                     <hr className="my-2 border-gray-200 " />
                     <button
                       onClick={handleLogout}
-                      className="w-full flex items-center gap-3 px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20"
+                      className="w-full flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50:bg-red-900/20"
                     >
                       <i className="fas fa-sign-out-alt"></i>
                       <span>Logout</span>
@@ -388,7 +388,7 @@ export default function OctopusLayout({ children, accountType = 'professional' }
 
         {/* Octopus Visual Indicator */}
         <div className="p-4 mt-6">
-          <div className="bg-purple-50 dark:from-purple-900/20 dark:to-cyan-900/20 rounded-md p-4 border border-purple-200 dark:border-purple-800">
+          <div className="bg-purple-50 rounded-md p-4 border border-purple-200">
             <div className="text-center">
               <i className="fas fa-spider text-4xl bg-purple-600 bg-clip-text text-transparent mb-2"></i>
               <p className="text-xs font-semibold text-gray-700 ">Octopus System</p>

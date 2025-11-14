@@ -188,9 +188,9 @@ export default function DigitalProductsPage() {
 
   const getStatusColor = (status: string) => {
     const colors: Record<string, string> = {
-      active: 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400',
-      draft: 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-400',
-      archived: 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400'
+      active: 'bg-green-50 text-green-700',
+      draft: 'bg-gray-100 text-gray-700',
+      archived: 'bg-red-100 text-red-700'
     };
     return colors[status] || colors.draft;
   };
@@ -201,8 +201,8 @@ export default function DigitalProductsPage() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-2">Digital Products</h1>
-            <p className="text-gray-600 dark:text-gray-400">Manage and create your digital products</p>
+            <h1 className="text-xl font-semibold tracking-tight text-gray-900 mb-2">Digital Products</h1>
+            <p className="text-gray-600">Manage and create your digital products</p>
           </div>
           <Link
             href="/digital-products/create"
@@ -215,49 +215,49 @@ export default function DigitalProductsPage() {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white rounded-md p-5 border border-gray-200">
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 bg-purple-50 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
-                <i className="fas fa-box text-purple-600 dark:text-purple-400"></i>
+              <div className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center">
+                <i className="fas fa-box text-purple-600"></i>
               </div>
-              <span className="text-base font-semibold text-gray-900 dark:text-white">{stats.total}</span>
+              <span className="text-base font-semibold text-gray-900">{stats.total}</span>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Total Products</p>
+            <p className="text-sm text-gray-600">Total Products</p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white rounded-md p-5 border border-gray-200">
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 bg-green-50 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
-                <i className="fas fa-check-circle text-green-600 dark:text-green-400"></i>
+              <div className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center">
+                <i className="fas fa-check-circle text-green-600"></i>
               </div>
-              <span className="text-base font-semibold text-gray-900 dark:text-white">{stats.active}</span>
+              <span className="text-base font-semibold text-gray-900">{stats.active}</span>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Active</p>
+            <p className="text-sm text-gray-600">Active</p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white rounded-md p-5 border border-gray-200">
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-                <i className="fas fa-file-alt text-gray-600 dark:text-gray-400"></i>
+              <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                <i className="fas fa-file-alt text-gray-600"></i>
               </div>
-              <span className="text-base font-semibold text-gray-900 dark:text-white">{stats.drafts}</span>
+              <span className="text-base font-semibold text-gray-900">{stats.drafts}</span>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Drafts</p>
+            <p className="text-sm text-gray-600">Drafts</p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white rounded-md p-5 border border-gray-200">
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 bg-cyan-50 dark:bg-cyan-900/30 rounded-lg flex items-center justify-center">
-                <i className="fas fa-dollar-sign text-cyan-600 dark:text-cyan-400"></i>
+              <div className="w-10 h-10 bg-cyan-50 rounded-lg flex items-center justify-center">
+                <i className="fas fa-dollar-sign text-cyan-600"></i>
               </div>
-              <span className="text-base font-semibold text-gray-900 dark:text-white">${stats.totalRevenue.toLocaleString()}</span>
+              <span className="text-base font-semibold text-gray-900">${stats.totalRevenue.toLocaleString()}</span>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Total Revenue</p>
+            <p className="text-sm text-gray-600">Total Revenue</p>
           </div>
         </div>
 
         {/* Filters & Search */}
-        <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
+        <div className="bg-white rounded-md p-5 border border-gray-200">
           <div className="flex flex-col lg:flex-row gap-4">
             {/* Search */}
             <div className="flex-1">
@@ -268,7 +268,7 @@ export default function DigitalProductsPage() {
                   placeholder="Search products..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                  className="w-full pl-11 pr-4 py-3 rounded-md border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all"
                 />
               </div>
             </div>
@@ -277,7 +277,7 @@ export default function DigitalProductsPage() {
             <select
               value={filterType}
               onChange={(e) => setFilterType(e.target.value as ProductType)}
-              className="px-4 py-2.5 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all cursor-pointer"
+              className="px-4 py-2.5 rounded-md border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all cursor-pointer"
             >
               <option value="all">All Types</option>
               <option value="course">Courses</option>
@@ -293,7 +293,7 @@ export default function DigitalProductsPage() {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value as ProductStatus)}
-              className="px-4 py-2.5 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all cursor-pointer"
+              className="px-4 py-2.5 rounded-md border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all cursor-pointer"
             >
               <option value="all">All Status</option>
               <option value="active">Active</option>
@@ -305,7 +305,7 @@ export default function DigitalProductsPage() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="px-4 py-2.5 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all cursor-pointer"
+              className="px-4 py-2.5 rounded-md border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all cursor-pointer"
             >
               <option value="newest">Newest First</option>
               <option value="oldest">Oldest First</option>
@@ -320,7 +320,7 @@ export default function DigitalProductsPage() {
                 className={`w-11 h-11 rounded-lg flex items-center justify-center transition-all ${
                   viewMode === 'grid'
                     ? 'bg-purple-600 text-white'
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+                    : 'bg-gray-100 text-gray-600'
                 }`}
               >
                 <i className="fas fa-th"></i>
@@ -330,7 +330,7 @@ export default function DigitalProductsPage() {
                 className={`w-11 h-11 rounded-lg flex items-center justify-center transition-all ${
                   viewMode === 'list'
                     ? 'bg-purple-600 text-white'
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+                    : 'bg-gray-100 text-gray-600'
                 }`}
               >
                 <i className="fas fa-list"></i>
@@ -341,12 +341,12 @@ export default function DigitalProductsPage() {
 
         {/* Products Grid/List */}
         {filteredProducts.length === 0 ? (
-          <div className="bg-white dark:bg-gray-800 rounded-md p-16 border-2 border-dashed border-gray-300 dark:border-gray-700 text-center">
-            <div className="w-20 h-20 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="bg-white rounded-md p-16 border-2 border-dashed border-gray-300 text-center">
+            <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <i className="fas fa-box-open text-3xl text-gray-400"></i>
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">No products found</h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-6">Try adjusting your filters or create a new product</p>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">No products found</h3>
+            <p className="text-gray-600 mb-6">Try adjusting your filters or create a new product</p>
             <Link
               href="/digital-products/create"
               className="inline-flex items-center gap-2 px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all"
@@ -360,12 +360,12 @@ export default function DigitalProductsPage() {
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className={`bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-sm hover:border-purple-400 dark:hover:border-purple-500 transition-all group ${
+                className={`bg-white rounded-md border border-gray-200 overflow-hidden hover:shadow-sm hover:border-purple-400:border-purple-500 transition-all group ${
                   viewMode === 'list' ? 'flex' : ''
                 }`}
               >
                 {/* Thumbnail */}
-                <div className={`relative ${viewMode === 'list' ? 'w-48' : 'h-48'} bg-gray-100 dark:bg-gray-900 overflow-hidden`}>
+                <div className={`relative ${viewMode === 'list' ? 'w-48' : 'h-48'} bg-gray-100 overflow-hidden`}>
                   <img
                     src={product.thumbnail}
                     alt={product.title}
@@ -386,7 +386,7 @@ export default function DigitalProductsPage() {
 
                 {/* Content */}
                 <div className="p-5 flex-1">
-                  <h3 className="font-semibold text-lg text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                  <h3 className="font-semibold text-lg text-gray-900 mb-2 group-hover:text-purple-600:text-purple-400 transition-colors">
                     {product.title}
                   </h3>
 
@@ -394,13 +394,13 @@ export default function DigitalProductsPage() {
                   {(product.hasLiveSessions || product.hasCertificate) && (
                     <div className="flex gap-2 mb-3">
                       {product.hasLiveSessions && (
-                        <span className="inline-flex items-center gap-1 px-2 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-md text-xs font-semibold">
+                        <span className="inline-flex items-center gap-1 px-2 py-1 bg-purple-50 text-purple-700 rounded-md text-xs font-semibold">
                           <i className="fas fa-video"></i>
                           Live Sessions
                         </span>
                       )}
                       {product.hasCertificate && (
-                        <span className="inline-flex items-center gap-1 px-2 py-1 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-md text-xs font-semibold">
+                        <span className="inline-flex items-center gap-1 px-2 py-1 bg-green-50 text-green-700 rounded-md text-xs font-semibold">
                           <i className="fas fa-certificate"></i>
                           Certificate
                         </span>
@@ -411,15 +411,15 @@ export default function DigitalProductsPage() {
                   {/* Stats */}
                   <div className="flex items-center gap-4 mb-4">
                     <div>
-                      <p className="text-base font-semibold text-gray-900 dark:text-white">${product.price}</p>
+                      <p className="text-base font-semibold text-gray-900">${product.price}</p>
                     </div>
-                    <div className="flex-1 text-sm text-gray-600 dark:text-gray-400">
+                    <div className="flex-1 text-sm text-gray-600">
                       <div className="flex items-center gap-1 mb-1">
-                        <i className="fas fa-users text-purple-600 dark:text-purple-400"></i>
-                        <span className="font-semibold text-gray-900 dark:text-white">{product.sales} {product.sales === 1 ? 'purchase' : 'purchases'}</span>
+                        <i className="fas fa-users text-purple-600"></i>
+                        <span className="font-semibold text-gray-900">{product.sales} {product.sales === 1 ? 'purchase' : 'purchases'}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <i className="fas fa-dollar-sign text-green-600 dark:text-green-400"></i>
+                        <i className="fas fa-dollar-sign text-green-600"></i>
                         <span>${product.revenue.toLocaleString()} earned</span>
                       </div>
                     </div>
@@ -434,10 +434,10 @@ export default function DigitalProductsPage() {
                       <i className="fas fa-edit mr-2"></i>
                       Edit
                     </Link>
-                    <button className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                    <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200:bg-gray-600 transition-colors">
                       <i className="fas fa-chart-line"></i>
                     </button>
-                    <button className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                    <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200:bg-gray-600 transition-colors">
                       <i className="fas fa-ellipsis-v"></i>
                     </button>
                   </div>

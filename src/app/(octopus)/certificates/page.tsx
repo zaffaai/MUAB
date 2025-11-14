@@ -156,8 +156,8 @@ export default function CertificatesPage() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Certificates</h1>
-            <p className="text-gray-600 dark:text-gray-400">
+            <h1 className="text-xl font-semibold tracking-tight text-gray-900">Certificates</h1>
+            <p className="text-gray-600">
               Manage certificate templates and view recipients
             </p>
           </div>
@@ -172,52 +172,52 @@ export default function CertificatesPage() {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white rounded-md p-5 border border-gray-200">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-sm text-gray-600 dark:text-gray-400">Total Templates</p>
+              <p className="text-sm text-gray-600">Total Templates</p>
               <i className="fas fa-certificate text-yellow-500"></i>
             </div>
-            <p className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{certificates.length}</p>
+            <p className="text-xl font-semibold tracking-tight text-gray-900">{certificates.length}</p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white rounded-md p-5 border border-gray-200">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-sm text-gray-600 dark:text-gray-400">Total Issued</p>
+              <p className="text-sm text-gray-600">Total Issued</p>
               <i className="fas fa-award text-purple-500"></i>
             </div>
-            <p className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+            <p className="text-xl font-semibold tracking-tight text-gray-900">
               {certificates.reduce((sum, cert) => sum + cert.issuedCount, 0)}
             </p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white rounded-md p-5 border border-gray-200">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-sm text-gray-600 dark:text-gray-400">This Month</p>
+              <p className="text-sm text-gray-600">This Month</p>
               <i className="fas fa-calendar text-cyan-500"></i>
             </div>
-            <p className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">23</p>
+            <p className="text-xl font-semibold tracking-tight text-gray-900">23</p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white rounded-md p-5 border border-gray-200">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-sm text-gray-600 dark:text-gray-400">Active Recipients</p>
+              <p className="text-sm text-gray-600">Active Recipients</p>
               <i className="fas fa-users text-green-500"></i>
             </div>
-            <p className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+            <p className="text-xl font-semibold tracking-tight text-gray-900">
               {recipients.filter(r => r.status === 'issued').length}
             </p>
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden">
-          <div className="flex border-b border-gray-200 dark:border-gray-700">
+        <div className="bg-white rounded-md border border-gray-200 overflow-hidden">
+          <div className="flex border-b border-gray-200">
             <button
               onClick={() => setActiveTab('templates')}
               className={`flex-1 px-6 py-2 font-semibold transition-all ${
                 activeTab === 'templates'
-                  ? 'bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 border-b-2 border-purple-600'
-                  : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                  ? 'bg-purple-50 text-purple-700 border-b-2 border-purple-600'
+                  : 'text-gray-600 hover:bg-gray-50:bg-gray-700'
               }`}
             >
               <i className="fas fa-certificate mr-2"></i>
@@ -227,8 +227,8 @@ export default function CertificatesPage() {
               onClick={() => setActiveTab('recipients')}
               className={`flex-1 px-6 py-2 font-semibold transition-all ${
                 activeTab === 'recipients'
-                  ? 'bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 border-b-2 border-purple-600'
-                  : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                  ? 'bg-purple-50 text-purple-700 border-b-2 border-purple-600'
+                  : 'text-gray-600 hover:bg-gray-50:bg-gray-700'
               }`}
             >
               <i className="fas fa-users mr-2"></i>
@@ -242,10 +242,10 @@ export default function CertificatesPage() {
                 {certificates.map((cert) => (
                   <div
                     key={cert.id}
-                    className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-sm transition-all"
+                    className="bg-white rounded-md border border-gray-200 overflow-hidden hover:shadow-sm transition-all"
                   >
                     {/* Certificate Preview */}
-                    <div className={`h-48 ${getTemplatePreview(cert.template)} border-b border-gray-200 dark:border-gray-700 p-5 flex flex-col items-center justify-center`}>
+                    <div className={`h-48 ${getTemplatePreview(cert.template)} border-b border-gray-200 p-5 flex flex-col items-center justify-center`}>
                       <i className="fas fa-certificate text-5xl text-gray-400 mb-3"></i>
                       <h3 className="text-lg font-semibold text-gray-900 text-center capitalize">
                         {cert.template} Template
@@ -255,21 +255,21 @@ export default function CertificatesPage() {
                     {/* Certificate Info */}
                     <div className="p-5 space-y-4">
                       <div>
-                        <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{cert.name}</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">{cert.description}</p>
+                        <h3 className="font-semibold text-gray-900 mb-1">{cert.name}</h3>
+                        <p className="text-sm text-gray-600">{cert.description}</p>
                       </div>
 
                       <div className="flex items-center gap-2 text-sm">
                         <i className="fas fa-link text-purple-500"></i>
-                        <span className="text-gray-600 dark:text-gray-400">
-                          Linked to: <span className="font-semibold text-gray-900 dark:text-white">{cert.linkedProduct}</span>
+                        <span className="text-gray-600">
+                          Linked to: <span className="font-semibold text-gray-900">{cert.linkedProduct}</span>
                         </span>
                       </div>
 
                       <div className="flex items-center justify-between text-sm">
                         <div className="flex items-center gap-2">
                           <i className="fas fa-award text-yellow-500"></i>
-                          <span className="font-semibold text-gray-900 dark:text-white">{cert.issuedCount} issued</span>
+                          <span className="font-semibold text-gray-900">{cert.issuedCount} issued</span>
                         </div>
                         <div className="flex items-center gap-2 text-xs text-gray-500">
                           {cert.includeLogo && <i className="fas fa-image" title="Includes logo"></i>}
@@ -277,10 +277,10 @@ export default function CertificatesPage() {
                         </div>
                       </div>
 
-                      <div className="flex gap-2 pt-3 border-t border-gray-200 dark:border-gray-700">
+                      <div className="flex gap-2 pt-3 border-t border-gray-200">
                         <Link
                           href={`/certificates/${cert.id}`}
-                          className="flex-1 px-4 py-2 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg font-semibold hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all text-center"
+                          className="flex-1 px-4 py-2 bg-purple-50 text-purple-700 rounded-lg font-semibold hover:bg-purple-200:bg-purple-900/50 transition-all text-center"
                         >
                           <i className="fas fa-eye mr-1"></i>
                           Preview
@@ -294,14 +294,14 @@ export default function CertificatesPage() {
               <div className="space-y-4">
                 {/* Filters */}
                 <div className="flex items-center gap-4 mb-6">
-                  <select className="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all">
+                  <select className="px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all">
                     <option value="">All Certificates</option>
                     {certificates.map(cert => (
                       <option key={cert.id} value={cert.id}>{cert.name}</option>
                     ))}
                   </select>
 
-                  <select className="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all">
+                  <select className="px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all">
                     <option value="">All Statuses</option>
                     <option value="issued">Issued</option>
                     <option value="revoked">Revoked</option>
@@ -309,7 +309,7 @@ export default function CertificatesPage() {
 
                   <div className="flex-1"></div>
 
-                  <button className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all">
+                  <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-semibold hover:bg-gray-200:bg-gray-600 transition-all">
                     <i className="fas fa-download mr-2"></i>
                     Export
                   </button>
@@ -318,71 +318,71 @@ export default function CertificatesPage() {
                 {/* Recipients Table */}
                 <div className="overflow-x-auto">
                   <table className="w-full">
-                    <thead className="bg-gray-50 dark:bg-gray-900">
+                    <thead className="bg-gray-50">
                       <tr>
-                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                           Recipient
                         </th>
-                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                           Certificate
                         </th>
-                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                           Completion Date
                         </th>
-                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                           Issued Date
                         </th>
-                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                           Status
                         </th>
-                        <th className="px-3.5 py-2 text-right text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
                           Actions
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                    <tbody className="divide-y divide-gray-200">
                       {recipients.map((recipient) => (
-                        <tr key={recipient.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                        <tr key={recipient.id} className="hover:bg-gray-50:bg-gray-700/50">
                           <td className="px-6 py-4">
                             <div>
-                              <div className="font-semibold text-gray-900 dark:text-white">
+                              <div className="font-semibold text-gray-900">
                                 {recipient.userName}
                               </div>
-                              <div className="text-sm text-gray-600 dark:text-gray-400">
+                              <div className="text-sm text-gray-600">
                                 {recipient.userEmail}
                               </div>
                             </div>
                           </td>
                           <td className="px-6 py-4">
-                            <span className="text-sm text-gray-900 dark:text-white">
+                            <span className="text-sm text-gray-900">
                               {recipient.certificateName}
                             </span>
                           </td>
-                          <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
+                          <td className="px-6 py-4 text-sm text-gray-600">
                             {new Date(recipient.completionDate).toLocaleDateString()}
                           </td>
-                          <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
+                          <td className="px-6 py-4 text-sm text-gray-600">
                             {new Date(recipient.issuedDate).toLocaleDateString()}
                           </td>
                           <td className="px-6 py-4">
                             <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold ${
                               recipient.status === 'issued'
-                                ? 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300'
-                                : 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300'
+                                ? 'bg-green-50 text-green-700'
+                                : 'bg-red-100 text-red-700'
                             }`}>
                               <i className={`fas ${recipient.status === 'issued' ? 'fa-check-circle' : 'fa-times-circle'}`}></i>
                               {recipient.status === 'issued' ? 'Issued' : 'Revoked'}
                             </span>
                           </td>
                           <td className="px-6 py-4 text-right space-x-2">
-                            <button className="text-purple-600 hover:text-purple-700 dark:text-purple-400">
+                            <button className="text-purple-600 hover:text-purple-700">
                               <i className="fas fa-download"></i>
                             </button>
-                            <button className="text-cyan-600 hover:text-cyan-700 dark:text-cyan-400">
+                            <button className="text-cyan-600 hover:text-cyan-700">
                               <i className="fas fa-share-alt"></i>
                             </button>
                             {recipient.status === 'issued' && (
-                              <button className="text-red-600 hover:text-red-700 dark:text-red-400">
+                              <button className="text-red-600 hover:text-red-700">
                                 <i className="fas fa-ban"></i>
                               </button>
                             )}

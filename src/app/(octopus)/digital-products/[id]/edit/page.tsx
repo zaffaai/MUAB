@@ -200,25 +200,25 @@ export default function EditProductPage() {
       <div className="space-y-4 pb-20">
         {/* Header */}
         <div>
-          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-2">
+          <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
             <button onClick={() => router.push('/digital-products')} className="hover:text-purple-600">
               Digital Products
             </button>
             <i className="fas fa-chevron-right text-xs"></i>
-            <span className="text-gray-900 dark:text-white">Edit Product</span>
+            <span className="text-gray-900">Edit Product</span>
           </div>
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Edit Product</h1>
-              <p className="text-gray-600 dark:text-gray-400">Update your digital product details</p>
+              <h1 className="text-xl font-semibold tracking-tight text-gray-900">Edit Product</h1>
+              <p className="text-gray-600">Update your digital product details</p>
             </div>
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setShowAIAssistant(!showAIAssistant)}
                 className={`px-4 py-2 rounded-md font-semibold transition-all flex items-center gap-2 ${
                   showAIAssistant
-                    ? 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                    ? 'bg-purple-50 text-purple-700'
+                    : 'bg-gray-100 text-gray-700'
                 }`}
               >
                 <i className="fas fa-robot"></i>
@@ -226,7 +226,7 @@ export default function EditProductPage() {
               </button>
               <button
                 onClick={() => router.push('/digital-products')}
-                className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                className="px-4 py-2 bg-gray-100 text-gray-900 rounded-md font-semibold hover:bg-gray-200:bg-gray-600 transition-all"
               >
                 Cancel
               </button>
@@ -235,7 +235,7 @@ export default function EditProductPage() {
         </div>
 
         {/* Progress Steps */}
-        <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
+        <div className="bg-white rounded-md p-5 border border-gray-200">
           <div className="flex items-center justify-between">
             {steps.map((item, index) => (
               <div key={item.step} className="flex items-center flex-1">
@@ -248,15 +248,15 @@ export default function EditProductPage() {
                       ? 'bg-purple-600 text-white shadow-sm scale-110'
                       : currentStep > item.step
                       ? 'bg-green-500 text-white'
-                      : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+                      : 'bg-gray-200 text-gray-600'
                   }`}>
                     <i className={`fas ${item.icon}`}></i>
                   </div>
                   <div>
                     <p className={`font-semibold ${
                       currentStep === item.step 
-                        ? 'text-purple-700 dark:text-purple-300' 
-                        : 'text-gray-600 dark:text-gray-400'
+                        ? 'text-purple-700' 
+                        : 'text-gray-600'
                     }`}>
                       {item.label}
                     </p>
@@ -265,7 +265,7 @@ export default function EditProductPage() {
                 </div>
                 {index < 3 && (
                   <div className={`hidden md:block h-1 w-full mx-4 rounded ${
-                    currentStep > item.step ? 'bg-green-500' : 'bg-gray-200 dark:bg-gray-700'
+                    currentStep > item.step ? 'bg-green-500' : 'bg-gray-200'
                   }`}></div>
                 )}
               </div>
@@ -275,15 +275,15 @@ export default function EditProductPage() {
 
         {/* Step 1: Basic Info */}
         {currentStep === 1 && (
-          <div className="bg-white dark:bg-gray-800 rounded-md p-8 border border-gray-200 dark:border-gray-700 space-y-4">
+          <div className="bg-white rounded-md p-8 border border-gray-200 space-y-4">
             <div>
-              <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-2">Basic Information</h2>
-              <p className="text-gray-600 dark:text-gray-400">Update your product's basic details</p>
+              <h2 className="text-base font-semibold text-gray-900 mb-2">Basic Information</h2>
+              <p className="text-gray-600">Update your product's basic details</p>
             </div>
 
             {/* Product Type - Display Only */}
             <div>
-              <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-4">
+              <label className="block text-sm font-semibold text-gray-900 mb-4">
                 Product Type <span className="text-gray-400 text-xs">(Cannot be changed)</span>
               </label>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -292,15 +292,15 @@ export default function EditProductPage() {
                     key={type.id}
                     className={`p-4 rounded-md border-2 transition-all text-left ${
                       productType === type.id
-                        ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20 opacity-60'
-                        : 'border-gray-200 dark:border-gray-700 opacity-40'
+                        ? 'border-purple-500 bg-purple-50 opacity-60'
+                        : 'border-gray-200 opacity-40'
                     }`}
                   >
-                    <div className={`w-12 h-12 rounded-lg bg-${type.color}-100 dark:bg-${type.color}-900/30 flex items-center justify-center mb-3`}>
-                      <i className={`fas ${type.icon} text-xl text-${type.color}-600 dark:text-${type.color}-400`}></i>
+                    <div className={`w-12 h-12 rounded-lg bg-${type.color}-100${type.color}-900/30 flex items-center justify-center mb-3`}>
+                      <i className={`fas ${type.icon} text-xl text-${type.color}-600${type.color}-400`}></i>
                     </div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{type.name}</h3>
-                    <p className="text-xs text-gray-600 dark:text-gray-400">{type.description}</p>
+                    <h3 className="font-semibold text-gray-900 mb-1">{type.name}</h3>
+                    <p className="text-xs text-gray-600">{type.description}</p>
                   </div>
                 ))}
               </div>
@@ -308,7 +308,7 @@ export default function EditProductPage() {
 
             {/* Product Title */}
             <div>
-              <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+              <label className="block text-sm font-semibold text-gray-900 mb-2">
                 Product Title *
               </label>
               <input
@@ -316,14 +316,14 @@ export default function EditProductPage() {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="e.g., Digital Marketing Masterclass"
-                className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all"
               />
               <p className="text-xs text-gray-500 mt-1">{title.length}/100 characters</p>
             </div>
 
             {/* Description */}
             <div>
-              <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+              <label className="block text-sm font-semibold text-gray-900 mb-2">
                 Description *
               </label>
               <textarea
@@ -331,14 +331,14 @@ export default function EditProductPage() {
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Describe what your product offers and who it's for..."
                 rows={6}
-                className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all resize-none"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all resize-none"
               />
               <p className="text-xs text-gray-500 mt-1">{description.length}/1000 characters</p>
             </div>
 
             {/* Category */}
             <div>
-              <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-4">
+              <label className="block text-sm font-semibold text-gray-900 mb-4">
                 Category *
               </label>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -348,15 +348,15 @@ export default function EditProductPage() {
                     onClick={() => setCategory(cat.id)}
                     className={`p-3 rounded-md border-2 transition-all ${
                       category === cat.id
-                        ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20'
-                        : 'border-gray-200 dark:border-gray-700 hover:border-purple-300'
+                        ? 'border-purple-500 bg-purple-50'
+                        : 'border-gray-200 hover:border-purple-300'
                     }`}
                   >
                     <i className={`fas ${cat.icon} text-xl mb-2 ${
                       category === cat.id ? 'text-purple-600' : 'text-gray-400'
                     }`}></i>
                     <p className={`text-sm font-semibold ${
-                      category === cat.id ? 'text-purple-700 dark:text-purple-300' : 'text-gray-700 dark:text-gray-300'
+                      category === cat.id ? 'text-purple-700' : 'text-gray-700'
                     }`}>
                       {cat.name}
                     </p>
@@ -367,7 +367,7 @@ export default function EditProductPage() {
 
             {/* Tags */}
             <div>
-              <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+              <label className="block text-sm font-semibold text-gray-900 mb-2">
                 Tags (for search & discovery)
               </label>
               <div className="flex gap-2 mb-3">
@@ -377,11 +377,11 @@ export default function EditProductPage() {
                   onChange={(e) => setNewTag(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleAddTag()}
                   placeholder="Add a tag..."
-                  className="flex-1 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                  className="flex-1 px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all"
                 />
                 <button
                   onClick={handleAddTag}
-                  className="px-6 py-2 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg font-semibold hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all"
+                  className="px-6 py-2 bg-purple-50 text-purple-700 rounded-lg font-semibold hover:bg-purple-200:bg-purple-900/50 transition-all"
                 >
                   Add
                 </button>
@@ -390,12 +390,12 @@ export default function EditProductPage() {
                 {tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium flex items-center gap-2"
+                    className="px-3 py-1 bg-purple-50 text-purple-700 rounded-full text-sm font-medium flex items-center gap-2"
                   >
                     {tag}
                     <button
                       onClick={() => handleRemoveTag(tag)}
-                      className="hover:text-purple-900 dark:hover:text-purple-100"
+                      className="hover:text-purple-900:text-purple-100"
                     >
                       <i className="fas fa-times"></i>
                     </button>
@@ -417,24 +417,24 @@ export default function EditProductPage() {
 
         {/* Step 2: Pricing - LOCKED */}
         {currentStep === 2 && (
-          <div className="bg-white dark:bg-gray-800 rounded-md p-8 border border-gray-200 dark:border-gray-700 space-y-4">
+          <div className="bg-white rounded-md p-8 border border-gray-200 space-y-4">
             <div>
-              <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-2">Pricing</h2>
-              <p className="text-gray-600 dark:text-gray-400">Your product pricing details</p>
+              <h2 className="text-base font-semibold text-gray-900 mb-2">Pricing</h2>
+              <p className="text-gray-600">Your product pricing details</p>
             </div>
 
             {/* Price Locked Notice */}
-            <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-md p-5 border-2 border-yellow-200 dark:border-yellow-800">
+            <div className="bg-yellow-50 rounded-md p-5 border-2 border-yellow-200">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center shrink-0">
-                  <i className="fas fa-lock text-yellow-600 dark:text-yellow-400 text-xl"></i>
+                <div className="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center shrink-0">
+                  <i className="fas fa-lock text-yellow-600 text-xl"></i>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-yellow-900 dark:text-yellow-100 mb-2">Price Editing Locked</h3>
-                  <p className="text-sm text-yellow-800 dark:text-yellow-200 mb-3">
+                  <h3 className="font-semibold text-yellow-900 mb-2">Price Editing Locked</h3>
+                  <p className="text-sm text-yellow-800 mb-3">
                     The price cannot be changed for products that already have sales. This protects your existing customers and maintains pricing integrity.
                   </p>
-                  <div className="text-sm text-yellow-800 dark:text-yellow-200">
+                  <div className="text-sm text-yellow-800">
                     <p className="font-semibold mb-1">Alternative options:</p>
                     <ul className="list-disc list-inside space-y-1 ml-2">
                       <li>Create discount coupons for promotional pricing</li>
@@ -447,22 +447,22 @@ export default function EditProductPage() {
             </div>
 
             {/* Current Price Display */}
-            <div className="bg-linear-to-br from-purple-50 to-cyan-50 dark:from-purple-900/20 dark:to-cyan-900/20 rounded-md p-8 border border-purple-200 dark:border-purple-800">
+            <div className="bg-linear-to-br from-purple-50 to-cyan-50 rounded-md p-8 border border-purple-200">
               <div className="text-center">
-                <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">Current Price</p>
+                <p className="text-sm font-semibold text-gray-600 mb-2">Current Price</p>
                 <div className="flex items-center justify-center gap-2">
-                  <span className="text-5xl font-semibold text-gray-900 dark:text-white">${price}</span>
-                  <span className="text-2xl text-gray-600 dark:text-gray-400">USD</span>
+                  <span className="text-5xl font-semibold text-gray-900">${price}</span>
+                  <span className="text-2xl text-gray-600">USD</span>
                 </div>
-                <div className="mt-4 pt-4 border-t border-purple-200 dark:border-purple-800">
+                <div className="mt-4 pt-4 border-t border-purple-200">
                   <div className="flex items-center justify-center gap-8 text-sm">
                     <div>
-                      <p className="text-gray-600 dark:text-gray-400">Platform Fee (5%)</p>
-                      <p className="font-semibold text-gray-900 dark:text-white">${(price * 0.05).toFixed(2)}</p>
+                      <p className="text-gray-600">Platform Fee (5%)</p>
+                      <p className="font-semibold text-gray-900">${(price * 0.05).toFixed(2)}</p>
                     </div>
                     <div>
-                      <p className="text-gray-600 dark:text-gray-400">You Earn</p>
-                      <p className="font-semibold text-green-600 dark:text-green-400">${(price * 0.95).toFixed(2)}</p>
+                      <p className="text-gray-600">You Earn</p>
+                      <p className="font-semibold text-green-600">${(price * 0.95).toFixed(2)}</p>
                     </div>
                   </div>
                 </div>
@@ -472,7 +472,7 @@ export default function EditProductPage() {
             <div className="flex justify-between">
               <button
                 onClick={() => setCurrentStep(1)}
-                className="px-8 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                className="px-8 py-3 bg-gray-100 text-gray-900 rounded-md font-semibold hover:bg-gray-200:bg-gray-600 transition-all"
               >
                 <i className="fas fa-arrow-left mr-2"></i> Previous
               </button>
@@ -488,16 +488,16 @@ export default function EditProductPage() {
 
         {/* Step 3: Content */}
         {currentStep === 3 && (
-          <div className="bg-white dark:bg-gray-800 rounded-md p-8 border border-gray-200 dark:border-gray-700 space-y-4">
+          <div className="bg-white rounded-md p-8 border border-gray-200 space-y-4">
             <div>
-              <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-2">Product Content</h2>
-              <p className="text-gray-600 dark:text-gray-400">Update files, lessons, or resources</p>
+              <h2 className="text-base font-semibold text-gray-900 mb-2">Product Content</h2>
+              <p className="text-gray-600">Update files, lessons, or resources</p>
             </div>
 
-            <div className="bg-gray-50 dark:bg-gray-900 rounded-md p-8 border-2 border-dashed border-gray-300 dark:border-gray-600 text-center">
+            <div className="bg-gray-50 rounded-md p-8 border-2 border-dashed border-gray-300 text-center">
               <i className="fas fa-cloud-upload-alt text-5xl text-gray-400 mb-4"></i>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Upload Product Files</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Upload Product Files</h3>
+              <p className="text-sm text-gray-600 mb-4">
                 Upload videos, PDFs, templates, or other files for your product
               </p>
               <button className="px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all">
@@ -509,7 +509,7 @@ export default function EditProductPage() {
             <div className="flex justify-between">
               <button
                 onClick={() => setCurrentStep(2)}
-                className="px-8 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                className="px-8 py-3 bg-gray-100 text-gray-900 rounded-md font-semibold hover:bg-gray-200:bg-gray-600 transition-all"
               >
                 <i className="fas fa-arrow-left mr-2"></i> Previous
               </button>
@@ -525,48 +525,48 @@ export default function EditProductPage() {
 
         {/* Step 4: Review */}
         {currentStep === 4 && (
-          <div className="bg-white dark:bg-gray-800 rounded-md p-8 border border-gray-200 dark:border-gray-700 space-y-4">
+          <div className="bg-white rounded-md p-8 border border-gray-200 space-y-4">
             <div>
-              <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-2">Review Changes</h2>
-              <p className="text-gray-600 dark:text-gray-400">Verify your updates before saving</p>
+              <h2 className="text-base font-semibold text-gray-900 mb-2">Review Changes</h2>
+              <p className="text-gray-600">Verify your updates before saving</p>
             </div>
 
             <div className="space-y-4">
-              <div className="bg-gray-50 dark:bg-gray-900 rounded-md p-5">
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-4">Product Summary</h3>
+              <div className="bg-gray-50 rounded-md p-5">
+                <h3 className="font-semibold text-gray-900 mb-4">Product Summary</h3>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <p className="text-gray-600 dark:text-gray-400 mb-1">Type</p>
-                    <p className="font-semibold text-gray-900 dark:text-white capitalize">{productType}</p>
+                    <p className="text-gray-600 mb-1">Type</p>
+                    <p className="font-semibold text-gray-900 capitalize">{productType}</p>
                   </div>
                   <div>
-                    <p className="text-gray-600 dark:text-gray-400 mb-1">Category</p>
-                    <p className="font-semibold text-gray-900 dark:text-white capitalize">{category}</p>
+                    <p className="text-gray-600 mb-1">Category</p>
+                    <p className="font-semibold text-gray-900 capitalize">{category}</p>
                   </div>
                   <div>
-                    <p className="text-gray-600 dark:text-gray-400 mb-1">Title</p>
-                    <p className="font-semibold text-gray-900 dark:text-white">{title}</p>
+                    <p className="text-gray-600 mb-1">Title</p>
+                    <p className="font-semibold text-gray-900">{title}</p>
                   </div>
                   <div>
-                    <p className="text-gray-600 dark:text-gray-400 mb-1">Price</p>
-                    <p className="font-semibold text-gray-900 dark:text-white">${price}</p>
+                    <p className="text-gray-600 mb-1">Price</p>
+                    <p className="font-semibold text-gray-900">${price}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gray-50 dark:bg-gray-900 rounded-md p-5">
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Description</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">{description}</p>
+              <div className="bg-gray-50 rounded-md p-5">
+                <h3 className="font-semibold text-gray-900 mb-2">Description</h3>
+                <p className="text-sm text-gray-600">{description}</p>
               </div>
 
               {tags.length > 0 && (
-                <div className="bg-gray-50 dark:bg-gray-900 rounded-md p-5">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Tags</h3>
+                <div className="bg-gray-50 rounded-md p-5">
+                  <h3 className="font-semibold text-gray-900 mb-3">Tags</h3>
                   <div className="flex flex-wrap gap-2">
                     {tags.map((tag, index) => (
                       <span
                         key={index}
-                        className="px-3 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium"
+                        className="px-3 py-1 bg-purple-50 text-purple-700 rounded-full text-sm font-medium"
                       >
                         {tag}
                       </span>
@@ -579,7 +579,7 @@ export default function EditProductPage() {
             <div className="flex justify-between">
               <button
                 onClick={() => setCurrentStep(3)}
-                className="px-8 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                className="px-8 py-3 bg-gray-100 text-gray-900 rounded-md font-semibold hover:bg-gray-200:bg-gray-600 transition-all"
               >
                 <i className="fas fa-arrow-left mr-2"></i> Previous
               </button>
@@ -606,9 +606,9 @@ export default function EditProductPage() {
 
       {/* AI Assistant Expanded Chat */}
       {showAIAssistant && aiExpanded && (
-        <div className="fixed bottom-6 right-6 w-96 bg-white dark:bg-gray-800 rounded-md shadow-2xl border border-gray-200 dark:border-gray-700 z-50 flex flex-col max-h-[600px]">
+        <div className="fixed bottom-6 right-6 w-96 bg-white rounded-md shadow-2xl border border-gray-200 z-50 flex flex-col max-h-[600px]">
           {/* Chat Header */}
-          <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between bg-purple-600 rounded-t-2xl">
+          <div className="p-4 border-b border-gray-200 flex items-center justify-between bg-purple-600 rounded-t-2xl">
             <div className="flex items-center gap-3 text-white">
               <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
                 <i className="fas fa-robot"></i>
@@ -653,14 +653,14 @@ export default function EditProductPage() {
                   className={`max-w-[75%] px-4 py-2 rounded-md ${
                     message.role === 'user'
                       ? 'bg-purple-600 text-white'
-                      : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
+                      : 'bg-gray-100 text-gray-900'
                   }`}
                 >
                   <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                 </div>
                 {message.role === 'user' && (
-                  <div className="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center shrink-0">
-                    <i className="fas fa-user text-gray-600 dark:text-gray-400 text-sm"></i>
+                  <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center shrink-0">
+                    <i className="fas fa-user text-gray-600 text-sm"></i>
                   </div>
                 )}
               </div>
@@ -670,7 +670,7 @@ export default function EditProductPage() {
                 <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center">
                   <i className="fas fa-robot text-white text-sm"></i>
                 </div>
-                <div className="bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-md">
+                <div className="bg-gray-100 px-4 py-2 rounded-md">
                   <div className="flex gap-1">
                     <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                     <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
@@ -683,13 +683,13 @@ export default function EditProductPage() {
           </div>
 
           {/* Quick Actions */}
-          <div className="px-4 py-2 border-t border-gray-200 dark:border-gray-700">
+          <div className="px-4 py-2 border-t border-gray-200">
             <div className="flex gap-2 overflow-x-auto pb-2">
               {quickActions.map((action, index) => (
                 <button
                   key={index}
                   onClick={action.action}
-                  className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-all whitespace-nowrap"
+                  className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium hover:bg-gray-200:bg-gray-600 transition-all whitespace-nowrap"
                 >
                   {action.label}
                 </button>
@@ -698,7 +698,7 @@ export default function EditProductPage() {
           </div>
 
           {/* Chat Input */}
-          <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="p-4 border-t border-gray-200">
             <div className="flex gap-2">
               <input
                 type="text"
@@ -706,7 +706,7 @@ export default function EditProductPage() {
                 onChange={(e) => setUserMessage(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                 placeholder="Ask me anything..."
-                className="flex-1 px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                className="flex-1 px-4 py-2 rounded-md border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-purple-500 transition-all"
               />
               <button
                 onClick={handleSendMessage}
