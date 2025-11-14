@@ -408,39 +408,18 @@ export default function DigitalProductsPage() {
                     </div>
                   )}
 
-                  {/* Stats */}
-                  <div className="flex items-center gap-4 mb-4">
-                    <div>
-                      <p className="text-base font-semibold text-gray-900">${product.price}</p>
-                    </div>
-                    <div className="flex-1 text-sm text-gray-600">
-                      <div className="flex items-center gap-1 mb-1">
-                        <i className="fas fa-users text-purple-600"></i>
-                        <span className="font-semibold text-gray-900">{product.sales} {product.sales === 1 ? 'purchase' : 'purchases'}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <i className="fas fa-dollar-sign text-green-600"></i>
-                        <span>${product.revenue.toLocaleString()} earned</span>
-                      </div>
-                    </div>
+                  {/* Price */}
+                  <div className="mb-4">
+                    <p className="text-2xl font-semibold text-gray-900">${product.price}</p>
                   </div>
 
                   {/* Actions */}
-                  <div className="flex gap-2">
-                    <Link
-                      href={`/digital-products/${product.id}/edit`}
-                      className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm font-medium text-center"
-                    >
-                      <i className="fas fa-edit mr-2"></i>
-                      Edit
-                    </Link>
-                    <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200:bg-gray-600 transition-colors">
-                      <i className="fas fa-chart-line"></i>
-                    </button>
-                    <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200:bg-gray-600 transition-colors">
-                      <i className="fas fa-ellipsis-v"></i>
-                    </button>
-                  </div>
+                  <Link
+                    href={`/digital-products/${product.id}/edit`}
+                    className="block w-full px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors text-sm font-medium text-center"
+                  >
+                    Edit product
+                  </Link>
                 </div>
               </div>
             ))}
