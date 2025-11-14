@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuthStore, type AccountType } from '@/store/authStore';
@@ -30,6 +30,7 @@ export default function OctopusLayout({ children, accountType = 'professional' }
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([
     {
       id: '1',
@@ -64,6 +65,10 @@ export default function OctopusLayout({ children, accountType = 'professional' }
   ]);
 
   const unreadCount = notifications.filter(n => !n.read).length;
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const markAsRead = (id: string) => {
     setNotifications(notifications.map(n => 
@@ -218,7 +223,7 @@ export default function OctopusLayout({ children, accountType = 'professional' }
                 className="relative w-10 h-10 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-all"
               >
                 <i className="fas fa-shopping-cart text-gray-600"></i>
-                {cartItemCount > 0 && (
+                {isMounted && cartItemCount > 0 && (
                   <span className="absolute -top-1 -right-1 w-5 h-5 bg-purple-600 text-white text-xs font-semibold rounded-full flex items-center justify-center">
                     {cartItemCount > 9 ? '9+' : cartItemCount}
                   </span>
