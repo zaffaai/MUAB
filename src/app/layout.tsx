@@ -21,7 +21,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className="antialiased bg-gray-900 text-white">
+      <body className="antialiased bg-(--background) text-(--foreground)">
         <ThemeProvider>
           {children}
         </ThemeProvider>
