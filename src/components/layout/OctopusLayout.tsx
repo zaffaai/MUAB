@@ -173,7 +173,7 @@ export default function OctopusLayout({ children, accountType = 'professional' }
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Top Header */}
-      <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40">
+      <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40 shadow-sm">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Left: Logo & Menu Toggle */}
@@ -186,11 +186,11 @@ export default function OctopusLayout({ children, accountType = 'professional' }
               </button>
               
               <Link href="/dashboard" className="flex items-center gap-2">
-                <div className="w-10 h-10 bg-linear-to-br from-purple-600 to-cyan-600 rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 bg-linear-to-br from-purple-600 to-purple-700 rounded-lg flex items-center justify-center shadow-sm">
                   <i className="fas fa-spider text-white text-lg"></i>
                 </div>
                 <div>
-                  <h1 className="text-lg font-bold bg-linear-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent">
+                  <h1 className="text-lg font-bold bg-linear-to-r from-purple-600 to-purple-700 bg-clip-text text-transparent">
                     MUAB
                   </h1>
                   <p className="text-[10px] text-gray-500 dark:text-gray-400 -mt-1">Octopus System</p>
@@ -205,7 +205,7 @@ export default function OctopusLayout({ children, accountType = 'professional' }
                 <input
                   type="text"
                   placeholder="Search products, events, customers..."
-                  className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                  className="w-full pl-11 pr-4 py-2.5 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                 />
               </div>
             </div>
@@ -310,7 +310,7 @@ export default function OctopusLayout({ children, accountType = 'professional' }
                 </div>
                 <button
                   onClick={() => setShowProfileMenu(!showProfileMenu)}
-                  className="w-10 h-10 rounded-full bg-linear-to-br from-purple-600 to-cyan-600 flex items-center justify-center text-white font-bold hover:shadow-lg transition-all"
+                  className="w-10 h-10 rounded-full bg-linear-to-br from-purple-600 to-purple-700 flex items-center justify-center text-white font-semibold hover:shadow-md transition-all duration-200"
                 >
                   {userInitials}
                 </button>
@@ -361,15 +361,15 @@ export default function OctopusLayout({ children, accountType = 'professional' }
               <Link
                 key={arm.href}
                 href={arm.href}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group ${
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group ${
                   isActive
-                    ? `${arm.bgColor} ${arm.color} font-semibold`
+                    ? `${arm.bgColor} ${arm.color} font-semibold shadow-sm`
                     : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                 }`}
               >
                 <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                  isActive ? arm.bgColor : 'bg-gray-100 dark:bg-gray-700 group-hover:scale-110'
-                } transition-all`}>
+                  isActive ? arm.bgColor : 'bg-gray-100 dark:bg-gray-700 group-hover:scale-105'
+                } transition-all duration-200`}>
                   <i className={`fas ${arm.icon} ${isActive ? arm.color : 'text-gray-500 dark:text-gray-400'}`}></i>
                 </div>
                 <span>{arm.name}</span>

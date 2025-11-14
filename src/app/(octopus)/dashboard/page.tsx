@@ -74,7 +74,7 @@ export default function OctopusDashboard() {
           </div>
           <Link
             href="/digital-products/create"
-            className="hidden md:flex items-center gap-2 px-5 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all"
+            className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-linear-to-r from-purple-600 to-purple-700 text-white rounded-lg font-medium hover:shadow-md hover:from-purple-700 hover:to-purple-800 transition-all duration-200"
           >
             <i className="fas fa-plus"></i>
             <span>New Product</span>
@@ -82,25 +82,22 @@ export default function OctopusDashboard() {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="relative bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden group hover:shadow-md transition-all"
+              className="relative bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-200"
             >
-              <div className="absolute top-0 right-0 w-20 h-20 bg-linear-to-br from-purple-500/5 to-cyan-500/5 rounded-full -mr-10 -mt-10"></div>
-              <div className="relative">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-12 h-12 ${stat.bgColor} rounded-xl flex items-center justify-center`}>
-                    <i className={`fas ${stat.icon} text-xl ${stat.color}`}></i>
-                  </div>
-                  <span className="px-2.5 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-xs font-semibold rounded-lg">
-                    {stat.change}
-                  </span>
+              <div className="flex items-center gap-3 mb-4">
+                <div className={`w-12 h-12 ${stat.bgColor} rounded-lg flex items-center justify-center transition-transform hover:scale-110`}>
+                  <i className={`fas ${stat.icon} text-xl ${stat.color}`}></i>
                 </div>
-                <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">{stat.value}</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</div>
+                <span className="px-2.5 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full">
+                  {stat.change}
+                </span>
               </div>
+              <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">{stat.value}</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -109,7 +106,7 @@ export default function OctopusDashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           {/* Recent Products */}
-          <div className="lg:col-span-2 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+          <div className="lg:col-span-2 bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-1">Recent Products</h2>
@@ -128,20 +125,20 @@ export default function OctopusDashboard() {
               {recentProducts.map((product) => (
                 <div
                   key={product.id}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-gray-50 dark:bg-gray-900/30 hover:bg-gray-100 dark:hover:bg-gray-900/50 transition-all cursor-pointer group"
+                  className="flex items-center gap-4 p-4 rounded-lg bg-gray-50 dark:bg-gray-900/30 hover:bg-gray-100 dark:hover:bg-gray-900/50 transition-all duration-200 cursor-pointer group"
                 >
-                  <div className="w-12 h-12 bg-linear-to-br from-purple-600 to-cyan-600 rounded-lg flex items-center justify-center text-white font-bold">
+                  <div className="w-12 h-12 bg-linear-to-br from-purple-600 to-purple-700 rounded-lg flex items-center justify-center text-white">
                     <i className="fas fa-box"></i>
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-semibold text-gray-900 dark:text-white truncate group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                       {product.name}
                     </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{product.type} • {product.sales} sales</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{product.type} • {product.sales} sales</p>
                   </div>
                   <div className="text-right">
                     <p className="text-lg font-bold text-gray-900 dark:text-white">${product.revenue.toLocaleString()}</p>
-                    <span className="inline-block px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded">
+                    <span className="inline-block px-2.5 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium rounded-full">
                       Active
                     </span>
                   </div>
@@ -151,7 +148,7 @@ export default function OctopusDashboard() {
           </div>
 
           {/* Activity Feed */}
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
             <div className="mb-6">
               <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-1">Activity Feed</h2>
               <p className="text-sm text-gray-600 dark:text-gray-400">Recent updates</p>
@@ -162,10 +159,10 @@ export default function OctopusDashboard() {
                 <div
                   key={activity.id}
                   className={`flex items-start gap-3 pb-4 ${
-                    index < recentActivity.length - 1 ? 'border-b border-gray-100 dark:border-gray-700' : ''
+                    index < recentActivity.length - 1 ? 'border-b border-gray-200 dark:border-gray-700' : ''
                   }`}
                 >
-                  <div className={`w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-700 flex items-center justify-center shrink-0`}>
+                  <div className={`w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center shrink-0`}>
                     <i className={`fas ${activity.icon} ${activity.color}`}></i>
                   </div>
                   <div className="flex-1 min-w-0">
