@@ -159,11 +159,11 @@ export default function MembersPage() {
   const getRoleBadge = (role: string) => {
     switch (role) {
       case 'admin':
-        return 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300';
+        return 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300';
       case 'creator':
-        return 'bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300';
+        return 'bg-cyan-50 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300';
       case 'analyst':
-        return 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300';
+        return 'bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300';
       case 'viewer':
         return 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300';
       default:
@@ -177,11 +177,11 @@ export default function MembersPage() {
 
   return (
     <OctopusLayout>
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Team Members</h1>
+            <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Team Members</h1>
             <p className="text-gray-600 dark:text-gray-400">
               Manage association requests and team member roles
             </p>
@@ -189,52 +189,52 @@ export default function MembersPage() {
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between mb-2">
               <p className="text-sm text-gray-600 dark:text-gray-400">Total Members</p>
               <i className="fas fa-users text-purple-500"></i>
             </div>
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">{teamMembers.length}</p>
+            <p className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{teamMembers.length}</p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between mb-2">
               <p className="text-sm text-gray-600 dark:text-gray-400">Pending Requests</p>
               <i className="fas fa-clock text-yellow-500"></i>
             </div>
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">
+            <p className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
               {requests.filter(r => r.status === 'pending').length}
             </p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between mb-2">
               <p className="text-sm text-gray-600 dark:text-gray-400">Active Members</p>
               <i className="fas fa-check-circle text-green-500"></i>
             </div>
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">
+            <p className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
               {teamMembers.filter(m => m.status === 'active').length}
             </p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between mb-2">
               <p className="text-sm text-gray-600 dark:text-gray-400">Total Revenue</p>
               <i className="fas fa-dollar-sign text-cyan-500"></i>
             </div>
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">
+            <p className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
               ${teamMembers.reduce((sum, m) => sum + m.revenue, 0).toLocaleString()}
             </p>
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+        <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden">
           <div className="flex border-b border-gray-200 dark:border-gray-700">
             <button
               onClick={() => setActiveTab('requests')}
-              className={`flex-1 px-6 py-3 font-semibold transition-all ${
+              className={`flex-1 px-3.5 py-2 font-semibold transition-all ${
                 activeTab === 'requests'
                   ? 'bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 border-b-2 border-purple-600'
                   : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
@@ -245,7 +245,7 @@ export default function MembersPage() {
             </button>
             <button
               onClick={() => setActiveTab('team')}
-              className={`flex-1 px-6 py-3 font-semibold transition-all ${
+              className={`flex-1 px-3.5 py-2 font-semibold transition-all ${
                 activeTab === 'team'
                   ? 'bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 border-b-2 border-purple-600'
                   : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
@@ -264,7 +264,7 @@ export default function MembersPage() {
                     <div className="w-20 h-20 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mx-auto mb-4">
                       <i className="fas fa-inbox text-3xl text-gray-400"></i>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                    <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2">
                       No pending requests
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400">
@@ -275,7 +275,7 @@ export default function MembersPage() {
                   requests.filter(r => r.status === 'pending').map((request) => (
                     <div
                       key={request.id}
-                      className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700"
+                      className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700"
                     >
                       <div className="flex items-start gap-4">
                         <img
@@ -287,7 +287,7 @@ export default function MembersPage() {
                         <div className="flex-1 min-w-0">
                           <div className="flex items-start justify-between mb-2">
                             <div>
-                              <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                                 {request.userName}
                               </h3>
                               <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -296,7 +296,7 @@ export default function MembersPage() {
                             </div>
                             <span className={`px-3 py-1 rounded-lg text-xs font-semibold capitalize ${
                               request.accountType === 'professional'
-                                ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
+                                ? 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
                                 : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
                             }`}>
                               {request.accountType}
@@ -317,7 +317,7 @@ export default function MembersPage() {
                               </button>
                               <button
                                 onClick={() => handleApprove(request.id)}
-                                className="px-4 py-2 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all"
+                                className="px-4 py-2 bg-purple-600 text-white rounded-lg font-semibold hover:shadow-sm transition-all"
                               >
                                 <i className="fas fa-check mr-1"></i>
                                 Approve
@@ -359,25 +359,25 @@ export default function MembersPage() {
                   <table className="w-full">
                     <thead className="bg-gray-50 dark:bg-gray-900">
                       <tr>
-                        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
                           Member
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
                           Role
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
                           Joined Date
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
                           Products
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
                           Revenue
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
                           Status
                         </th>
-                        <th className="px-6 py-3 text-right text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-right text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
                           Actions
                         </th>
                       </tr>
@@ -426,7 +426,7 @@ export default function MembersPage() {
                           <td className="px-6 py-4">
                             <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold ${
                               member.status === 'active'
-                                ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
+                                ? 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300'
                                 : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
                             }`}>
                               <i className={`fas fa-circle text-xs ${member.status === 'active' ? 'text-green-500' : 'text-gray-400'}`}></i>
@@ -462,10 +462,10 @@ export default function MembersPage() {
         {/* Profile Modal */}
         {showProfileModal && selectedMember && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-              <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+            <div className="bg-white dark:bg-gray-800 rounded-md max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+              <div className="p-5 border-b border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <h2 className="text-base font-semibold text-gray-900 dark:text-white">
                     Member Profile
                   </h2>
                   <button
@@ -477,16 +477,16 @@ export default function MembersPage() {
                 </div>
               </div>
 
-              <div className="p-6 space-y-6">
+              <div className="p-5 space-y-4">
                 {/* Profile Header */}
-                <div className="flex items-start gap-6">
+                <div className="flex items-start gap-4">
                   <img
                     src={selectedMember.userAvatar}
                     alt={selectedMember.userName}
                     className="w-24 h-24 rounded-full"
                   />
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                    <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-1">
                       {selectedMember.userName}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400 mb-2">{selectedMember.userHandle}</p>
@@ -499,20 +499,20 @@ export default function MembersPage() {
 
                 {/* Stats */}
                 <div className="grid grid-cols-3 gap-4">
-                  <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-4 text-center">
-                    <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                  <div className="bg-gray-50 dark:bg-gray-900 rounded-md p-4 text-center">
+                    <p className="text-base font-semibold text-gray-900 dark:text-white mb-1">
                       {selectedMember.productsCreated}
                     </p>
                     <p className="text-sm text-gray-600 dark:text-gray-400">Products Created</p>
                   </div>
-                  <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-4 text-center">
-                    <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                  <div className="bg-gray-50 dark:bg-gray-900 rounded-md p-4 text-center">
+                    <p className="text-base font-semibold text-gray-900 dark:text-white mb-1">
                       ${selectedMember.revenue.toLocaleString()}
                     </p>
                     <p className="text-sm text-gray-600 dark:text-gray-400">Revenue Generated</p>
                   </div>
-                  <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-4 text-center">
-                    <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                  <div className="bg-gray-50 dark:bg-gray-900 rounded-md p-4 text-center">
+                    <p className="text-base font-semibold text-gray-900 dark:text-white mb-1">
                       {Math.floor((new Date().getTime() - new Date(selectedMember.joinedDate).getTime()) / (1000 * 60 * 60 * 24))} days
                     </p>
                     <p className="text-sm text-gray-600 dark:text-gray-400">Member Since</p>
@@ -531,7 +531,7 @@ export default function MembersPage() {
                     <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Status</span>
                     <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold ${
                       selectedMember.status === 'active'
-                        ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
+                        ? 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300'
                         : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
                     }`}>
                       <i className={`fas fa-circle text-xs ${selectedMember.status === 'active' ? 'text-green-500' : 'text-gray-400'}`}></i>
@@ -550,7 +550,7 @@ export default function MembersPage() {
                 <div className="flex gap-3 pt-4">
                   <button
                     onClick={() => setShowProfileModal(false)}
-                    className="flex-1 px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                    className="flex-1 px-3.5 py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
                   >
                     Close
                   </button>
@@ -559,7 +559,7 @@ export default function MembersPage() {
                       handleRemoveMember(selectedMember.id);
                       setShowProfileModal(false);
                     }}
-                    className="flex-1 px-6 py-3 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition-all"
+                    className="flex-1 px-3.5 py-2 bg-red-600 text-white rounded-md font-semibold hover:bg-red-700 transition-all"
                   >
                     <i className="fas fa-ban mr-2"></i>
                     Revoke Verification

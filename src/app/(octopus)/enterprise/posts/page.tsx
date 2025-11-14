@@ -56,7 +56,7 @@ export default function PostManagementPage() {
   const getStatusBadge = (status: PostStatus) => {
     switch (status) {
       case 'approved':
-        return 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300';
+        return 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300';
       case 'pending':
         return 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300';
       case 'flagged':
@@ -79,10 +79,10 @@ export default function PostManagementPage() {
 
   return (
     <OctopusLayout>
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+          <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-2">
             Post Management
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
@@ -91,53 +91,53 @@ export default function PostManagementPage() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-4 gap-6">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+        <div className="grid grid-cols-4 gap-4">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-md bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center">
                 <i className="fas fa-comment text-blue-600 dark:text-blue-400"></i>
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                <p className="text-base font-semibold text-gray-900 dark:text-white">
                   {posts.filter((p) => p.status !== 'deleted').length}
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Total Posts</p>
               </div>
             </div>
           </div>
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-md bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center">
                 <i className="fas fa-clock text-yellow-600 dark:text-yellow-400"></i>
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                <p className="text-base font-semibold text-gray-900 dark:text-white">
                   {posts.filter((p) => p.status === 'pending').length}
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Pending Review</p>
               </div>
             </div>
           </div>
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-md bg-green-50 dark:bg-green-900/30 flex items-center justify-center">
                 <i className="fas fa-check-circle text-green-600 dark:text-green-400"></i>
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                <p className="text-base font-semibold text-gray-900 dark:text-white">
                   {posts.filter((p) => p.status === 'approved').length}
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Approved</p>
               </div>
             </div>
           </div>
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-md bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
                 <i className="fas fa-flag text-red-600 dark:text-red-400"></i>
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                <p className="text-base font-semibold text-gray-900 dark:text-white">
                   {posts.filter((p) => p.status === 'flagged').length}
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Flagged</p>
@@ -147,12 +147,12 @@ export default function PostManagementPage() {
         </div>
 
         {/* Filters */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+        <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
           <div className="flex gap-4 items-center">
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value as 'all' | PostStatus)}
-              className="px-4 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="px-4 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-md text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
             >
               <option value="all">All Status</option>
               <option value="pending">Pending</option>
@@ -162,7 +162,7 @@ export default function PostManagementPage() {
             <select
               value={filterCategory}
               onChange={(e) => setFilterCategory(e.target.value)}
-              className="px-4 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="px-4 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-md text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
             >
               {categories.map((cat) => (
                 <option key={cat} value={cat === 'All Categories' ? 'all' : cat}>
@@ -174,9 +174,9 @@ export default function PostManagementPage() {
         </div>
 
         {/* Posts List */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700">
-          <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+        <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700">
+          <div className="p-5 border-b border-gray-200 dark:border-gray-700">
+            <h2 className="text-base font-semibold text-gray-900 dark:text-white">
               All Posts ({filteredPosts.length})
             </h2>
           </div>
@@ -184,7 +184,7 @@ export default function PostManagementPage() {
             {filteredPosts.map((post) => (
               <div
                 key={post.id}
-                className="p-6 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors"
+                className="p-5 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors"
               >
                 <div className="flex gap-4">
                   <img
@@ -207,7 +207,7 @@ export default function PostManagementPage() {
                       </span>
                     </div>
                     <p className="text-gray-900 dark:text-white mb-3">{post.content}</p>
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-4">
                       <span className="text-sm text-gray-600 dark:text-gray-400">
                         <i className="fas fa-heart mr-1"></i>
                         {post.likes}
@@ -216,7 +216,7 @@ export default function PostManagementPage() {
                         <i className="fas fa-comment mr-1"></i>
                         {post.comments}
                       </span>
-                      <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs font-semibold bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300">
+                      <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs font-semibold bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300">
                         {post.category}
                       </span>
                       <div className="ml-auto flex gap-2">
@@ -263,10 +263,10 @@ export default function PostManagementPage() {
         {/* Post Details Modal */}
         {showPostModal && selectedPost && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-              <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+            <div className="bg-white dark:bg-gray-800 rounded-md max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+              <div className="p-5 border-b border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <h2 className="text-base font-semibold text-gray-900 dark:text-white">
                     Post Details
                   </h2>
                   <button
@@ -278,7 +278,7 @@ export default function PostManagementPage() {
                 </div>
               </div>
 
-              <div className="p-6 space-y-6">
+              <div className="p-5 space-y-4">
                 {/* Author Info */}
                 <div className="flex items-start gap-4">
                   <img
@@ -287,7 +287,7 @@ export default function PostManagementPage() {
                     className="w-16 h-16 rounded-full"
                   />
                   <div className="flex-1">
-                    <p className="font-bold text-lg text-gray-900 dark:text-white">
+                    <p className="font-semibold text-lg text-gray-900 dark:text-white">
                       {selectedPost.authorName}
                     </p>
                     <p className="text-gray-600 dark:text-gray-400">
@@ -305,7 +305,7 @@ export default function PostManagementPage() {
                 </div>
 
                 {/* Content */}
-                <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6">
+                <div className="bg-gray-50 dark:bg-gray-900 rounded-md p-5">
                   <p className="text-gray-900 dark:text-white text-lg leading-relaxed">
                     {selectedPost.content}
                   </p>
@@ -313,20 +313,20 @@ export default function PostManagementPage() {
 
                 {/* Meta */}
                 <div className="grid grid-cols-3 gap-4">
-                  <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-4 text-center">
-                    <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                  <div className="bg-gray-50 dark:bg-gray-900 rounded-md p-4 text-center">
+                    <p className="text-base font-semibold text-gray-900 dark:text-white mb-1">
                       {selectedPost.likes}
                     </p>
                     <p className="text-sm text-gray-600 dark:text-gray-400">Likes</p>
                   </div>
-                  <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-4 text-center">
-                    <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                  <div className="bg-gray-50 dark:bg-gray-900 rounded-md p-4 text-center">
+                    <p className="text-base font-semibold text-gray-900 dark:text-white mb-1">
                       {selectedPost.comments}
                     </p>
                     <p className="text-sm text-gray-600 dark:text-gray-400">Comments</p>
                   </div>
-                  <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-4 text-center">
-                    <p className="text-sm font-bold text-purple-600 dark:text-purple-400 mb-1">
+                  <div className="bg-gray-50 dark:bg-gray-900 rounded-md p-4 text-center">
+                    <p className="text-sm font-semibold text-purple-600 dark:text-purple-400 mb-1">
                       {selectedPost.category}
                     </p>
                     <p className="text-sm text-gray-600 dark:text-gray-400">Category</p>
@@ -342,7 +342,7 @@ export default function PostManagementPage() {
                           handleApprovePost(selectedPost.id);
                           setShowPostModal(false);
                         }}
-                        className="flex-1 px-6 py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition-all"
+                        className="flex-1 px-3.5 py-2 bg-green-600 text-white rounded-md font-semibold hover:bg-green-700 transition-all"
                       >
                         <i className="fas fa-check mr-2"></i>
                         Approve Post
@@ -354,7 +354,7 @@ export default function PostManagementPage() {
                           handleFlagPost(selectedPost.id);
                           setShowPostModal(false);
                         }}
-                        className="flex-1 px-6 py-3 bg-yellow-600 text-white rounded-xl font-semibold hover:bg-yellow-700 transition-all"
+                        className="flex-1 px-3.5 py-2 bg-yellow-600 text-white rounded-md font-semibold hover:bg-yellow-700 transition-all"
                       >
                         <i className="fas fa-flag mr-2"></i>
                         Flag Post
@@ -363,7 +363,7 @@ export default function PostManagementPage() {
                   </div>
                   <button
                     onClick={() => handleDeletePost(selectedPost.id)}
-                    className="w-full px-6 py-3 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition-all"
+                    className="w-full px-3.5 py-2 bg-red-600 text-white rounded-md font-semibold hover:bg-red-700 transition-all"
                   >
                     <i className="fas fa-trash mr-2"></i>
                     Delete Post
@@ -372,7 +372,7 @@ export default function PostManagementPage() {
                     onClick={() =>
                       handleRestrictUser(selectedPost.authorId, selectedPost.authorName)
                     }
-                    className="w-full px-6 py-3 bg-orange-600 text-white rounded-xl font-semibold hover:bg-orange-700 transition-all"
+                    className="w-full px-3.5 py-2 bg-orange-600 text-white rounded-md font-semibold hover:bg-orange-700 transition-all"
                   >
                     <i className="fas fa-ban mr-2"></i>
                     Restrict User from Posting

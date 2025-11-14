@@ -20,18 +20,18 @@ export default function CartPage() {
 
   return (
     <OctopusLayout>
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Shopping Cart</h1>
+            <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Shopping Cart</h1>
             <p className="text-gray-600 dark:text-gray-400">
               {itemCount} {itemCount === 1 ? 'item' : 'items'} in your cart
             </p>
           </div>
           <Link
             href="/marketplace"
-            className="px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+            className="px-3.5 py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
           >
             <i className="fas fa-arrow-left mr-2"></i>
             Continue Shopping
@@ -39,15 +39,15 @@ export default function CartPage() {
         </div>
 
         {itemCount > 0 ? (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             {/* Cart Items */}
             <div className="lg:col-span-2 space-y-4">
               {items.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700"
+                  className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700"
                 >
-                  <div className="flex gap-6">
+                  <div className="flex gap-4">
                     {/* Thumbnail */}
                     <Link href={`/marketplace/${item.id}`} className="shrink-0">
                       <img
@@ -63,7 +63,7 @@ export default function CartPage() {
                         href={`/marketplace/${item.id}`}
                         className="block hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
                       >
-                        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">
                           {item.title}
                         </h3>
                       </Link>
@@ -80,13 +80,13 @@ export default function CartPage() {
                       </div>
 
                       <div className="flex items-center gap-2 mb-4">
-                        <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg text-sm font-medium capitalize">
+                        <span className="px-3 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg text-sm font-medium capitalize">
                           {item.type}
                         </span>
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                        <div className="text-base font-semibold text-gray-900 dark:text-white">
                           ${item.price.toFixed(2)}
                         </div>
                         <button
@@ -105,8 +105,8 @@ export default function CartPage() {
 
             {/* Order Summary */}
             <div className="lg:col-span-1">
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 sticky top-6 space-y-6">
-                <h2 className="text-xl font-bold text-gray-900 dark:text-white">Order Summary</h2>
+              <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700 sticky top-5 space-y-4">
+                <h2 className="text-base font-semibold text-gray-900 dark:text-white">Order Summary</h2>
 
                 <div className="space-y-3 py-4 border-y border-gray-200 dark:border-gray-700">
                   <div className="flex items-center justify-between text-gray-600 dark:text-gray-400">
@@ -119,14 +119,14 @@ export default function CartPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between text-xl font-bold text-gray-900 dark:text-white">
+                <div className="flex items-center justify-between text-base font-semibold text-gray-900 dark:text-white">
                   <span>Total</span>
                   <span>${totalPrice.toFixed(2)}</span>
                 </div>
 
                 <button
                   onClick={handleCheckout}
-                  className="w-full px-6 py-4 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+                  className="w-full px-6 py-4 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all"
                 >
                   Proceed to Checkout
                 </button>
@@ -150,17 +150,17 @@ export default function CartPage() {
           </div>
         ) : (
           // Empty Cart
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-12 border border-gray-200 dark:border-gray-700 text-center">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-12 border border-gray-200 dark:border-gray-700 text-center">
             <div className="w-24 h-24 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mx-auto mb-6">
               <i className="fas fa-shopping-cart text-4xl text-gray-400"></i>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">Your cart is empty</h2>
+            <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-3">Your cart is empty</h2>
             <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto">
               Looks like you haven't added any products to your cart yet. Browse our marketplace to find amazing digital products!
             </p>
             <Link
               href="/marketplace"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all"
             >
               <i className="fas fa-store"></i>
               <span>Browse Marketplace</span>

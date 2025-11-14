@@ -197,7 +197,7 @@ export default function EditProductPage() {
 
   return (
     <OctopusLayout>
-      <div className="space-y-6 pb-20">
+      <div className="space-y-4 pb-20">
         {/* Header */}
         <div>
           <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-2">
@@ -209,15 +209,15 @@ export default function EditProductPage() {
           </div>
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Edit Product</h1>
+              <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Edit Product</h1>
               <p className="text-gray-600 dark:text-gray-400">Update your digital product details</p>
             </div>
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setShowAIAssistant(!showAIAssistant)}
-                className={`px-4 py-2 rounded-xl font-semibold transition-all flex items-center gap-2 ${
+                className={`px-4 py-2 rounded-md font-semibold transition-all flex items-center gap-2 ${
                   showAIAssistant
-                    ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
+                    ? 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
                     : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
                 }`}
               >
@@ -226,7 +226,7 @@ export default function EditProductPage() {
               </button>
               <button
                 onClick={() => router.push('/digital-products')}
-                className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
               >
                 Cancel
               </button>
@@ -235,7 +235,7 @@ export default function EditProductPage() {
         </div>
 
         {/* Progress Steps */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+        <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-between">
             {steps.map((item, index) => (
               <div key={item.step} className="flex items-center flex-1">
@@ -245,7 +245,7 @@ export default function EditProductPage() {
                 >
                   <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${
                     currentStep === item.step
-                      ? 'bg-linear-to-br from-purple-600 to-cyan-600 text-white shadow-lg scale-110'
+                      ? 'bg-purple-600 text-white shadow-sm scale-110'
                       : currentStep > item.step
                       ? 'bg-green-500 text-white'
                       : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
@@ -275,9 +275,9 @@ export default function EditProductPage() {
 
         {/* Step 1: Basic Info */}
         {currentStep === 1 && (
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 space-y-6">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-8 border border-gray-200 dark:border-gray-700 space-y-4">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Basic Information</h2>
+              <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-2">Basic Information</h2>
               <p className="text-gray-600 dark:text-gray-400">Update your product's basic details</p>
             </div>
 
@@ -290,7 +290,7 @@ export default function EditProductPage() {
                 {productTypes.map((type) => (
                   <div
                     key={type.id}
-                    className={`p-4 rounded-xl border-2 transition-all text-left ${
+                    className={`p-4 rounded-md border-2 transition-all text-left ${
                       productType === type.id
                         ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20 opacity-60'
                         : 'border-gray-200 dark:border-gray-700 opacity-40'
@@ -299,7 +299,7 @@ export default function EditProductPage() {
                     <div className={`w-12 h-12 rounded-lg bg-${type.color}-100 dark:bg-${type.color}-900/30 flex items-center justify-center mb-3`}>
                       <i className={`fas ${type.icon} text-xl text-${type.color}-600 dark:text-${type.color}-400`}></i>
                     </div>
-                    <h3 className="font-bold text-gray-900 dark:text-white mb-1">{type.name}</h3>
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{type.name}</h3>
                     <p className="text-xs text-gray-600 dark:text-gray-400">{type.description}</p>
                   </div>
                 ))}
@@ -316,7 +316,7 @@ export default function EditProductPage() {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="e.g., Digital Marketing Masterclass"
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
               />
               <p className="text-xs text-gray-500 mt-1">{title.length}/100 characters</p>
             </div>
@@ -331,7 +331,7 @@ export default function EditProductPage() {
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Describe what your product offers and who it's for..."
                 rows={6}
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all resize-none"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all resize-none"
               />
               <p className="text-xs text-gray-500 mt-1">{description.length}/1000 characters</p>
             </div>
@@ -346,7 +346,7 @@ export default function EditProductPage() {
                   <button
                     key={cat.id}
                     onClick={() => setCategory(cat.id)}
-                    className={`p-3 rounded-xl border-2 transition-all ${
+                    className={`p-3 rounded-md border-2 transition-all ${
                       category === cat.id
                         ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20'
                         : 'border-gray-200 dark:border-gray-700 hover:border-purple-300'
@@ -381,7 +381,7 @@ export default function EditProductPage() {
                 />
                 <button
                   onClick={handleAddTag}
-                  className="px-6 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg font-semibold hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all"
+                  className="px-6 py-2 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg font-semibold hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all"
                 >
                   Add
                 </button>
@@ -390,7 +390,7 @@ export default function EditProductPage() {
                 {tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium flex items-center gap-2"
+                    className="px-3 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium flex items-center gap-2"
                   >
                     {tag}
                     <button
@@ -407,7 +407,7 @@ export default function EditProductPage() {
             <div className="flex justify-end">
               <button
                 onClick={() => setCurrentStep(2)}
-                className="px-8 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+                className="px-8 py-3 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all"
               >
                 Next: Pricing <i className="fas fa-arrow-right ml-2"></i>
               </button>
@@ -417,20 +417,20 @@ export default function EditProductPage() {
 
         {/* Step 2: Pricing - LOCKED */}
         {currentStep === 2 && (
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 space-y-6">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-8 border border-gray-200 dark:border-gray-700 space-y-4">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Pricing</h2>
+              <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-2">Pricing</h2>
               <p className="text-gray-600 dark:text-gray-400">Your product pricing details</p>
             </div>
 
             {/* Price Locked Notice */}
-            <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-6 border-2 border-yellow-200 dark:border-yellow-800">
+            <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-md p-5 border-2 border-yellow-200 dark:border-yellow-800">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center shrink-0">
                   <i className="fas fa-lock text-yellow-600 dark:text-yellow-400 text-xl"></i>
                 </div>
                 <div>
-                  <h3 className="font-bold text-yellow-900 dark:text-yellow-100 mb-2">Price Editing Locked</h3>
+                  <h3 className="font-semibold text-yellow-900 dark:text-yellow-100 mb-2">Price Editing Locked</h3>
                   <p className="text-sm text-yellow-800 dark:text-yellow-200 mb-3">
                     The price cannot be changed for products that already have sales. This protects your existing customers and maintains pricing integrity.
                   </p>
@@ -447,22 +447,22 @@ export default function EditProductPage() {
             </div>
 
             {/* Current Price Display */}
-            <div className="bg-linear-to-br from-purple-50 to-cyan-50 dark:from-purple-900/20 dark:to-cyan-900/20 rounded-xl p-8 border border-purple-200 dark:border-purple-800">
+            <div className="bg-linear-to-br from-purple-50 to-cyan-50 dark:from-purple-900/20 dark:to-cyan-900/20 rounded-md p-8 border border-purple-200 dark:border-purple-800">
               <div className="text-center">
                 <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">Current Price</p>
                 <div className="flex items-center justify-center gap-2">
-                  <span className="text-5xl font-bold text-gray-900 dark:text-white">${price}</span>
+                  <span className="text-5xl font-semibold text-gray-900 dark:text-white">${price}</span>
                   <span className="text-2xl text-gray-600 dark:text-gray-400">USD</span>
                 </div>
                 <div className="mt-4 pt-4 border-t border-purple-200 dark:border-purple-800">
                   <div className="flex items-center justify-center gap-8 text-sm">
                     <div>
                       <p className="text-gray-600 dark:text-gray-400">Platform Fee (5%)</p>
-                      <p className="font-bold text-gray-900 dark:text-white">${(price * 0.05).toFixed(2)}</p>
+                      <p className="font-semibold text-gray-900 dark:text-white">${(price * 0.05).toFixed(2)}</p>
                     </div>
                     <div>
                       <p className="text-gray-600 dark:text-gray-400">You Earn</p>
-                      <p className="font-bold text-green-600 dark:text-green-400">${(price * 0.95).toFixed(2)}</p>
+                      <p className="font-semibold text-green-600 dark:text-green-400">${(price * 0.95).toFixed(2)}</p>
                     </div>
                   </div>
                 </div>
@@ -472,13 +472,13 @@ export default function EditProductPage() {
             <div className="flex justify-between">
               <button
                 onClick={() => setCurrentStep(1)}
-                className="px-8 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                className="px-8 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
               >
                 <i className="fas fa-arrow-left mr-2"></i> Previous
               </button>
               <button
                 onClick={() => setCurrentStep(3)}
-                className="px-8 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+                className="px-8 py-3 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all"
               >
                 Next: Content <i className="fas fa-arrow-right ml-2"></i>
               </button>
@@ -488,19 +488,19 @@ export default function EditProductPage() {
 
         {/* Step 3: Content */}
         {currentStep === 3 && (
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 space-y-6">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-8 border border-gray-200 dark:border-gray-700 space-y-4">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Product Content</h2>
+              <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-2">Product Content</h2>
               <p className="text-gray-600 dark:text-gray-400">Update files, lessons, or resources</p>
             </div>
 
-            <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-8 border-2 border-dashed border-gray-300 dark:border-gray-600 text-center">
+            <div className="bg-gray-50 dark:bg-gray-900 rounded-md p-8 border-2 border-dashed border-gray-300 dark:border-gray-600 text-center">
               <i className="fas fa-cloud-upload-alt text-5xl text-gray-400 mb-4"></i>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Upload Product Files</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Upload Product Files</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                 Upload videos, PDFs, templates, or other files for your product
               </p>
-              <button className="px-6 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all">
+              <button className="px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all">
                 <i className="fas fa-upload mr-2"></i>
                 Choose Files
               </button>
@@ -509,13 +509,13 @@ export default function EditProductPage() {
             <div className="flex justify-between">
               <button
                 onClick={() => setCurrentStep(2)}
-                className="px-8 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                className="px-8 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
               >
                 <i className="fas fa-arrow-left mr-2"></i> Previous
               </button>
               <button
                 onClick={() => setCurrentStep(4)}
-                className="px-8 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+                className="px-8 py-3 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all"
               >
                 Next: Review <i className="fas fa-arrow-right ml-2"></i>
               </button>
@@ -525,15 +525,15 @@ export default function EditProductPage() {
 
         {/* Step 4: Review */}
         {currentStep === 4 && (
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 space-y-6">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-8 border border-gray-200 dark:border-gray-700 space-y-4">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Review Changes</h2>
+              <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-2">Review Changes</h2>
               <p className="text-gray-600 dark:text-gray-400">Verify your updates before saving</p>
             </div>
 
             <div className="space-y-4">
-              <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6">
-                <h3 className="font-bold text-gray-900 dark:text-white mb-4">Product Summary</h3>
+              <div className="bg-gray-50 dark:bg-gray-900 rounded-md p-5">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-4">Product Summary</h3>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
                     <p className="text-gray-600 dark:text-gray-400 mb-1">Type</p>
@@ -554,19 +554,19 @@ export default function EditProductPage() {
                 </div>
               </div>
 
-              <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6">
-                <h3 className="font-bold text-gray-900 dark:text-white mb-2">Description</h3>
+              <div className="bg-gray-50 dark:bg-gray-900 rounded-md p-5">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Description</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">{description}</p>
               </div>
 
               {tags.length > 0 && (
-                <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6">
-                  <h3 className="font-bold text-gray-900 dark:text-white mb-3">Tags</h3>
+                <div className="bg-gray-50 dark:bg-gray-900 rounded-md p-5">
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Tags</h3>
                   <div className="flex flex-wrap gap-2">
                     {tags.map((tag, index) => (
                       <span
                         key={index}
-                        className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium"
+                        className="px-3 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium"
                       >
                         {tag}
                       </span>
@@ -579,13 +579,13 @@ export default function EditProductPage() {
             <div className="flex justify-between">
               <button
                 onClick={() => setCurrentStep(3)}
-                className="px-8 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                className="px-8 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
               >
                 <i className="fas fa-arrow-left mr-2"></i> Previous
               </button>
               <button
                 onClick={handleSubmit}
-                className="px-8 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+                className="px-8 py-3 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all"
               >
                 <i className="fas fa-save mr-2"></i> Save Changes
               </button>
@@ -598,7 +598,7 @@ export default function EditProductPage() {
       {showAIAssistant && !aiExpanded && (
         <button
           onClick={() => setAiExpanded(true)}
-          className="fixed bottom-6 right-6 w-16 h-16 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-full shadow-2xl hover:shadow-3xl transition-all flex items-center justify-center z-50 hover:scale-110"
+          className="fixed bottom-6 right-6 w-16 h-16 bg-purple-600 text-white rounded-full shadow-2xl hover:shadow-3xl transition-all flex items-center justify-center z-50 hover:scale-110"
         >
           <i className="fas fa-robot text-2xl"></i>
         </button>
@@ -606,9 +606,9 @@ export default function EditProductPage() {
 
       {/* AI Assistant Expanded Chat */}
       {showAIAssistant && aiExpanded && (
-        <div className="fixed bottom-6 right-6 w-96 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 z-50 flex flex-col max-h-[600px]">
+        <div className="fixed bottom-6 right-6 w-96 bg-white dark:bg-gray-800 rounded-md shadow-2xl border border-gray-200 dark:border-gray-700 z-50 flex flex-col max-h-[600px]">
           {/* Chat Header */}
-          <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between bg-linear-to-br from-purple-600 to-cyan-600 rounded-t-2xl">
+          <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between bg-purple-600 rounded-t-2xl">
             <div className="flex items-center gap-3 text-white">
               <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
                 <i className="fas fa-robot"></i>
@@ -645,14 +645,14 @@ export default function EditProductPage() {
                 className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {message.role === 'assistant' && (
-                  <div className="w-8 h-8 bg-linear-to-br from-purple-600 to-cyan-600 rounded-full flex items-center justify-center shrink-0">
+                  <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center shrink-0">
                     <i className="fas fa-robot text-white text-sm"></i>
                   </div>
                 )}
                 <div
-                  className={`max-w-[75%] px-4 py-2 rounded-2xl ${
+                  className={`max-w-[75%] px-4 py-2 rounded-md ${
                     message.role === 'user'
-                      ? 'bg-linear-to-br from-purple-600 to-cyan-600 text-white'
+                      ? 'bg-purple-600 text-white'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
                   }`}
                 >
@@ -667,10 +667,10 @@ export default function EditProductPage() {
             ))}
             {isTyping && (
               <div className="flex gap-3">
-                <div className="w-8 h-8 bg-linear-to-br from-purple-600 to-cyan-600 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center">
                   <i className="fas fa-robot text-white text-sm"></i>
                 </div>
-                <div className="bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-2xl">
+                <div className="bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-md">
                   <div className="flex gap-1">
                     <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                     <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
@@ -706,11 +706,11 @@ export default function EditProductPage() {
                 onChange={(e) => setUserMessage(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                 placeholder="Ask me anything..."
-                className="flex-1 px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                className="flex-1 px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
               />
               <button
                 onClick={handleSendMessage}
-                className="px-4 py-2 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+                className="px-4 py-2 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all"
               >
                 <i className="fas fa-paper-plane"></i>
               </button>

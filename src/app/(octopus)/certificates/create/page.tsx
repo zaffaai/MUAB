@@ -100,18 +100,18 @@ export default function CreateCertificatePage() {
 
   return (
     <OctopusLayout>
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Create Certificate Template</h1>
+            <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Create Certificate Template</h1>
             <p className="text-gray-600 dark:text-gray-400">
               Step {step === 'basic' ? '1' : '2'} of 2 - {step === 'basic' ? 'Basic Info' : 'Design & Layout'}
             </p>
           </div>
           <button
             onClick={() => router.push('/certificates')}
-            className="px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+            className="px-3.5 py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
           >
             <i className="fas fa-times mr-2"></i>
             Cancel
@@ -119,7 +119,7 @@ export default function CreateCertificatePage() {
         </div>
 
         {/* Progress Steps */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+        <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-center gap-4">
             <div className={`flex items-center gap-2 ${step === 'basic' ? 'text-purple-600' : 'text-green-600'}`}>
               <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
@@ -147,7 +147,7 @@ export default function CreateCertificatePage() {
 
         {step === 'basic' ? (
           // Step 1: Basic Info
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 space-y-6">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700 space-y-4">
             <div>
               <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
                 Certificate Name *
@@ -157,7 +157,7 @@ export default function CreateCertificatePage() {
                 value={certificateName}
                 onChange={(e) => setCertificateName(e.target.value)}
                 placeholder="e.g., Course Completion Certificate"
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
               />
             </div>
 
@@ -170,7 +170,7 @@ export default function CreateCertificatePage() {
                 onChange={(e) => setDescription(e.target.value)}
                 rows={3}
                 placeholder="Describe when this certificate is awarded"
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
               ></textarea>
             </div>
 
@@ -181,7 +181,7 @@ export default function CreateCertificatePage() {
               <select
                 value={linkedProduct}
                 onChange={(e) => setLinkedProduct(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
               >
                 <option value="">Select a product</option>
                 <option value="dp-001">Digital Marketing Masterclass</option>
@@ -194,7 +194,7 @@ export default function CreateCertificatePage() {
               <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
                 Upload Certificate Template (PDF) *
               </label>
-              <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl p-8 text-center hover:border-purple-500 transition-all">
+              <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-md p-8 text-center hover:border-purple-500 transition-all">
                 {pdfPreview ? (
                   <div className="space-y-4">
                     <div className="flex items-center justify-center gap-3 text-green-600">
@@ -242,7 +242,7 @@ export default function CreateCertificatePage() {
               <button
                 onClick={() => setStep('design')}
                 disabled={!certificateName || !linkedProduct || !pdfFile}
-                className="px-6 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Continue to Design
                 <i className="fas fa-arrow-right ml-2"></i>
@@ -251,11 +251,11 @@ export default function CreateCertificatePage() {
           </div>
         ) : (
           // Step 2: Design & Layout
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
             {/* Left: Available Fields */}
             <div className="lg:col-span-1 space-y-4">
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
-                <h3 className="font-bold text-gray-900 dark:text-white mb-3">Available Fields</h3>
+              <div className="bg-white dark:bg-gray-800 rounded-md p-4 border border-gray-200 dark:border-gray-700">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Available Fields</h3>
                 <p className="text-xs text-gray-600 dark:text-gray-400 mb-4">
                   Click to add fields to your certificate
                 </p>
@@ -277,8 +277,8 @@ export default function CreateCertificatePage() {
 
               {/* Field Properties */}
               {selectedField && (
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
-                  <h3 className="font-bold text-gray-900 dark:text-white mb-3">Field Properties</h3>
+                <div className="bg-white dark:bg-gray-800 rounded-md p-4 border border-gray-200 dark:border-gray-700">
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Field Properties</h3>
                   {(() => {
                     const field = fields.find(f => f.id === selectedField);
                     if (!field) return null;
@@ -324,9 +324,9 @@ export default function CreateCertificatePage() {
 
             {/* Center: Canvas */}
             <div className="lg:col-span-3">
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+              <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-bold text-gray-900 dark:text-white">Certificate Preview</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">Certificate Preview</h3>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
                     {fields.length} field{fields.length !== 1 ? 's' : ''} added
                   </div>
@@ -397,14 +397,14 @@ export default function CreateCertificatePage() {
                 <div className="flex justify-between mt-6">
                   <button
                     onClick={() => setStep('basic')}
-                    className="px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                    className="px-3.5 py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
                   >
                     <i className="fas fa-arrow-left mr-2"></i>
                     Back
                   </button>
                   <button
                     onClick={handleSave}
-                    className="px-6 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+                    className="px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all"
                   >
                     <i className="fas fa-save mr-2"></i>
                     Save Template

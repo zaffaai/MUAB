@@ -70,11 +70,11 @@ export default function RolesPermissionsPage() {
 
   return (
     <OctopusLayout>
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+            <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-2">
               Roles & Permissions
             </h1>
             <p className="text-gray-600 dark:text-gray-400">
@@ -83,7 +83,7 @@ export default function RolesPermissionsPage() {
           </div>
           <button
             onClick={() => setShowInviteModal(true)}
-            className="px-6 py-3 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700 transition-all"
+            className="px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:bg-purple-700 transition-all"
           >
             <i className="fas fa-user-plus mr-2"></i>
             Invite User
@@ -91,53 +91,53 @@ export default function RolesPermissionsPage() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-4 gap-6">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+        <div className="grid grid-cols-4 gap-4">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-md bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center">
                 <i className="fas fa-crown text-purple-600 dark:text-purple-400"></i>
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                <p className="text-base font-semibold text-gray-900 dark:text-white">
                   {users.filter((u) => u.role === 'owner').length}
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Owner</p>
               </div>
             </div>
           </div>
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-md bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center">
                 <i className="fas fa-shield-alt text-blue-600 dark:text-blue-400"></i>
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                <p className="text-base font-semibold text-gray-900 dark:text-white">
                   {users.filter((u) => u.role === 'admin').length}
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Admins</p>
               </div>
             </div>
           </div>
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-md bg-green-50 dark:bg-green-900/30 flex items-center justify-center">
                 <i className="fas fa-user-shield text-green-600 dark:text-green-400"></i>
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                <p className="text-base font-semibold text-gray-900 dark:text-white">
                   {users.filter((u) => u.role === 'moderator').length}
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Moderators</p>
               </div>
             </div>
           </div>
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-md bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
                 <i className="fas fa-chalkboard-teacher text-orange-600 dark:text-orange-400"></i>
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                <p className="text-base font-semibold text-gray-900 dark:text-white">
                   {users.filter((u) => u.role === 'instructor').length}
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Instructors</p>
@@ -147,27 +147,27 @@ export default function RolesPermissionsPage() {
         </div>
 
         {/* Users List */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700">
-          <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">Team Members</h2>
+        <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700">
+          <div className="p-5 border-b border-gray-200 dark:border-gray-700">
+            <h2 className="text-base font-semibold text-gray-900 dark:text-white">Team Members</h2>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-gray-50 dark:bg-gray-900">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                     User
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                     Role
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                     Joined
                   </th>
-                  <th className="px-6 py-3 text-right text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-3.5 py-2 text-right text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
@@ -204,7 +204,7 @@ export default function RolesPermissionsPage() {
                       <span
                         className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold ${
                           user.status === 'active'
-                            ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
+                            ? 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300'
                             : user.status === 'invited'
                             ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300'
                             : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
@@ -263,9 +263,9 @@ export default function RolesPermissionsPage() {
         </div>
 
         {/* Permission Matrix */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700">
-          <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+        <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700">
+          <div className="p-5 border-b border-gray-200 dark:border-gray-700">
+            <h2 className="text-base font-semibold text-gray-900 dark:text-white">
               Permission Matrix
             </h2>
             <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
@@ -276,19 +276,19 @@ export default function RolesPermissionsPage() {
             <table className="w-full">
               <thead className="bg-gray-50 dark:bg-gray-900">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                  <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                     Permission
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-semibold text-purple-700 dark:text-purple-300 uppercase tracking-wider">
+                  <th className="px-3.5 py-2 text-center text-xs font-semibold text-purple-700 dark:text-purple-300 uppercase tracking-wider">
                     <i className="fas fa-crown mr-1"></i>Owner
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-semibold text-blue-700 dark:text-blue-300 uppercase tracking-wider">
+                  <th className="px-3.5 py-2 text-center text-xs font-semibold text-blue-700 dark:text-blue-300 uppercase tracking-wider">
                     <i className="fas fa-shield-alt mr-1"></i>Admin
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-semibold text-green-700 dark:text-green-300 uppercase tracking-wider">
+                  <th className="px-3.5 py-2 text-center text-xs font-semibold text-green-700 dark:text-green-300 uppercase tracking-wider">
                     <i className="fas fa-user-shield mr-1"></i>Moderator
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-semibold text-orange-700 dark:text-orange-300 uppercase tracking-wider">
+                  <th className="px-3.5 py-2 text-center text-xs font-semibold text-orange-700 dark:text-orange-300 uppercase tracking-wider">
                     <i className="fas fa-chalkboard-teacher mr-1"></i>Instructor
                   </th>
                 </tr>
@@ -332,7 +332,7 @@ export default function RolesPermissionsPage() {
               </tbody>
             </table>
           </div>
-          <div className="p-6 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+          <div className="p-5 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
             <p className="text-sm text-gray-600 dark:text-gray-400">
               <i className="fas fa-info-circle mr-2"></i>
               <strong>Note:</strong> Instructors can only manage their own created products.
@@ -344,10 +344,10 @@ export default function RolesPermissionsPage() {
         {/* Invite User Modal */}
         {showInviteModal && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl max-w-lg w-full">
-              <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+            <div className="bg-white dark:bg-gray-800 rounded-md max-w-lg w-full">
+              <div className="p-5 border-b border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <h2 className="text-base font-semibold text-gray-900 dark:text-white">
                     Invite User
                   </h2>
                   <button
@@ -359,7 +359,7 @@ export default function RolesPermissionsPage() {
                 </div>
               </div>
 
-              <div className="p-6 space-y-4">
+              <div className="p-5 space-y-4">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                     Email Address
@@ -369,7 +369,7 @@ export default function RolesPermissionsPage() {
                     value={inviteEmail}
                     onChange={(e) => setInviteEmail(e.target.value)}
                     placeholder="user@company.com"
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-md text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                   />
                 </div>
 
@@ -380,7 +380,7 @@ export default function RolesPermissionsPage() {
                   <select
                     value={inviteRole}
                     onChange={(e) => setInviteRole(e.target.value as Role)}
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-md text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                   >
                     <option value="admin">Admin - Full organizational control</option>
                     <option value="moderator">Moderator - Community management</option>
@@ -397,22 +397,22 @@ export default function RolesPermissionsPage() {
                     onChange={(e) => setInviteMessage(e.target.value)}
                     placeholder="Add a personal message to the invitation..."
                     rows={3}
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-md text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                   ></textarea>
                 </div>
               </div>
 
-              <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-b-2xl flex gap-3">
+              <div className="p-5 bg-gray-50 dark:bg-gray-900 rounded-b-2xl flex gap-3">
                 <button
                   onClick={() => setShowInviteModal(false)}
-                  className="flex-1 px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition-all"
+                  className="flex-1 px-3.5 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition-all"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleInviteUser}
                   disabled={!inviteEmail}
-                  className="flex-1 px-6 py-3 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  className="flex-1 px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                 >
                   <i className="fas fa-paper-plane mr-2"></i>
                   Send Invitation
@@ -425,10 +425,10 @@ export default function RolesPermissionsPage() {
         {/* Change Role Modal */}
         {showChangeRoleModal && selectedUser && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl max-w-lg w-full">
-              <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+            <div className="bg-white dark:bg-gray-800 rounded-md max-w-lg w-full">
+              <div className="p-5 border-b border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <h2 className="text-base font-semibold text-gray-900 dark:text-white">
                     Change User Role
                   </h2>
                   <button
@@ -440,8 +440,8 @@ export default function RolesPermissionsPage() {
                 </div>
               </div>
 
-              <div className="p-6 space-y-4">
-                <div className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-gray-900 rounded-xl">
+              <div className="p-5 space-y-4">
+                <div className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-gray-900 rounded-md">
                   <img
                     src={selectedUser.avatar}
                     alt={selectedUser.name}
@@ -464,7 +464,7 @@ export default function RolesPermissionsPage() {
                   <select
                     value={newRole}
                     onChange={(e) => setNewRole(e.target.value as Role)}
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-md text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                   >
                     <option value="admin">Admin - Full organizational control</option>
                     <option value="moderator">Moderator - Community management</option>
@@ -473,16 +473,16 @@ export default function RolesPermissionsPage() {
                 </div>
               </div>
 
-              <div className="p-6 bg-gray-50 dark:bg-gray-900 rounded-b-2xl flex gap-3">
+              <div className="p-5 bg-gray-50 dark:bg-gray-900 rounded-b-2xl flex gap-3">
                 <button
                   onClick={() => setShowChangeRoleModal(false)}
-                  className="flex-1 px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition-all"
+                  className="flex-1 px-3.5 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition-all"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleChangeRole}
-                  className="flex-1 px-6 py-3 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700 transition-all"
+                  className="flex-1 px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:bg-purple-700 transition-all"
                 >
                   <i className="fas fa-check mr-2"></i>
                   Update Role

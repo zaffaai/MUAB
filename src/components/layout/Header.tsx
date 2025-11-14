@@ -15,7 +15,7 @@ export default function Header({ onAIAssistantToggle }: HeaderProps) {
         {/* AI Assistant Button */}
         <button
           onClick={onAIAssistantToggle}
-          className="flex items-center gap-2 px-4 py-2 bg-linear-to-r from-primary to-accent text-white rounded-lg hover:shadow-lg transition-all transform hover:scale-105"
+          className="flex items-center gap-2 px-4 py-2 bg-linear-to-r from-primary to-accent text-white rounded-lg hover:shadow-sm transition-all transform hover:scale-105"
         >
           <span className="text-lg">🤖</span>
           <span className="font-medium hidden sm:inline">AI Assistant</span>

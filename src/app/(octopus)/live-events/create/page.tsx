@@ -96,7 +96,7 @@ export default function CreateLiveEventPage() {
 
   return (
     <OctopusLayout accountType="professional">
-      <div className="max-w-4xl mx-auto space-y-6">
+      <div className="max-w-4xl mx-auto space-y-4">
         {/* Header */}
         <div className="flex items-center gap-4">
           <button
@@ -106,16 +106,16 @@ export default function CreateLiveEventPage() {
             <i className="fas fa-arrow-left text-gray-600 dark:text-gray-400"></i>
           </button>
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Create Live Event</h1>
+            <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Create Live Event</h1>
             <p className="text-gray-600 dark:text-gray-400">Schedule a new live session with your audience</p>
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
           {/* Event Details */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 space-y-6">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-8 border border-gray-200 dark:border-gray-700 space-y-4">
             <div>
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-1">Event Details</h2>
+              <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-1">Event Details</h2>
               <p className="text-sm text-gray-600 dark:text-gray-400">Basic information about your live event</p>
             </div>
 
@@ -129,7 +129,7 @@ export default function CreateLiveEventPage() {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="e.g., Q&A Session: Web Development"
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
                 required
               />
             </div>
@@ -144,7 +144,7 @@ export default function CreateLiveEventPage() {
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="What will you cover in this live event?"
                 rows={4}
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
               />
             </div>
 
@@ -159,7 +159,7 @@ export default function CreateLiveEventPage() {
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
                   min={new Date().toISOString().split('T')[0]}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                  className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
                   required
                 />
               </div>
@@ -171,7 +171,7 @@ export default function CreateLiveEventPage() {
                   type="time"
                   value={time}
                   onChange={(e) => setTime(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                  className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
                   required
                 />
               </div>
@@ -182,7 +182,7 @@ export default function CreateLiveEventPage() {
                 <select
                   value={duration}
                   onChange={(e) => setDuration(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                  className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
                 >
                   <option value="30">30 minutes</option>
                   <option value="60">1 hour</option>
@@ -199,7 +199,7 @@ export default function CreateLiveEventPage() {
                 Event Thumbnail
               </label>
               <div className="flex items-center gap-4">
-                <div className="w-32 h-32 rounded-xl bg-gray-100 dark:bg-gray-700 border-2 border-dashed border-gray-300 dark:border-gray-600 flex items-center justify-center overflow-hidden">
+                <div className="w-32 h-32 rounded-md bg-gray-100 dark:bg-gray-700 border-2 border-dashed border-gray-300 dark:border-gray-600 flex items-center justify-center overflow-hidden">
                   {thumbnail ? (
                     <img src={URL.createObjectURL(thumbnail)} alt="Thumbnail" className="w-full h-full object-cover" />
                   ) : (
@@ -216,7 +216,7 @@ export default function CreateLiveEventPage() {
                   />
                   <label
                     htmlFor="thumbnail"
-                    className="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg font-medium cursor-pointer hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all inline-block"
+                    className="px-4 py-2 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg font-medium cursor-pointer hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all inline-block"
                   >
                     Upload Thumbnail
                   </label>
@@ -236,15 +236,15 @@ export default function CreateLiveEventPage() {
                 onChange={(e) => setMaxAttendees(e.target.value)}
                 placeholder="Leave empty for unlimited"
                 min="1"
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
               />
             </div>
           </div>
 
           {/* Platform Selection */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 space-y-6">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-8 border border-gray-200 dark:border-gray-700 space-y-4">
             <div>
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-1">Platform</h2>
+              <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-1">Platform</h2>
               <p className="text-sm text-gray-600 dark:text-gray-400">Choose where to host your live event</p>
             </div>
 
@@ -254,7 +254,7 @@ export default function CreateLiveEventPage() {
                   key={plat.id}
                   type="button"
                   onClick={() => setPlatform(plat.id)}
-                  className={`p-4 rounded-xl border-2 transition-all text-left hover:shadow-lg relative ${
+                  className={`p-4 rounded-md border-2 transition-all text-left hover:shadow-sm relative ${
                     platform === plat.id
                       ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20'
                       : 'border-gray-200 dark:border-gray-700 hover:border-purple-300'
@@ -270,7 +270,7 @@ export default function CreateLiveEventPage() {
                       <i className={`fas ${plat.icon} text-xl text-${plat.color}-600 dark:text-${plat.color}-400`}></i>
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900 dark:text-white mb-1">{plat.name}</h3>
+                      <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{plat.name}</h3>
                       <p className="text-sm text-gray-600 dark:text-gray-400">{plat.description}</p>
                     </div>
                   </div>
@@ -289,7 +289,7 @@ export default function CreateLiveEventPage() {
                   value={externalLink}
                   onChange={(e) => setExternalLink(e.target.value)}
                   placeholder={`Enter your ${platform} meeting link`}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                  className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
                   required
                 />
                 <p className="text-xs text-gray-500 mt-2">
@@ -299,7 +299,7 @@ export default function CreateLiveEventPage() {
             )}
 
             {platform === 'internal' && (
-              <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4">
+              <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-md p-4">
                 <div className="flex gap-3">
                   <i className="fas fa-info-circle text-blue-600 dark:text-blue-400 mt-1"></i>
                   <div className="flex-1">
@@ -317,10 +317,10 @@ export default function CreateLiveEventPage() {
           </div>
 
           {/* Link to Product */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 space-y-6">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-8 border border-gray-200 dark:border-gray-700 space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-1">Link to Product</h2>
+                <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-1">Link to Product</h2>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Associate this event with a digital product</p>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
@@ -342,7 +342,7 @@ export default function CreateLiveEventPage() {
                 <select
                   value={selectedProduct}
                   onChange={(e) => setSelectedProduct(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                  className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
                 >
                   <option value="">Choose a product...</option>
                   {mockProducts.map((product) => (
@@ -359,13 +359,13 @@ export default function CreateLiveEventPage() {
           </div>
 
           {/* Notifications */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 space-y-6">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-8 border border-gray-200 dark:border-gray-700 space-y-4">
             <div>
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-1">Notifications</h2>
+              <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-1">Notifications</h2>
               <p className="text-sm text-gray-600 dark:text-gray-400">Remind attendees about the event</p>
             </div>
 
-            <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
+            <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-md">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center">
                   <i className="fas fa-bell text-yellow-600"></i>
@@ -394,7 +394,7 @@ export default function CreateLiveEventPage() {
                 <select
                   value={reminderTime}
                   onChange={(e) => setReminderTime(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                  className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
                 >
                   <option value="1">1 hour before</option>
                   <option value="3">3 hours before</option>
@@ -411,13 +411,13 @@ export default function CreateLiveEventPage() {
             <button
               type="button"
               onClick={() => router.back()}
-              className="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-xl font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-all"
+              className="px-3.5 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-all"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-8 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all flex items-center gap-2"
+              className="px-8 py-3 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all flex items-center gap-2"
             >
               <i className="fas fa-calendar-plus"></i>
               <span>Schedule Event</span>

@@ -152,18 +152,18 @@ export default function CertificatesPage() {
 
   return (
     <OctopusLayout>
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Certificates</h1>
+            <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Certificates</h1>
             <p className="text-gray-600 dark:text-gray-400">
               Manage certificate templates and view recipients
             </p>
           </div>
           <Link
             href="/certificates/create"
-            className="px-6 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all flex items-center gap-2"
+            className="px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all flex items-center gap-2"
           >
             <i className="fas fa-plus"></i>
             <span>Create Certificate</span>
@@ -171,46 +171,46 @@ export default function CertificatesPage() {
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between mb-2">
               <p className="text-sm text-gray-600 dark:text-gray-400">Total Templates</p>
               <i className="fas fa-certificate text-yellow-500"></i>
             </div>
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">{certificates.length}</p>
+            <p className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{certificates.length}</p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between mb-2">
               <p className="text-sm text-gray-600 dark:text-gray-400">Total Issued</p>
               <i className="fas fa-award text-purple-500"></i>
             </div>
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">
+            <p className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
               {certificates.reduce((sum, cert) => sum + cert.issuedCount, 0)}
             </p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between mb-2">
               <p className="text-sm text-gray-600 dark:text-gray-400">This Month</p>
               <i className="fas fa-calendar text-cyan-500"></i>
             </div>
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">23</p>
+            <p className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">23</p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between mb-2">
               <p className="text-sm text-gray-600 dark:text-gray-400">Active Recipients</p>
               <i className="fas fa-users text-green-500"></i>
             </div>
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">
+            <p className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
               {recipients.filter(r => r.status === 'issued').length}
             </p>
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+        <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden">
           <div className="flex border-b border-gray-200 dark:border-gray-700">
             <button
               onClick={() => setActiveTab('templates')}
@@ -238,16 +238,16 @@ export default function CertificatesPage() {
 
           <div className="p-4">
             {activeTab === 'templates' ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {certificates.map((cert) => (
                   <div
                     key={cert.id}
-                    className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-all"
+                    className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-sm transition-all"
                   >
                     {/* Certificate Preview */}
-                    <div className={`h-48 ${getTemplatePreview(cert.template)} border-b border-gray-200 dark:border-gray-700 p-6 flex flex-col items-center justify-center`}>
+                    <div className={`h-48 ${getTemplatePreview(cert.template)} border-b border-gray-200 dark:border-gray-700 p-5 flex flex-col items-center justify-center`}>
                       <i className="fas fa-certificate text-5xl text-gray-400 mb-3"></i>
-                      <h3 className="text-lg font-bold text-gray-900 text-center capitalize">
+                      <h3 className="text-lg font-semibold text-gray-900 text-center capitalize">
                         {cert.template} Template
                       </h3>
                     </div>
@@ -255,7 +255,7 @@ export default function CertificatesPage() {
                     {/* Certificate Info */}
                     <div className="p-5 space-y-4">
                       <div>
-                        <h3 className="font-bold text-gray-900 dark:text-white mb-1">{cert.name}</h3>
+                        <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{cert.name}</h3>
                         <p className="text-sm text-gray-600 dark:text-gray-400">{cert.description}</p>
                       </div>
 
@@ -280,7 +280,7 @@ export default function CertificatesPage() {
                       <div className="flex gap-2 pt-3 border-t border-gray-200 dark:border-gray-700">
                         <Link
                           href={`/certificates/${cert.id}`}
-                          className="flex-1 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg font-semibold hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all text-center"
+                          className="flex-1 px-4 py-2 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg font-semibold hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all text-center"
                         >
                           <i className="fas fa-eye mr-1"></i>
                           Preview
@@ -320,22 +320,22 @@ export default function CertificatesPage() {
                   <table className="w-full">
                     <thead className="bg-gray-50 dark:bg-gray-900">
                       <tr>
-                        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
                           Recipient
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
                           Certificate
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
                           Completion Date
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
                           Issued Date
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
                           Status
                         </th>
-                        <th className="px-6 py-3 text-right text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                        <th className="px-3.5 py-2 text-right text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
                           Actions
                         </th>
                       </tr>
@@ -367,7 +367,7 @@ export default function CertificatesPage() {
                           <td className="px-6 py-4">
                             <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold ${
                               recipient.status === 'issued'
-                                ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
+                                ? 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300'
                                 : 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300'
                             }`}>
                               <i className={`fas ${recipient.status === 'issued' ? 'fa-check-circle' : 'fa-times-circle'}`}></i>

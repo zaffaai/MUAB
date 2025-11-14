@@ -91,10 +91,10 @@ export default function OctopusDashboard() {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           
           {/* Recent Products */}
-          <div className="lg:col-span-2 bg-white border border-gray-200 rounded-lg p-6">
+          <div className="lg:col-span-2 bg-white border border-gray-200 rounded-lg p-5">
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h2 className="text-lg font-semibold text-gray-900">Recent Products</h2>
@@ -114,7 +114,7 @@ export default function OctopusDashboard() {
                   key={product.id}
                   className="flex items-center gap-4 p-4 rounded-lg border border-gray-100 hover:border-gray-200 hover:bg-gray-50 transition-all cursor-pointer"
                 >
-                  <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center flex-shrink-0">
                     <i className="fas fa-box text-purple-600 text-sm"></i>
                   </div>
                   <div className="flex-1 min-w-0">
@@ -125,7 +125,7 @@ export default function OctopusDashboard() {
                   </div>
                   <div className="text-right">
                     <p className="text-sm font-semibold text-gray-900">${product.revenue.toLocaleString()}</p>
-                    <span className="inline-block px-2 py-0.5 bg-green-100 text-green-700 text-xs font-medium rounded-md mt-1">
+                    <span className="inline-block px-2 py-0.5 bg-green-50 text-green-700 text-xs font-medium rounded-md mt-1">
                       Active
                     </span>
                   </div>
@@ -135,9 +135,9 @@ export default function OctopusDashboard() {
           </div>
 
           {/* Activity Feed */}
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
           {/* Activity Feed */}
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
+          <div className="bg-white border border-gray-200 rounded-lg p-5">
             <div className="mb-6">
               <h2 className="text-lg font-semibold text-gray-900">Activity Feed</h2>
               <p className="text-sm text-gray-600 mt-0.5">Recent updates</p>
@@ -155,7 +155,7 @@ export default function OctopusDashboard() {
                     <i className={`fas ${activity.icon} text-gray-600 text-xs`}></i>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-gray-900 leading-snug">
+                    <p className="text-sm text-gray-900 leading-relaxed">
                       {activity.text}
                     </p>
                     <p className="text-xs text-gray-500 mt-1">
@@ -179,7 +179,7 @@ export default function OctopusDashboard() {
 
               <Link
                 href="/marketplace"
-                className="p-4 rounded-xl bg-cyan-50 dark:bg-cyan-900/20 border border-cyan-200 dark:border-cyan-800 hover:bg-cyan-100 dark:hover:bg-cyan-900/30 transition-all group"
+                className="p-4 rounded-md bg-cyan-50 dark:bg-cyan-900/20 border border-cyan-200 dark:border-cyan-800 hover:bg-cyan-50 dark:hover:bg-cyan-900/30 transition-all group"
               >
                 <div className="w-10 h-10 bg-cyan-500 rounded-lg flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform">
                   <i className="fas fa-store"></i>

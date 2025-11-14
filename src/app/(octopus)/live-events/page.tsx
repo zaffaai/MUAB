@@ -99,11 +99,11 @@ export default function LiveEventsPage() {
   const getStatusColor = (status: EventStatus) => {
     switch (status) {
       case 'upcoming':
-        return 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400';
+        return 'bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400';
       case 'live':
         return 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400';
       case 'completed':
-        return 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400';
+        return 'bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400';
       case 'cancelled':
         return 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-400';
     }
@@ -150,16 +150,16 @@ export default function LiveEventsPage() {
 
   return (
     <OctopusLayout accountType="professional">
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Live Events</h1>
+            <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Live Events</h1>
             <p className="text-gray-600 dark:text-gray-400">Schedule and manage your live sessions</p>
           </div>
           <Link
             href="/live-events/create"
-            className="px-6 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all flex items-center gap-2"
+            className="px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all flex items-center gap-2"
           >
             <i className="fas fa-plus"></i>
             <span>Create Event</span>
@@ -167,18 +167,18 @@ export default function LiveEventsPage() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700"
+              className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700"
             >
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{stat.label}</p>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">{stat.value}</p>
+                  <p className="text-base font-semibold text-gray-900 dark:text-white">{stat.value}</p>
                 </div>
-                <div className={`w-12 h-12 rounded-xl bg-${stat.color}-100 dark:bg-${stat.color}-900/30 flex items-center justify-center`}>
+                <div className={`w-12 h-12 rounded-md bg-${stat.color}-100 dark:bg-${stat.color}-900/30 flex items-center justify-center`}>
                   <i className={`fas ${stat.icon} text-xl text-${stat.color}-600 dark:text-${stat.color}-400`}></i>
                 </div>
               </div>
@@ -188,12 +188,12 @@ export default function LiveEventsPage() {
 
         {/* View Toggle */}
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 bg-white dark:bg-gray-800 rounded-xl p-1 border border-gray-200 dark:border-gray-700">
+          <div className="flex items-center gap-2 bg-white dark:bg-gray-800 rounded-md p-1 border border-gray-200 dark:border-gray-700">
             <button
               onClick={() => setView('calendar')}
               className={`px-4 py-2 rounded-lg font-medium transition-all ${
                 view === 'calendar'
-                  ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
+                  ? 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
                   : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
               }`}
             >
@@ -204,7 +204,7 @@ export default function LiveEventsPage() {
               onClick={() => setView('list')}
               className={`px-4 py-2 rounded-lg font-medium transition-all ${
                 view === 'list'
-                  ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
+                  ? 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
                   : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
               }`}
             >
@@ -222,7 +222,7 @@ export default function LiveEventsPage() {
                 <i className="fas fa-chevron-left text-gray-600 dark:text-gray-400"></i>
               </button>
               <div className="text-center min-w-[200px]">
-                <p className="text-lg font-bold text-gray-900 dark:text-white">
+                <p className="text-lg font-semibold text-gray-900 dark:text-white">
                   {selectedMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                 </p>
               </div>
@@ -244,7 +244,7 @@ export default function LiveEventsPage() {
 
         {/* Calendar View */}
         {view === 'calendar' && (
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             {/* Calendar Header */}
             <div className="grid grid-cols-7 gap-4 mb-4">
               {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
@@ -284,7 +284,7 @@ export default function LiveEventsPage() {
                           {dayEvents.slice(0, 2).map((event) => (
                             <div
                               key={event.id}
-                              className="text-xs p-1 rounded bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 truncate"
+                              className="text-xs p-1 rounded bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 truncate"
                               title={event.title}
                             >
                               <i className={`fas ${getPlatformIcon(event.platform)} mr-1`}></i>
@@ -312,7 +312,7 @@ export default function LiveEventsPage() {
             {events.map((event) => (
               <div
                 key={event.id}
-                className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-all"
+                className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-sm transition-all"
               >
                 <div className="flex">
                   {/* Thumbnail */}
@@ -325,11 +325,11 @@ export default function LiveEventsPage() {
                   </div>
 
                   {/* Content */}
-                  <div className="flex-1 p-6">
+                  <div className="flex-1 p-5">
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
-                          <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                          <h3 className="text-base font-semibold text-gray-900 dark:text-white">
                             {event.title}
                           </h3>
                           <span className={`px-2 py-1 rounded-full text-xs font-semibold ${getStatusColor(event.status)}`}>
@@ -395,17 +395,17 @@ export default function LiveEventsPage() {
 
         {/* Empty State */}
         {events.length === 0 && (
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-12 border border-gray-200 dark:border-gray-700 text-center">
-            <div className="w-20 h-20 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mx-auto mb-4">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-12 border border-gray-200 dark:border-gray-700 text-center">
+            <div className="w-20 h-20 rounded-full bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center mx-auto mb-4">
               <i className="fas fa-calendar-plus text-3xl text-purple-600 dark:text-purple-400"></i>
             </div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">No events scheduled</h3>
+            <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2">No events scheduled</h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
               Create your first live event to connect with your audience
             </p>
             <Link
               href="/live-events/create"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+              className="inline-flex items-center gap-2 px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all"
             >
               <i className="fas fa-plus"></i>
               <span>Create Event</span>

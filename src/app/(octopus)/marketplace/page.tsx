@@ -255,16 +255,16 @@ export default function MarketplacePage() {
 
   return (
     <OctopusLayout>
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Marketplace</h1>
+            <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Marketplace</h1>
             <p className="text-gray-600 dark:text-gray-400">Discover and purchase digital products from creators</p>
           </div>
           <Link
             href="/cart"
-            className="px-6 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all flex items-center gap-2"
+            className="px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all flex items-center gap-2"
           >
             <i className="fas fa-shopping-cart"></i>
             <span>Cart</span>
@@ -272,7 +272,7 @@ export default function MarketplacePage() {
         </div>
 
         {/* Search & Filters */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+        <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
           {/* Search Bar */}
           <div className="mb-6">
             <div className="relative">
@@ -282,7 +282,7 @@ export default function MarketplacePage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search products, creators..."
-                className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                className="w-full pl-11 pr-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
               />
             </div>
           </div>
@@ -297,7 +297,7 @@ export default function MarketplacePage() {
                   onClick={() => setSelectedCategory(category.id)}
                   className={`px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${
                     selectedCategory === category.id
-                      ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
+                      ? 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                   }`}
                 >
@@ -355,12 +355,12 @@ export default function MarketplacePage() {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {filteredProducts.map((product) => (
             <Link
               key={product.id}
               href={`/marketplace/${product.id}`}
-              className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-all group"
+              className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-sm transition-all group"
             >
               {/* Thumbnail */}
               <div className="relative h-48 bg-gray-200 dark:bg-gray-700 overflow-hidden">
@@ -389,7 +389,7 @@ export default function MarketplacePage() {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-bold text-gray-900 dark:text-white line-clamp-2 min-h-12">
+                <h3 className="font-semibold text-gray-900 dark:text-white line-clamp-2 min-h-12">
                   {product.title}
                 </h3>
 
@@ -397,13 +397,13 @@ export default function MarketplacePage() {
                 {(product.hasLiveSessions || product.hasCertificate) && (
                   <div className="flex gap-2">
                     {product.hasLiveSessions && (
-                      <span className="inline-flex items-center gap-1 px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-md text-xs font-semibold">
+                      <span className="inline-flex items-center gap-1 px-2 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-md text-xs font-semibold">
                         <i className="fas fa-video"></i>
                         Live
                       </span>
                     )}
                     {product.hasCertificate && product.isCompanyProduct && (
-                      <span className="inline-flex items-center gap-1 px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-md text-xs font-semibold">
+                      <span className="inline-flex items-center gap-1 px-2 py-1 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-md text-xs font-semibold">
                         <i className="fas fa-certificate"></i>
                         Cert
                       </span>
@@ -449,7 +449,7 @@ export default function MarketplacePage() {
 
                 {/* Price & CTA */}
                 <div className="flex items-center justify-between pt-3 border-t border-gray-200 dark:border-gray-700">
-                  <span className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <span className="text-base font-semibold text-gray-900 dark:text-white">
                     ${product.price.toFixed(2)}
                   </span>
                   <button
@@ -466,11 +466,11 @@ export default function MarketplacePage() {
 
         {/* Empty State */}
         {filteredProducts.length === 0 && (
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-12 border border-gray-200 dark:border-gray-700 text-center">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-12 border border-gray-200 dark:border-gray-700 text-center">
             <div className="w-20 h-20 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center mx-auto mb-4">
               <i className="fas fa-search text-3xl text-gray-400"></i>
             </div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">No products found</h3>
+            <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2">No products found</h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
               Try adjusting your filters or search query
             </p>
@@ -481,7 +481,7 @@ export default function MarketplacePage() {
                 setSelectedType('all');
                 setPriceRange('all');
               }}
-              className="px-6 py-3 bg-purple-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+              className="px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all"
             >
               Clear Filters
             </button>

@@ -92,14 +92,14 @@ export default function OctopusLayout({ children, accountType = 'professional' }
       icon: 'fa-home',
       href: '/dashboard',
       color: 'text-purple-600 ',
-      bgColor: 'bg-purple-100 '
+      bgColor: 'bg-purple-50 '
     },
     {
       name: 'Digital Products',
       icon: 'fa-box',
       href: '/digital-products',
       color: 'text-cyan-600 dark:text-cyan-400',
-      bgColor: 'bg-cyan-100 dark:bg-cyan-900/30'
+      bgColor: 'bg-cyan-50 dark:bg-cyan-900/30'
     },
     {
       name: 'Live Events',
@@ -113,14 +113,14 @@ export default function OctopusLayout({ children, accountType = 'professional' }
       icon: 'fa-wallet',
       href: '/finance',
       color: 'text-green-600 dark:text-green-400',
-      bgColor: 'bg-green-100 dark:bg-green-900/30'
+      bgColor: 'bg-green-50 dark:bg-green-900/30'
     },
     {
       name: 'Billing',
       icon: 'fa-credit-card',
       href: '/billing',
       color: 'text-blue-600 dark:text-blue-400',
-      bgColor: 'bg-blue-100 dark:bg-blue-900/30'
+      bgColor: 'bg-blue-50 dark:bg-blue-900/30'
     },
     ...(currentAccountType === 'company' || currentAccountType === 'enterprise' ? [
       {
@@ -144,14 +144,14 @@ export default function OctopusLayout({ children, accountType = 'professional' }
         icon: 'fa-shield-alt',
         href: '/enterprise/roles-permissions',
         color: 'text-purple-600 ',
-        bgColor: 'bg-purple-100 '
+        bgColor: 'bg-purple-50 '
       },
       {
         name: 'User Management',
         icon: 'fa-user-cog',
         href: '/enterprise/users',
         color: 'text-cyan-600 dark:text-cyan-400',
-        bgColor: 'bg-cyan-100 dark:bg-cyan-900/30'
+        bgColor: 'bg-cyan-50 dark:bg-cyan-900/30'
       },
       {
         name: 'Post Management',
@@ -241,9 +241,9 @@ export default function OctopusLayout({ children, accountType = 'professional' }
 
                 {/* Notifications Dropdown */}
                 {showNotifications && (
-                  <div className="absolute top-full right-0 mt-2 w-96 bg-white  rounded-lg shadow-lg border border-gray-200  z-50 max-h-[500px] overflow-hidden flex flex-col">
+                  <div className="absolute top-full right-0 mt-2 w-96 bg-white  rounded-lg shadow-sm border border-gray-200  z-50 max-h-[500px] overflow-hidden flex flex-col">
                     <div className="p-4 border-b border-gray-200  flex items-center justify-between">
-                      <h3 className="font-bold text-gray-900 ">Notifications</h3>
+                      <h3 className="font-semibold text-gray-900 ">Notifications</h3>
                       {unreadCount > 0 && (
                         <button
                           onClick={markAllAsRead}
@@ -317,7 +317,7 @@ export default function OctopusLayout({ children, accountType = 'professional' }
 
                 {/* Profile Dropdown */}
                 {showProfileMenu && (
-                  <div className="absolute top-full right-0 mt-2 w-48 bg-white  rounded-lg shadow-lg border border-gray-200  py-2 z-50">
+                  <div className="absolute top-full right-0 mt-2 w-48 bg-white  rounded-lg shadow-sm border border-gray-200  py-2 z-50">
                     <Link
                       href="/settings"
                       className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700  hover:bg-gray-100 "
@@ -383,9 +383,9 @@ export default function OctopusLayout({ children, accountType = 'professional' }
 
         {/* Octopus Visual Indicator */}
         <div className="p-4 mt-6">
-          <div className="bg-linear-to-br from-purple-50 to-cyan-50 dark:from-purple-900/20 dark:to-cyan-900/20 rounded-xl p-4 border border-purple-200 dark:border-purple-800">
+          <div className="bg-purple-50 dark:from-purple-900/20 dark:to-cyan-900/20 rounded-md p-4 border border-purple-200 dark:border-purple-800">
             <div className="text-center">
-              <i className="fas fa-spider text-4xl bg-linear-to-br from-purple-600 to-cyan-600 bg-clip-text text-transparent mb-2"></i>
+              <i className="fas fa-spider text-4xl bg-purple-600 bg-clip-text text-transparent mb-2"></i>
               <p className="text-xs font-semibold text-gray-700 ">Octopus System</p>
               <p className="text-[10px] text-gray-500  mt-1">
                 {navigationArms.length} arms connected

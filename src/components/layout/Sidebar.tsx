@@ -68,11 +68,11 @@ export default function Sidebar() {
       <div className="h-(--topbar-height) flex items-center justify-between px-5 border-b border-(--border-color)">
         {!isCollapsed && (
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-linear-to-br from-primary to-accent rounded-xl flex items-center justify-center text-white text-xl">
+            <div className="w-10 h-10 bg-linear-to-br from-primary to-accent rounded-md flex items-center justify-center text-white text-xl">
               💎
             </div>
             <div>
-              <div className="font-bold text-lg text-(--foreground)">MUAB</div>
+              <div className="font-semibold text-lg text-(--foreground)">MUAB</div>
               <div className="text-xs text-(--text-tertiary)">Creator Suite</div>
             </div>
           </div>

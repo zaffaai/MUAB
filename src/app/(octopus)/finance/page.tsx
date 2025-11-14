@@ -169,9 +169,9 @@ export default function FinancePage() {
       case 'pending':
         return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400';
       case 'processing':
-        return 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400';
+        return 'bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400';
       case 'completed':
-        return 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400';
+        return 'bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400';
       case 'failed':
         return 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400';
     }
@@ -194,39 +194,39 @@ export default function FinancePage() {
 
   return (
     <OctopusLayout accountType="professional">
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Finance</h1>
+          <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Finance</h1>
           <p className="text-gray-600 dark:text-gray-400">Manage your earnings and payout methods</p>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700"
+              className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700"
             >
               <div className="flex items-start justify-between mb-4">
-                <div className={`w-12 h-12 rounded-xl bg-${stat.color}-100 dark:bg-${stat.color}-900/30 flex items-center justify-center`}>
+                <div className={`w-12 h-12 rounded-md bg-${stat.color}-100 dark:bg-${stat.color}-900/30 flex items-center justify-center`}>
                   <i className={`fas ${stat.icon} text-xl text-${stat.color}-600 dark:text-${stat.color}-400`}></i>
                 </div>
               </div>
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{stat.label}</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{stat.value}</p>
+              <p className="text-base font-semibold text-gray-900 dark:text-white mb-1">{stat.value}</p>
               <p className="text-xs text-gray-500">{stat.change}</p>
             </div>
           ))}
         </div>
 
         {/* Tabs */}
-        <div className="flex items-center gap-2 bg-white dark:bg-gray-800 rounded-xl p-1 border border-gray-200 dark:border-gray-700 w-fit">
+        <div className="flex items-center gap-2 bg-white dark:bg-gray-800 rounded-md p-1 border border-gray-200 dark:border-gray-700 w-fit">
           <button
             onClick={() => setActiveTab('overview')}
             className={`px-6 py-2 rounded-lg font-medium transition-all ${
               activeTab === 'overview'
-                ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
+                ? 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
                 : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
             }`}
           >
@@ -236,7 +236,7 @@ export default function FinancePage() {
             onClick={() => setActiveTab('payouts')}
             className={`px-6 py-2 rounded-lg font-medium transition-all ${
               activeTab === 'payouts'
-                ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
+                ? 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
                 : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
             }`}
           >
@@ -246,7 +246,7 @@ export default function FinancePage() {
             onClick={() => setActiveTab('methods')}
             className={`px-6 py-2 rounded-lg font-medium transition-all ${
               activeTab === 'methods'
-                ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
+                ? 'bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
                 : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
             }`}
           >
@@ -256,10 +256,10 @@ export default function FinancePage() {
 
         {/* Overview Tab */}
         {activeTab === 'overview' && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {/* Earnings Chart */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Monthly Earnings</h2>
+            <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
+              <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-4">Monthly Earnings</h2>
               <div className="h-64 flex items-end justify-around gap-2">
                 {[
                   { month: 'Jul', amount: 1200 },
@@ -270,7 +270,7 @@ export default function FinancePage() {
                 ].map((data) => (
                   <div key={data.month} className="flex-1 flex flex-col items-center">
                     <div
-                      className="w-full bg-linear-to-t from-purple-600 to-cyan-600 rounded-t-lg transition-all hover:opacity-80"
+                      className="w-full bg-purple-600 rounded-t-lg transition-all hover:opacity-80"
                       style={{ height: `${(data.amount / 3200) * 100}%` }}
                     ></div>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">{data.month}</p>
@@ -281,12 +281,12 @@ export default function FinancePage() {
             </div>
 
             {/* Quick Actions */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Quick Actions</h2>
+            <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
+              <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-4">Quick Actions</h2>
               <div className="space-y-3">
                 <button 
                   onClick={handleRequestPayout}
-                  className="w-full p-4 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-between"
+                  className="w-full p-4 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all flex items-center justify-between"
                 >
                   <div className="flex items-center gap-3">
                     <i className="fas fa-money-bill-wave text-2xl"></i>
@@ -300,7 +300,7 @@ export default function FinancePage() {
 
                 <button 
                   onClick={() => setActiveTab('methods')}
-                  className="w-full p-4 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all flex items-center justify-between"
+                  className="w-full p-4 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all flex items-center justify-between"
                 >
                   <div className="flex items-center gap-3">
                     <i className="fas fa-credit-card text-2xl"></i>
@@ -314,7 +314,7 @@ export default function FinancePage() {
 
                 <button 
                   onClick={handleDownloadReport}
-                  className="w-full p-4 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all flex items-center justify-between"
+                  className="w-full p-4 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all flex items-center justify-between"
                 >
                   <div className="flex items-center gap-3">
                     <i className="fas fa-file-invoice text-2xl"></i>
@@ -328,7 +328,7 @@ export default function FinancePage() {
               </div>
 
               {/* Platform Fee Info */}
-              <div className="mt-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4">
+              <div className="mt-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-md p-4">
                 <div className="flex gap-3">
                   <i className="fas fa-info-circle text-blue-600 dark:text-blue-400 mt-1"></i>
                   <div className="flex-1">
@@ -345,11 +345,11 @@ export default function FinancePage() {
 
         {/* Payouts History Tab */}
         {activeTab === 'payouts' && (
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700">
             {/* Filters */}
-            <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+            <div className="p-5 border-b border-gray-200 dark:border-gray-700">
               <div className="flex items-center justify-between">
-                <h2 className="text-xl font-bold text-gray-900 dark:text-white">Payout History</h2>
+                <h2 className="text-base font-semibold text-gray-900 dark:text-white">Payout History</h2>
                 <select
                   value={filterStatus}
                   onChange={(e) => setFilterStatus(e.target.value as PayoutStatus | 'all')}
@@ -397,7 +397,7 @@ export default function FinancePage() {
                       <td className="p-4 text-sm text-red-600 dark:text-red-400">
                         -{payout.currency} {payout.platformFee.toFixed(2)}
                       </td>
-                      <td className="p-4 text-sm font-bold text-green-600 dark:text-green-400">
+                      <td className="p-4 text-sm font-semibold text-green-600 dark:text-green-400">
                         {payout.currency} {payout.netAmount.toFixed(2)}
                       </td>
                       <td className="p-4">
@@ -436,36 +436,36 @@ export default function FinancePage() {
 
         {/* Payout Methods Tab */}
         {activeTab === 'methods' && (
-          <div className="space-y-6">
+          <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white">Payout Methods</h2>
+              <h2 className="text-base font-semibold text-gray-900 dark:text-white">Payout Methods</h2>
               <button
                 onClick={() => setShowAddMethodModal(true)}
-                className="px-6 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all flex items-center gap-2"
+                className="px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all flex items-center gap-2"
               >
                 <i className="fas fa-plus"></i>
                 <span>Add Method</span>
               </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {payoutMethods.map((method) => (
                 <div
                   key={method.id}
-                  className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all"
+                  className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700 hover:shadow-sm transition-all"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-md bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center">
                         <i className={`fas ${getMethodIcon(method.type)} text-xl text-purple-600 dark:text-purple-400`}></i>
                       </div>
                       <div>
-                        <h3 className="font-bold text-gray-900 dark:text-white">{method.name}</h3>
+                        <h3 className="font-semibold text-gray-900 dark:text-white">{method.name}</h3>
                         <p className="text-sm text-gray-600 dark:text-gray-400">{method.details}</p>
                       </div>
                     </div>
                     {method.isDefault && (
-                      <span className="px-2 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-full text-xs font-semibold">
+                      <span className="px-2 py-1 bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-full text-xs font-semibold">
                         Default
                       </span>
                     )}
@@ -487,7 +487,7 @@ export default function FinancePage() {
 
                   <div className="flex gap-2">
                     {!method.isDefault && (
-                      <button className="flex-1 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg font-medium hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all">
+                      <button className="flex-1 px-4 py-2 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg font-medium hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all">
                         Set as Default
                       </button>
                     )}
@@ -503,20 +503,20 @@ export default function FinancePage() {
             </div>
 
             {/* Add Method Options */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-              <h3 className="font-bold text-gray-900 dark:text-white mb-4">Available Payout Methods</h3>
+            <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-4">Available Payout Methods</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="p-4 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl text-center hover:border-purple-500 transition-all cursor-pointer">
+                <div className="p-4 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-md text-center hover:border-purple-500 transition-all cursor-pointer">
                   <i className="fas fa-university text-3xl text-gray-400 mb-2"></i>
                   <p className="font-semibold text-gray-900 dark:text-white">Bank Transfer</p>
                   <p className="text-xs text-gray-600 dark:text-gray-400">Direct deposit to bank</p>
                 </div>
-                <div className="p-4 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl text-center hover:border-purple-500 transition-all cursor-pointer">
+                <div className="p-4 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-md text-center hover:border-purple-500 transition-all cursor-pointer">
                   <i className="fab fa-paypal text-3xl text-gray-400 mb-2"></i>
                   <p className="font-semibold text-gray-900 dark:text-white">PayPal</p>
                   <p className="text-xs text-gray-600 dark:text-gray-400">Fast PayPal transfer</p>
                 </div>
-                <div className="p-4 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl text-center hover:border-purple-500 transition-all cursor-pointer">
+                <div className="p-4 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-md text-center hover:border-purple-500 transition-all cursor-pointer">
                   <i className="fab fa-stripe text-3xl text-gray-400 mb-2"></i>
                   <p className="font-semibold text-gray-900 dark:text-white">Stripe</p>
                   <p className="text-xs text-gray-600 dark:text-gray-400">Stripe Connect payout</p>
@@ -529,10 +529,10 @@ export default function FinancePage() {
         {/* Payout Request Modal */}
         {showPayoutRequestModal && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl max-w-md w-full">
-              <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+            <div className="bg-white dark:bg-gray-800 rounded-md max-w-md w-full">
+              <div className="p-5 border-b border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Request Payout</h2>
+                  <h2 className="text-base font-semibold text-gray-900 dark:text-white">Request Payout</h2>
                   <button
                     onClick={() => setShowPayoutRequestModal(false)}
                     className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
@@ -542,10 +542,10 @@ export default function FinancePage() {
                 </div>
               </div>
 
-              <div className="p-6 space-y-6">
-                <div className="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-4 border border-purple-200 dark:border-purple-800">
+              <div className="p-5 space-y-4">
+                <div className="bg-purple-50 dark:bg-purple-900/20 rounded-md p-4 border border-purple-200 dark:border-purple-800">
                   <p className="text-sm text-purple-700 dark:text-purple-300 mb-2">Available Balance</p>
-                  <p className="text-3xl font-bold text-purple-900 dark:text-purple-100">$3,200</p>
+                  <p className="text-xl font-semibold tracking-tight text-purple-900 dark:text-purple-100">$3,200</p>
                 </div>
 
                 <div>
@@ -562,7 +562,7 @@ export default function FinancePage() {
                   </select>
                 </div>
 
-                <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-4 border border-yellow-200 dark:border-yellow-800">
+                <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-md p-4 border border-yellow-200 dark:border-yellow-800">
                   <div className="flex items-start gap-3">
                     <i className="fas fa-info-circle text-yellow-600 dark:text-yellow-400 mt-0.5"></i>
                     <div className="text-sm text-yellow-800 dark:text-yellow-200">
@@ -575,13 +575,13 @@ export default function FinancePage() {
                 <div className="flex gap-3">
                   <button
                     onClick={() => setShowPayoutRequestModal(false)}
-                    className="flex-1 px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                    className="flex-1 px-3.5 py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
                   >
                     Cancel
                   </button>
                   <button
                     onClick={handleConfirmPayout}
-                    className="flex-1 px-6 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+                    className="flex-1 px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all"
                   >
                     Confirm Request
                   </button>

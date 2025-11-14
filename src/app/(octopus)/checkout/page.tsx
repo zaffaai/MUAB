@@ -59,16 +59,16 @@ export default function CheckoutPage() {
 
   return (
     <OctopusLayout>
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Checkout</h1>
+            <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Checkout</h1>
             <p className="text-gray-600 dark:text-gray-400">Complete your purchase securely</p>
           </div>
           <Link
             href="/cart"
-            className="px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+            className="px-3.5 py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
           >
             <i className="fas fa-arrow-left mr-2"></i>
             Back to Cart
@@ -76,7 +76,7 @@ export default function CheckoutPage() {
         </div>
 
         {/* Progress Steps */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+        <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-center gap-4">
             <div className={`flex items-center gap-2 ${step === 'info' ? 'text-purple-600' : 'text-gray-400'}`}>
               <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
@@ -102,13 +102,13 @@ export default function CheckoutPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {/* Main Form */}
           <div className="lg:col-span-2">
             {step === 'info' ? (
-              <form onSubmit={handleInfoSubmit} className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 space-y-6">
+              <form onSubmit={handleInfoSubmit} className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700 space-y-4">
                 <div>
-                  <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Contact Information</h2>
+                  <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-4">Contact Information</h2>
                   
                   <div className="space-y-4">
                     <div>
@@ -121,7 +121,7 @@ export default function CheckoutPage() {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                         placeholder="your@email.com"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                        className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
                       />
                       <p className="text-xs text-gray-500 mt-1">Receipt and access details will be sent here</p>
                     </div>
@@ -134,7 +134,7 @@ export default function CheckoutPage() {
                         value={country}
                         onChange={(e) => setCountry(e.target.value)}
                         required
-                        className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                        className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
                       >
                         <option value="">Select country</option>
                         <option value="US">United States</option>
@@ -152,16 +152,16 @@ export default function CheckoutPage() {
 
                 <button
                   type="submit"
-                  className="w-full px-6 py-4 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+                  className="w-full px-6 py-4 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all"
                 >
                   Continue to Payment
                 </button>
               </form>
             ) : (
-              <form onSubmit={handlePaymentSubmit} className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 space-y-6">
+              <form onSubmit={handlePaymentSubmit} className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700 space-y-4">
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">Payment Details</h2>
+                    <h2 className="text-base font-semibold text-gray-900 dark:text-white">Payment Details</h2>
                     <div className="flex items-center gap-2">
                       <i className="fab fa-cc-visa text-3xl text-blue-600"></i>
                       <i className="fab fa-cc-mastercard text-3xl text-red-600"></i>
@@ -182,7 +182,7 @@ export default function CheckoutPage() {
                         required
                         placeholder="1234 5678 9012 3456"
                         maxLength={19}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                        className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
                       />
                     </div>
 
@@ -196,7 +196,7 @@ export default function CheckoutPage() {
                         onChange={(e) => setCardName(e.target.value)}
                         required
                         placeholder="John Doe"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                        className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
                       />
                     </div>
 
@@ -212,7 +212,7 @@ export default function CheckoutPage() {
                           required
                           placeholder="MM/YY"
                           maxLength={5}
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                          className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
                         />
                       </div>
 
@@ -227,7 +227,7 @@ export default function CheckoutPage() {
                           required
                           placeholder="123"
                           maxLength={4}
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                          className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
                         />
                       </div>
                     </div>
@@ -246,7 +246,7 @@ export default function CheckoutPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-800">
+                <div className="flex items-center gap-2 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-md border border-blue-200 dark:border-blue-800">
                   <i className="fas fa-shield-alt text-blue-600"></i>
                   <p className="text-sm text-blue-900 dark:text-blue-200">
                     Your payment is secured with 256-bit SSL encryption via Stripe
@@ -257,14 +257,14 @@ export default function CheckoutPage() {
                   <button
                     type="button"
                     onClick={() => setStep('info')}
-                    className="flex-1 px-6 py-4 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                    className="flex-1 px-6 py-4 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-md font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
                   >
                     Back
                   </button>
                   <button
                     type="submit"
                     disabled={processing}
-                    className="flex-1 px-6 py-4 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 px-6 py-4 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {processing ? (
                       <>
@@ -285,8 +285,8 @@ export default function CheckoutPage() {
 
           {/* Order Summary Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 sticky top-6 space-y-6">
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white">Order Summary</h2>
+            <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700 sticky top-5 space-y-4">
+              <h2 className="text-base font-semibold text-gray-900 dark:text-white">Order Summary</h2>
 
               {/* Items */}
               <div className="space-y-3 max-h-80 overflow-y-auto">
@@ -302,7 +302,7 @@ export default function CheckoutPage() {
                         {item.title}
                       </h3>
                       <p className="text-xs text-gray-600 dark:text-gray-400">{item.creatorName}</p>
-                      <p className="text-sm font-bold text-gray-900 dark:text-white mt-1">
+                      <p className="text-sm font-semibold text-gray-900 dark:text-white mt-1">
                         ${item.price.toFixed(2)}
                       </p>
                     </div>
@@ -322,7 +322,7 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between text-xl font-bold text-gray-900 dark:text-white">
+              <div className="flex items-center justify-between text-base font-semibold text-gray-900 dark:text-white">
                 <span>Total</span>
                 <span>${totalPrice.toFixed(2)}</span>
               </div>

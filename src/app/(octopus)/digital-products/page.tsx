@@ -188,7 +188,7 @@ export default function DigitalProductsPage() {
 
   const getStatusColor = (status: string) => {
     const colors: Record<string, string> = {
-      active: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400',
+      active: 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400',
       draft: 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-400',
       archived: 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400'
     };
@@ -197,67 +197,67 @@ export default function DigitalProductsPage() {
 
   return (
     <OctopusLayout accountType="professional">
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Digital Products</h1>
+            <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-2">Digital Products</h1>
             <p className="text-gray-600 dark:text-gray-400">Manage and create your digital products</p>
           </div>
           <Link
             href="/digital-products/create"
-            className="flex items-center gap-2 px-5 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all"
+            className="flex items-center gap-2 px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm hover:scale-105 transition-all"
           >
             <i className="fas fa-plus"></i>
-            <span>Create Product</span>
+            <span>New product</span>
           </Link>
         </div>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-purple-50 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
                 <i className="fas fa-box text-purple-600 dark:text-purple-400"></i>
               </div>
-              <span className="text-2xl font-bold text-gray-900 dark:text-white">{stats.total}</span>
+              <span className="text-base font-semibold text-gray-900 dark:text-white">{stats.total}</span>
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-400">Total Products</p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-green-50 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
                 <i className="fas fa-check-circle text-green-600 dark:text-green-400"></i>
               </div>
-              <span className="text-2xl font-bold text-gray-900 dark:text-white">{stats.active}</span>
+              <span className="text-base font-semibold text-gray-900 dark:text-white">{stats.active}</span>
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-400">Active</p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
                 <i className="fas fa-file-alt text-gray-600 dark:text-gray-400"></i>
               </div>
-              <span className="text-2xl font-bold text-gray-900 dark:text-white">{stats.drafts}</span>
+              <span className="text-base font-semibold text-gray-900 dark:text-white">{stats.drafts}</span>
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-400">Drafts</p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 bg-cyan-100 dark:bg-cyan-900/30 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-cyan-50 dark:bg-cyan-900/30 rounded-lg flex items-center justify-center">
                 <i className="fas fa-dollar-sign text-cyan-600 dark:text-cyan-400"></i>
               </div>
-              <span className="text-2xl font-bold text-gray-900 dark:text-white">${stats.totalRevenue.toLocaleString()}</span>
+              <span className="text-base font-semibold text-gray-900 dark:text-white">${stats.totalRevenue.toLocaleString()}</span>
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-400">Total Revenue</p>
           </div>
         </div>
 
         {/* Filters & Search */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-200 dark:border-gray-700">
+        <div className="bg-white dark:bg-gray-800 rounded-md p-5 border border-gray-200 dark:border-gray-700">
           <div className="flex flex-col lg:flex-row gap-4">
             {/* Search */}
             <div className="flex-1">
@@ -268,7 +268,7 @@ export default function DigitalProductsPage() {
                   placeholder="Search products..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
+                  className="w-full pl-11 pr-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all"
                 />
               </div>
             </div>
@@ -277,7 +277,7 @@ export default function DigitalProductsPage() {
             <select
               value={filterType}
               onChange={(e) => setFilterType(e.target.value as ProductType)}
-              className="px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all cursor-pointer"
+              className="px-4 py-2.5 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all cursor-pointer"
             >
               <option value="all">All Types</option>
               <option value="course">Courses</option>
@@ -293,7 +293,7 @@ export default function DigitalProductsPage() {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value as ProductStatus)}
-              className="px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all cursor-pointer"
+              className="px-4 py-2.5 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all cursor-pointer"
             >
               <option value="all">All Status</option>
               <option value="active">Active</option>
@@ -305,7 +305,7 @@ export default function DigitalProductsPage() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all cursor-pointer"
+              className="px-4 py-2.5 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 transition-all cursor-pointer"
             >
               <option value="newest">Newest First</option>
               <option value="oldest">Oldest First</option>
@@ -341,7 +341,7 @@ export default function DigitalProductsPage() {
 
         {/* Products Grid/List */}
         {filteredProducts.length === 0 ? (
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-16 border-2 border-dashed border-gray-300 dark:border-gray-700 text-center">
+          <div className="bg-white dark:bg-gray-800 rounded-md p-16 border-2 border-dashed border-gray-300 dark:border-gray-700 text-center">
             <div className="w-20 h-20 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
               <i className="fas fa-box-open text-3xl text-gray-400"></i>
             </div>
@@ -349,18 +349,18 @@ export default function DigitalProductsPage() {
             <p className="text-gray-600 dark:text-gray-400 mb-6">Try adjusting your filters or create a new product</p>
             <Link
               href="/digital-products/create"
-              className="inline-flex items-center gap-2 px-5 py-3 bg-linear-to-br from-purple-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+              className="inline-flex items-center gap-2 px-3.5 py-2 bg-purple-600 text-white rounded-md font-semibold hover:shadow-sm transition-all"
             >
               <i className="fas fa-plus"></i>
-              <span>Create Product</span>
+              <span>New product</span>
             </Link>
           </div>
         ) : (
-          <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
+          <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4' : 'space-y-4'}>
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className={`bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg hover:border-purple-400 dark:hover:border-purple-500 transition-all group ${
+                className={`bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-sm hover:border-purple-400 dark:hover:border-purple-500 transition-all group ${
                   viewMode === 'list' ? 'flex' : ''
                 }`}
               >
@@ -386,7 +386,7 @@ export default function DigitalProductsPage() {
 
                 {/* Content */}
                 <div className="p-5 flex-1">
-                  <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                  <h3 className="font-semibold text-lg text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                     {product.title}
                   </h3>
 
@@ -394,13 +394,13 @@ export default function DigitalProductsPage() {
                   {(product.hasLiveSessions || product.hasCertificate) && (
                     <div className="flex gap-2 mb-3">
                       {product.hasLiveSessions && (
-                        <span className="inline-flex items-center gap-1 px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-md text-xs font-semibold">
+                        <span className="inline-flex items-center gap-1 px-2 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-md text-xs font-semibold">
                           <i className="fas fa-video"></i>
                           Live Sessions
                         </span>
                       )}
                       {product.hasCertificate && (
-                        <span className="inline-flex items-center gap-1 px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-md text-xs font-semibold">
+                        <span className="inline-flex items-center gap-1 px-2 py-1 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-md text-xs font-semibold">
                           <i className="fas fa-certificate"></i>
                           Certificate
                         </span>
@@ -411,7 +411,7 @@ export default function DigitalProductsPage() {
                   {/* Stats */}
                   <div className="flex items-center gap-4 mb-4">
                     <div>
-                      <p className="text-2xl font-bold text-gray-900 dark:text-white">${product.price}</p>
+                      <p className="text-base font-semibold text-gray-900 dark:text-white">${product.price}</p>
                     </div>
                     <div className="flex-1 text-sm text-gray-600 dark:text-gray-400">
                       <div className="flex items-center gap-1 mb-1">
