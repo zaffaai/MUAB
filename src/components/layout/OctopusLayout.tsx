@@ -397,7 +397,7 @@ export default function OctopusLayout({ children, accountType = 'professional' }
 
       {/* Main Content */}
       <main className={`transition-all ${sidebarOpen ? 'lg:pl-64' : ''} pt-16`}>
-        <div className="p-6 lg:p-8">
+        <div className="px-6 lg:px-8 py-6">
           {children}
         </div>
       </main>
