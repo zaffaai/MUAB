@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuthStore, type AccountType } from '@/store/authStore';
 import { useCartStore } from '@/store/cartStore';
-import { useTheme } from '@/contexts/ThemeContext';
 
 interface Notification {
   id: string;
@@ -28,7 +27,6 @@ export default function OctopusLayout({ children, accountType = 'professional' }
   const router = useRouter();
   const { user, logout } = useAuthStore();
   const { getItemCount } = useCartStore();
-  const { theme, toggleTheme } = useTheme();
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
@@ -93,8 +91,8 @@ export default function OctopusLayout({ children, accountType = 'professional' }
       name: 'Home',
       icon: 'fa-home',
       href: '/dashboard',
-      color: 'text-purple-600 dark:text-purple-400',
-      bgColor: 'bg-purple-100 dark:bg-purple-900/30'
+      color: 'text-purple-600 ',
+      bgColor: 'bg-purple-100 '
     },
     {
       name: 'Digital Products',
@@ -145,8 +143,8 @@ export default function OctopusLayout({ children, accountType = 'professional' }
         name: 'Roles & Permissions',
         icon: 'fa-shield-alt',
         href: '/enterprise/roles-permissions',
-        color: 'text-purple-600 dark:text-purple-400',
-        bgColor: 'bg-purple-100 dark:bg-purple-900/30'
+        color: 'text-purple-600 ',
+        bgColor: 'bg-purple-100 '
       },
       {
         name: 'User Management',
@@ -173,18 +171,18 @@ export default function OctopusLayout({ children, accountType = 'professional' }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
+    <div className="min-h-screen bg-gray-50  transition-colors">
       {/* Top Header */}
-      <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40 shadow-sm">
+      <header className="bg-white  border-b border-gray-200  sticky top-0 z-40 shadow-sm">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Left: Logo & Menu Toggle */}
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="lg:hidden w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                className="lg:hidden w-10 h-10 rounded-lg bg-gray-100  flex items-center justify-center hover:bg-gray-200  transition-all"
               >
-                <i className={`fas ${sidebarOpen ? 'fa-times' : 'fa-bars'} text-gray-600 dark:text-gray-300`}></i>
+                <i className={`fas ${sidebarOpen ? 'fa-times' : 'fa-bars'} text-gray-600 `}></i>
               </button>
               
               <Link href="/dashboard" className="flex items-center gap-2">
@@ -195,7 +193,7 @@ export default function OctopusLayout({ children, accountType = 'professional' }
                   <h1 className="text-lg font-bold bg-linear-to-r from-purple-600 to-purple-700 bg-clip-text text-transparent">
                     MUAB
                   </h1>
-                  <p className="text-[10px] text-gray-500 dark:text-gray-400 -mt-1">Octopus System</p>
+                  <p className="text-[10px] text-gray-500  -mt-1">Octopus System</p>
                 </div>
               </Link>
             </div>
@@ -207,35 +205,21 @@ export default function OctopusLayout({ children, accountType = 'professional' }
                 <input
                   type="text"
                   placeholder="Search products, events, customers..."
-                  className="w-full pl-11 pr-4 py-2.5 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                  className="w-full pl-11 pr-4 py-2.5 rounded-lg border border-gray-200  bg-white  text-gray-900  placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                 />
               </div>
             </div>
 
             {/* Right: Actions */}
             <div className="flex items-center gap-3">
-              {/* Theme Toggle */}
-              <button
-                onClick={toggleTheme}
-                className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
-                aria-label="Toggle theme"
-                title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-              >
-                {theme === 'dark' ? (
-                  <i className="fas fa-sun text-yellow-400"></i>
-                ) : (
-                  <i className="fas fa-moon text-gray-600"></i>
-                )}
-              </button>
-
               {/* Cart */}
               <Link
                 href="/cart"
-                className="relative w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                className="relative w-10 h-10 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-all"
               >
-                <i className="fas fa-shopping-cart text-gray-600 dark:text-gray-300"></i>
+                <i className="fas fa-shopping-cart text-gray-600"></i>
                 {cartItemCount > 0 && (
-                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-purple-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-purple-600 text-white text-xs font-semibold rounded-full flex items-center justify-center">
                     {cartItemCount > 9 ? '9+' : cartItemCount}
                   </span>
                 )}
@@ -245,9 +229,9 @@ export default function OctopusLayout({ children, accountType = 'professional' }
               <div className="relative">
                 <button
                   onClick={() => setShowNotifications(!showNotifications)}
-                  className="relative w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
+                  className="relative w-10 h-10 rounded-lg bg-gray-100  flex items-center justify-center hover:bg-gray-200  transition-all"
                 >
-                  <i className="fas fa-bell text-gray-600 dark:text-gray-300"></i>
+                  <i className="fas fa-bell text-gray-600 "></i>
                   {unreadCount > 0 && (
                     <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
                       {unreadCount > 9 ? '9+' : unreadCount}
@@ -257,13 +241,13 @@ export default function OctopusLayout({ children, accountType = 'professional' }
 
                 {/* Notifications Dropdown */}
                 {showNotifications && (
-                  <div className="absolute top-full right-0 mt-2 w-96 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 max-h-[500px] overflow-hidden flex flex-col">
-                    <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
-                      <h3 className="font-bold text-gray-900 dark:text-white">Notifications</h3>
+                  <div className="absolute top-full right-0 mt-2 w-96 bg-white  rounded-lg shadow-lg border border-gray-200  z-50 max-h-[500px] overflow-hidden flex flex-col">
+                    <div className="p-4 border-b border-gray-200  flex items-center justify-between">
+                      <h3 className="font-bold text-gray-900 ">Notifications</h3>
                       {unreadCount > 0 && (
                         <button
                           onClick={markAllAsRead}
-                          className="text-xs text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300"
+                          className="text-xs text-purple-600  hover:text-purple-700 "
                         >
                           Mark all as read
                         </button>
@@ -275,27 +259,27 @@ export default function OctopusLayout({ children, accountType = 'professional' }
                           <div
                             key={notif.id}
                             onClick={() => markAsRead(notif.id)}
-                            className={`p-4 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-all ${
-                              !notif.read ? 'bg-purple-50 dark:bg-purple-900/10' : ''
+                            className={`p-4 border-b border-gray-200  hover:bg-gray-50  cursor-pointer transition-all ${
+                              !notif.read ? 'bg-purple-50 ' : ''
                             }`}
                           >
                             <div className="flex items-start gap-3">
-                              <div className={`w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center ${notif.color}`}>
+                              <div className={`w-10 h-10 rounded-full bg-gray-100  flex items-center justify-center ${notif.color}`}>
                                 <i className={`fas ${notif.icon}`}></i>
                               </div>
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-center justify-between mb-1">
-                                  <p className="font-semibold text-sm text-gray-900 dark:text-white">
+                                  <p className="font-semibold text-sm text-gray-900 ">
                                     {notif.title}
                                   </p>
                                   {!notif.read && (
                                     <span className="w-2 h-2 bg-purple-600 rounded-full"></span>
                                   )}
                                 </div>
-                                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                                <p className="text-sm text-gray-600  mb-1">
                                   {notif.message}
                                 </p>
-                                <p className="text-xs text-gray-500 dark:text-gray-500">
+                                <p className="text-xs text-gray-500 ">
                                   {notif.time}
                                 </p>
                               </div>
@@ -304,13 +288,13 @@ export default function OctopusLayout({ children, accountType = 'professional' }
                         ))
                       ) : (
                         <div className="p-8 text-center">
-                          <i className="fas fa-bell-slash text-4xl text-gray-300 dark:text-gray-600 mb-3"></i>
-                          <p className="text-gray-600 dark:text-gray-400">No notifications</p>
+                          <i className="fas fa-bell-slash text-4xl text-gray-300  mb-3"></i>
+                          <p className="text-gray-600 ">No notifications</p>
                         </div>
                       )}
                     </div>
-                    <div className="p-3 border-t border-gray-200 dark:border-gray-700">
-                      <button className="w-full text-center text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold">
+                    <div className="p-3 border-t border-gray-200 ">
+                      <button className="w-full text-center text-sm text-purple-600  hover:text-purple-700  font-semibold">
                         View all notifications
                       </button>
                     </div>
@@ -319,10 +303,10 @@ export default function OctopusLayout({ children, accountType = 'professional' }
               </div>
 
               {/* Profile */}
-              <div className="relative flex items-center gap-3 pl-3 border-l border-gray-200 dark:border-gray-700">
+              <div className="relative flex items-center gap-3 pl-3 border-l border-gray-200 ">
                 <div className="hidden sm:block text-right">
-                  <p className="text-sm font-semibold text-gray-900 dark:text-white">{userName}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 capitalize">{currentAccountType}</p>
+                  <p className="text-sm font-semibold text-gray-900 ">{userName}</p>
+                  <p className="text-xs text-gray-500  capitalize">{currentAccountType}</p>
                 </div>
                 <button
                   onClick={() => setShowProfileMenu(!showProfileMenu)}
@@ -333,10 +317,10 @@ export default function OctopusLayout({ children, accountType = 'professional' }
 
                 {/* Profile Dropdown */}
                 {showProfileMenu && (
-                  <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50">
+                  <div className="absolute top-full right-0 mt-2 w-48 bg-white  rounded-lg shadow-lg border border-gray-200  py-2 z-50">
                     <Link
                       href="/settings"
-                      className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700  hover:bg-gray-100 "
                       onClick={() => setShowProfileMenu(false)}
                     >
                       <i className="fas fa-cog"></i>
@@ -344,13 +328,13 @@ export default function OctopusLayout({ children, accountType = 'professional' }
                     </Link>
                     <Link
                       href="/billing"
-                      className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700  hover:bg-gray-100 "
                       onClick={() => setShowProfileMenu(false)}
                     >
                       <i className="fas fa-credit-card"></i>
                       <span>Billing</span>
                     </Link>
-                    <hr className="my-2 border-gray-200 dark:border-gray-700" />
+                    <hr className="my-2 border-gray-200 " />
                     <button
                       onClick={handleLogout}
                       className="w-full flex items-center gap-3 px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20"
@@ -367,7 +351,7 @@ export default function OctopusLayout({ children, accountType = 'professional' }
       </header>
 
       {/* Sidebar */}
-      <aside className={`fixed left-0 top-16 bottom-0 w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 overflow-y-auto transition-transform z-30 ${
+      <aside className={`fixed left-0 top-16 bottom-0 w-64 bg-white  border-r border-gray-200  overflow-y-auto transition-transform z-30 ${
         sidebarOpen ? 'translate-x-0' : '-translate-x-full'
       } lg:translate-x-0`}>
         <nav className="p-4 space-y-2">
@@ -380,13 +364,13 @@ export default function OctopusLayout({ children, accountType = 'professional' }
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group ${
                   isActive
                     ? `${arm.bgColor} ${arm.color} font-semibold shadow-sm`
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                    : 'text-gray-700  hover:bg-gray-100 '
                 }`}
               >
                 <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                  isActive ? arm.bgColor : 'bg-gray-100 dark:bg-gray-700 group-hover:scale-105'
+                  isActive ? arm.bgColor : 'bg-gray-100  group-hover:scale-105'
                 } transition-all duration-200`}>
-                  <i className={`fas ${arm.icon} ${isActive ? arm.color : 'text-gray-500 dark:text-gray-400'}`}></i>
+                  <i className={`fas ${arm.icon} ${isActive ? arm.color : 'text-gray-500 '}`}></i>
                 </div>
                 <span>{arm.name}</span>
                 {isActive && (
@@ -402,8 +386,8 @@ export default function OctopusLayout({ children, accountType = 'professional' }
           <div className="bg-linear-to-br from-purple-50 to-cyan-50 dark:from-purple-900/20 dark:to-cyan-900/20 rounded-xl p-4 border border-purple-200 dark:border-purple-800">
             <div className="text-center">
               <i className="fas fa-spider text-4xl bg-linear-to-br from-purple-600 to-cyan-600 bg-clip-text text-transparent mb-2"></i>
-              <p className="text-xs font-semibold text-gray-700 dark:text-gray-300">Octopus System</p>
-              <p className="text-[10px] text-gray-500 dark:text-gray-400 mt-1">
+              <p className="text-xs font-semibold text-gray-700 ">Octopus System</p>
+              <p className="text-[10px] text-gray-500  mt-1">
                 {navigationArms.length} arms connected
               </p>
             </div>

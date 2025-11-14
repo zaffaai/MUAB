@@ -1,0 +1,138 @@
+/* Stripe-Inspired Design System for MUAB */
+
+:root {
+  /* ===== Colors - Light Mode Only ===== */
+  --color-background: #ffffff;
+  --color-background-secondary: #fafbfc;
+  --color-background-tertiary: #f6f8fa;
+  
+  --color-text-primary: #0a2540;
+  --color-text-secondary: #425466;
+  --color-text-tertiary: #697386;
+  
+  --color-border: #e3e8ee;
+  --color-border-light: #f0f4f8;
+  
+  /* Primary - Purple */
+  --color-primary: #635bff;
+  --color-primary-hover: #5851ec;
+  --color-primary-light: #f6f5ff;
+  
+  /* Semantic Colors */
+  --color-success: #00d4aa;
+  --color-success-light: #e6faf6;
+  --color-warning: #ff9500;
+  --color-warning-light: #fff4e6;
+  --color-error: #df1b41;
+  --color-error-light: #ffeef1;
+  --color-info: #0073e6;
+  --color-info-light: #e6f2ff;
+  
+  /* ===== Spacing - 8px base ===== */
+  --spacing-1: 0.25rem;  /* 4px */
+  --spacing-2: 0.5rem;   /* 8px */
+  --spacing-3: 0.75rem;  /* 12px */
+  --spacing-4: 1rem;     /* 16px */
+  --spacing-5: 1.5rem;   /* 24px */
+  --spacing-6: 2rem;     /* 32px */
+  --spacing-8: 3rem;     /* 48px */
+  --spacing-10: 4rem;    /* 64px */
+  
+  /* ===== Border Radius - Soft ===== */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  
+  /* ===== Shadows - Subtle ===== */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* ===== Typography ===== */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace;
+  
+  /* Font Sizes - Fluid */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-3xl: 1.875rem;  /* 30px */
+  --text-4xl: 2.25rem;   /* 36px */
+  
+  /* Font Weights */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  
+  /* Line Heights */
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+  
+  /* ===== Transitions ===== */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== Global Resets ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background-color: var(--color-background-secondary);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(99, 91, 255, 0.15);
+  border-radius: 6px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(99, 91, 255, 0.25);
+}
+
+/* ===== Focus Styles ===== */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ===== Utility Classes ===== */
+.container-max {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-6);
+  padding-right: var(--spacing-6);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
